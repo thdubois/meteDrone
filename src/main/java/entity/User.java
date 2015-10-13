@@ -1,13 +1,22 @@
 package entity;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
-@Id @GeneratedValue private Long id;
-private String firstname;
-private String lastname;
-private String mail;
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String firstname;
+	private String lastname;
+	private String mail;
+
+	@ManyToOne
+	private Role role;
+	
+	@ManyToOne
+	private Company company;
 }
