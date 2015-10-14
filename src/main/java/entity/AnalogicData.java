@@ -1,21 +1,24 @@
 package entity;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Company {
+public class AnalogicData {
+
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	private String name;
+	private Date date;
 
-	@OneToMany
-	private List<User> userList;
+	private Float value;
+
+	@ManyToOne
+	private Analogic analogic;
 
 }

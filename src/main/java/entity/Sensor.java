@@ -19,13 +19,13 @@ public class Sensor {
 	
 	private String model;
 	
-	private Date circulation;
+	private Date inServiceDate;
 	
 	private Float price;
 	
 	@ManyToOne
 	private Drone drone;
 	
-	@OneToMany(mappedBy = "sensor")
+	@OneToMany
 	private List<Suscription> suscriptionList;
 }

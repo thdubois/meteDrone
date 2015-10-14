@@ -16,6 +16,6 @@ public class Drone {
 	
 	private String model;
 	
-	@OneToMany(mappedBy = "drone")
+	@OneToMany
 	private List<Flight> flightList;
 }

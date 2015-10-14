@@ -1,20 +1,24 @@
 package entity;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Role {
+public class NumericData {
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	private String name;
 
-	@OneToMany
-	private List<User> userList;
+	private Date date;
+	
+	private Boolean value;
+
+	@ManyToOne
+	private Numeric numeric;
+
 }
