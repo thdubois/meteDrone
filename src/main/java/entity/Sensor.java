@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+@NamedQuery(name="findSensorByName", query = "SELECT s FROM Sensor s WHERE s.name='toto'")
 @Entity
 public class Sensor {
 	@Id
@@ -28,4 +30,16 @@ public class Sensor {
 	
 	@OneToMany
 	private List<Suscription> suscriptionList;
+	
+	public Sensor(){
+	
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name=name;
+	}
 }
