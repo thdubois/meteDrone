@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Unit {
+public class Unit implements Serializable {
 	
 	@Id
 	@GeneratedValue

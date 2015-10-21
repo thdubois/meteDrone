@@ -1,12 +1,14 @@
 package entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class User {
+public class User implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
