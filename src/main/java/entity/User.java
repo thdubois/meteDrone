@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import remote.UserEJBRemote;
+
 @Entity
 public class User implements Serializable {
 	@Id
