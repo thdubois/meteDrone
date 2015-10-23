@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import FlightEJBLocal.FlightEJBLocal;
+import local.FlightEJBLocal;
 import remote.FlightEJBRemote;
 import entity.Flight;
 

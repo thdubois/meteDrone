@@ -1,4 +1,4 @@
-package FlightEJBLocal;
+package local;
 
 import java.util.List;
 import javax.ejb.Local;
