@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-@NamedQuery(name="findFlights", query="SELECT f FROM Flight f")
+
 @Entity
+@NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f")
 public class Flight implements Serializable {
 	/**
 	 * 
@@ -19,11 +20,56 @@ public class Flight implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private Date date;
-	
+
 	private Long duration;
-	
+/*
 	@ManyToOne
 	private Drone drone;
+*/
+
+	public Flight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Flight(Long id, Date date, Long duration) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.duration = duration;
+	}
+
+	public Flight(Date date, Long duration) {
+		super();
+		this.date = date;
+		this.duration = duration;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Long getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Long duration) {
+		this.duration = duration;
+	}
+	
+
 }
