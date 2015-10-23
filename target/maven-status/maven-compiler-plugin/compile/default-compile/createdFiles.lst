@@ -1,1 +1,16 @@
+entity/Role.class
+entity/Drone.class
+controller/FlightController.class
+remote/FlightEJBRemote.class
+entity/AnalogicData.class
+entity/Suscription.class
+entity/Sensor.class
+entity/Flight.class
+entity/Numeric.class
+FlightEJBLocal/FlightEJBLocal.class
+entity/Company.class
+entity/Analogic.class
+ejb/FlightEJB.class
+entity/NumericData.class
 entity/User.class
+entity/Unit.class

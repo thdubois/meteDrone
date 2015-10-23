@@ -10,6 +10,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Drone implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8940788386134273107L;
+
 	@Id
 	@GeneratedValue
 	private Long id;

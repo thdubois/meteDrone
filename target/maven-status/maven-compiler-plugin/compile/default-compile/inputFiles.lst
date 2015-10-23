@@ -1,1 +1,16 @@
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Drone.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Role.java
+/Users/Thomas/workspace/meteDrone/src/main/java/controller/FlightController.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Company.java
 /Users/Thomas/workspace/meteDrone/src/main/java/entity/User.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Flight.java
+/Users/Thomas/workspace/meteDrone/src/main/java/ejb/FlightEJB.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/NumericData.java
+/Users/Thomas/workspace/meteDrone/src/main/java/FlightEJBLocal/FlightEJBLocal.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Sensor.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Unit.java
+/Users/Thomas/workspace/meteDrone/src/main/java/remote/FlightEJBRemote.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Numeric.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/AnalogicData.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Analogic.java
+/Users/Thomas/workspace/meteDrone/src/main/java/entity/Suscription.java

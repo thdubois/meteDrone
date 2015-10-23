@@ -11,6 +11,11 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="findFlights", query="SELECT f FROM Flight f")
 @Entity
 public class Flight implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -762343915180969525L;
+
 	@Id
 	@GeneratedValue
 	private Long id;

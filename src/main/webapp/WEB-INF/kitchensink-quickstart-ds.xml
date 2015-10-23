@@ -34,5 +34,5 @@
             <user-name>sa</user-name>
             <password>sa</password>
         </security>
-    </datasource>
+    </datasource>  
 </datasources>
