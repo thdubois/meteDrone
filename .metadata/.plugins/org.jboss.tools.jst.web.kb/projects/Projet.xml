@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="/Users/kastelolivier/.m2/repository/javax/activation/activation/1.1.1/activation-1.1.1.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/rmi/jboss-rmi-api_1.0_spec/1.0.4.Final/jboss-rmi-api_1.0_spec-1.0.4.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/security/jacc/jboss-jacc-api_1.5_spec/1.0.0.Final/jboss-jacc-api_1.5_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/jms/jboss-jms-api_2.0_spec/1.0.0.Final/jboss-jms-api_2.0_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Final/jboss-interceptors-api_1.2_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/xml/soap/jboss-saaj-api_1.3_spec/1.0.3.Final/jboss-saaj-api_1.3_spec-1.0.3.Final.jar"/>
+  <path value="/Projet/src/main/webapp/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="Projet"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/websocket/jboss-websocket-api_1.1_spec/1.1.0.Final/jboss-websocket-api_1.1_spec-1.1.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/json/jboss-json-api_1.0_spec/1.0.0.Final/jboss-json-api_1.0_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final/jboss-annotations-api_1.2_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/1.0.4.Final/jboss-el-api_3.0_spec-1.0.4.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/batch/jboss-batch-api_1.0_spec/1.0.0.Final/jboss-batch-api_1.0_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/servlet/jsp/jboss-jsp-api_2.3_spec/1.0.1.Final/jboss-jsp-api_2.3_spec-1.0.1.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/servlet/jstl/jboss-jstl-api_1.2_spec/1.1.2.Final/jboss-jstl-api_1.2_spec-1.1.2.Final.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/c-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/c-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/c-1_1.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/c.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/fmt-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/fmt-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/fmt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/fn.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/permittedtaglibs.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/scriptfree.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/sql-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/sql-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/sql.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/x-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/x-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.1.2.Final.jar/meta-inf/x.tld" project="Projet"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/security/auth/message/jboss-jaspi-api_1.1_spec/1.0.0.Final/jboss-jaspi-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/xml/ws/jboss-jaxws-api_2.2_spec/2.0.2.Final/jboss-jaxws-api_2.2_spec-2.0.2.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/jboss-javaee-all-7.0/1.0.3.Final/jboss-javaee-all-7.0-1.0.3.Final.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/c-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/c-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/c-1_1.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/c.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/fmt-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/fmt-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/fmt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/fn.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/permittedtaglibs.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/scriptfree.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/sql-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/sql-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/sql.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/x-1_0-rt.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/x-1_0.tld" project="Projet"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-javaee-all-7.0-1.0.3.Final.jar/meta-inf/x.tld" project="Projet"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/resource/jboss-connector-api_1.7_spec/1.0.0.Final/jboss-connector-api_1.7_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/xml/bind/jboss-jaxb-api_2.2_spec/1.0.4.Final/jboss-jaxb-api_2.2_spec-1.0.4.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/javax/jws/jsr181-api/1.0-MR1/jsr181-api-1.0-MR1.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.0_spec/1.0.0.Final/jboss-jaxrs-api_2.0_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/ejb/jboss-ejb-api_3.2_spec/1.0.0.Final/jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/enterprise/concurrent/jboss-concurrency-api_1.0_spec/1.0.0.Final/jboss-concurrency-api_1.0_spec-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/management/j2ee/jboss-j2eemgmt-api_1.1_spec/1.0.1.Final/jboss-j2eemgmt-api_1.1_spec-1.0.1.Final.jar"/>
+  <path value="/Projet/src/main/webapp/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-ROOT/faces-config.xml" project="Projet"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="/Users/kastelolivier/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/com/sun/mail/javax.mail/1.5.3/javax.mail-1.5.3.jar"/>
+  <path value="/Users/kastelolivier/.m2/repository/org/jboss/spec/javax/faces/jboss-jsf-api_2.2_spec/2.2.11/jboss-jsf-api_2.2_spec-2.2.11.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource declaration="true" name="%1;" path="%0"/>
+   <linked-resource declaration="true" name="%3;" path="%2"/>
+  </core>
+  <core validator-id="batch-verification"/>
+  <core validator-id="jboss.jsf.core"/>
+  <el>
+   <linked-el length="29" name="%0" offset="349" path="%4"/>
+   <linked-el length="29" name="%0" offset="349" path="%5"/>
+   <linked-el length="42" name="%6" offset="435" path="%7"/>
+   <linked-el length="41" name="%6" offset="575" path="%7"/>
+   <linked-el length="17" name="%6" offset="474" path="%4"/>
+   <linked-el length="16" name="%6" offset="586" path="%4"/>
+   <linked-el length="41" name="%6" offset="575" path="%8"/>
+   <linked-el length="17" name="%6" offset="474" path="%5"/>
+   <linked-el length="16" name="%6" offset="586" path="%5"/>
+   <linked-el length="42" name="%6" offset="435" path="%8"/>
+   <linked-el length="42" name="%3" offset="435" path="%7"/>
+   <linked-el length="40" name="%3" offset="665" path="%8"/>
+   <linked-el length="41" name="%3" offset="575" path="%7"/>
+   <linked-el length="41" name="%3" offset="575" path="%8"/>
+   <linked-el length="42" name="%3" offset="435" path="%8"/>
+   <linked-el length="40" name="%3" offset="665" path="%7"/>
+   <linked-el length="29" name="%1" offset="349" path="%4"/>
+   <linked-el length="17" name="%1" offset="474" path="%4"/>
+   <linked-el length="16" name="%1" offset="586" path="%4"/>
+   <linked-el length="17" name="%1" offset="474" path="%5"/>
+   <linked-el length="16" name="%1" offset="586" path="%5"/>
+   <linked-el length="29" name="%1" offset="349" path="%5"/>
+   <linked-el length="42" name="%2" offset="435" path="%7"/>
+   <linked-el length="40" name="%2" offset="665" path="%8"/>
+   <linked-el length="41" name="%2" offset="575" path="%7"/>
+   <linked-el length="41" name="%2" offset="575" path="%8"/>
+   <linked-el length="42" name="%2" offset="435" path="%8"/>
+   <linked-el length="40" name="%2" offset="665" path="%7"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="/Projet/target/Projet/createBook.xhtml" value="%8"/>
+  <alias path="/Projet/src/main/webapp/index.xhtml" value="%4"/>
+  <alias
+   path="/Projet/src/main/java/fr/esisar/controller/LecteurController.java" value="%0"/>
+  <alias path="/Projet/src/main/java/fr/esisar/entity/Book.java" value="%6"/>
+  <alias path="bibliothecaireController" value="%3"/>
+  <alias path="lecteurController" value="%1"/>
+  <alias path="/Projet/src/main/webapp/createBook.xhtml" value="%7"/>
+  <alias
+   path="/Projet/src/main/java/fr/esisar/controller/BibliothecaireController.java" value="%2"/>
+  <alias path="/Projet/target/Projet/index.xhtml" value="%5"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+ </uris>
+</kb-project>
