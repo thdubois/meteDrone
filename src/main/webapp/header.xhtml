@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<h:head>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<title>Add a User</title>
+</h:head>
+<h:body id="connexionBody">
+
+<ui:composition>
+<header class="navbar">
+    <div class="container">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+      </button>
+      <a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"></i></a>    
+        <a class="navbar-brand col-lg-2 col-sm-1 col-xs-12" href="dashboard.jsf"><span>Métédrone</span></a>
+      <!-- start: Header Menu -->
+      <div class="nav-no-collapse header-nav">
+        <ul class="nav navbar-nav pull-right">
+      
+          <!-- start: User Dropdown -->
+          <li class="dropdown">
+            <a class="btn account" data-toggle="dropdown" href="dashboard.jsf">
+              <div class="user">
+                <span class="hello">Bienvenue !</span>
+                <span class="name">Doriane Perard</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="btn" href="connexion.jsf">
+              <i class="fa fa-power-off"></i>
+            </a>
+          </li>
+          <!-- end: User Dropdown -->
+        </ul>
+      </div>
+      <!-- end: Header Menu -->
+      
+    </div>  
+  </header>
+</ui:composition>
+
+</h:body>
+</html>

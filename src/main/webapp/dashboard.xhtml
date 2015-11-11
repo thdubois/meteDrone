@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<h:head>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<title>Add a User</title>
+</h:head>
+<h:body id="connexionBody">
+
+<ui:include src="header.xhtml" /> 
+  <!-- end: Header -->
+  
+<div class="container">
+    <div class="row">
+        
+      <!-- start: Main Menu -->
+      <div id="sidebar-left" class="col-lg-2 col-sm-1">
+        
+        
+	  <ui:include src="leftMenu.xhtml" />
+	  
+      </div>
+      <!-- end: Main Menu -->
+            
+      <!-- start: Content -->
+      <div id="content" class="col-lg-10 col-sm-11">
+        <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-bar-chart"></i>Résumé des capteurs numériques</h2>
+                </div>
+                <div class="box-content">
+                  <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Libellé</th>
+                      <th>Drone</th>
+                      <th>Localisation</th>
+                      <th>Date dernière activité</th>
+                      <th>Statut</th>  
+                      <th>Accès</th>                                          
+                    </tr>
+                  </thead>   
+                  <tbody>
+                  <tr>
+                    <td>Qualité de l'air</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>
+                    <td><i class="fa fa-arrow-right"></i></td>                                       
+                  </tr>
+                  <tr>
+                    <td>Baromètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-important">Inactif</span>
+                    </td>  
+                    <td><i class="fa fa-arrow-right"></i></td>                                       
+                  </tr>
+                  <tr>
+                    <td>Altimètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>       
+                    <td><i class="fa fa-arrow-right"></i></td>                                   
+                  </tr>
+                  <tr>
+                    <td>Accéléromètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>    
+                    <td><i class="fa fa-arrow-right"></i></td>                                     
+                  </tr>                                  
+                  </tbody>
+               </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-area-chart"></i>Résumé des capteurs analogiques</h2>
+                </div>
+                <div class="box-content">
+                  <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Libellé</th>
+                      <th>Drone</th>
+                      <th>Localisation</th>
+                      <th>Date dernière activité</th>
+                      <th>Statut</th> 
+                      <th>Accès</th>                                          
+                    </tr>
+                  </thead>   
+                  <tbody>
+                  <tr>
+                    <td>Qualité de l'air</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>   
+                    <td><i class="fa fa-arrow-right"></i></td>                                      
+                  </tr>
+                  <tr>
+                    <td>Baromètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>    
+                    <td><i class="fa fa-arrow-right"></i></td>                                     
+                  </tr>
+                  <tr>
+                    <td>Altimètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>  
+                    <td><i class="fa fa-arrow-right"></i></td>                                        
+                  </tr>
+                  <tr>
+                    <td>Accéléromètre</td>
+                    <td class="center">KP-C124</td>
+                    <td class="center">Valence</td>
+                    <td class="center">13/10/15</td>
+                    <td class="center">
+                      <span class="label label-success">Actif</span>
+                    </td>   
+                    <td><i class="fa fa-arrow-right"></i></td>                                      
+                  </tr>                                  
+                  </tbody>
+               </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-newspaper-o"></i>News</h2>
+                </div>
+                <div class="box-content">
+                  Emplacement des news
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-building"></i>Notre entreprise</h2>
+                </div>
+                <div class="box-content">
+                  <p>Métédrone” est une société composée de 4 personnes, spécialisée dans l’utilisation de drones météo. Cette société a l’habitude d’envoyer des drones dans des zones stratégiques afin d’y effectuer des relevés. Les données sont ensuite revendues et exploitées par des organismes divers (Météo France, Aiguilleurs du ciel, Météorologistes indépendants …).</p>
+                  <img id="firm-logo" height="100" src="img/meteDroneLight.png"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-phone"></i>Contactez-nous</h2>
+                </div>
+                <div class="box-content">
+                  <ul class="dashboard-list">
+                    <li>
+                      <a href="widgets.html#">
+                        <img class="avatar" alt="Jérémy" src="img/maleuser.png"/>
+                      </a>
+                      <strong>Nom:</strong> <a href="widgets.html#">Jérémy Bancker</a>
+                      <strong>Mail:</strong>jeremy.bancker@etu.esisar.grenoble-inp.fr<br/>
+                      <strong>Role:</strong> Admin                                
+                    </li>
+                    <li>
+                      <a href="widgets.html#">
+                        <img class="avatar" alt="Thomas" src="img/maleuser.png"/>
+                      </a>
+                      <strong>Nom:</strong> <a href="widgets.html#">Thomas Dubois</a><br/>
+                      <strong>Mail:</strong> thomas.dubois@etu.esisar.grenoble-inp.fr<br/>
+                      <strong>Role:</strong> Admin                                   
+                    </li>
+                    <li>
+                      <a href="widgets.html#">
+                        <img class="avatar" alt="Doriane" src="img/maleuser.png"/>
+                      </a>
+                      <strong>Nom:</strong> <a href="widgets.html#">Doriane Perard</a><br/>
+                      <strong>Mail:</strong> doriane.perard@etu.esisar.grenoble-inp.fr<br/>
+                      <strong>Role:</strong> Admin                                    
+                    </li>
+                    <li>
+                      <a href="widgets.html#">
+                        <img class="avatar" alt="Olivier" src="img/maleuser.png"/>
+                      </a>
+                      <strong>Nom:</strong> <a href="widgets.html#">Olivier Kastel</a><br/>
+                      <strong>Mail:</strong> olivier.kastel@etu.esisar.grenoble-inp.fr<br/>
+                      <strong>Role:</strong> Admin                                    
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- end: Content -->
+        
+        </div><!--/row-->   
+    
+  </div>
+  
+  
+  <div class="clearfix"></div>
+  
+<ui:include src="footer.xhtml" />
+</h:body>
+</html>

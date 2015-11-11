@@ -28,7 +28,7 @@
 }
 
 body {
-    background: #383e4b;
+    background: #383e4b !important;
     color: #383e4b;
     border: 0;
     font-family: 'Lato', sans-serif;
