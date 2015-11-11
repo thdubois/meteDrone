@@ -9,7 +9,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import remote.FlightEJBRemote;
-import ejb.FlightEJB;
 import entity.Flight;
 
 @Named
