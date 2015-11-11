@@ -16,10 +16,12 @@ public class FlightEJB implements FlightEJBRemote, FlightEJBLocal {
 	
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
-	
-	public List<Flight> findFlights(){
+
+	@Override
+	public List<Flight> findFlights() {
 		TypedQuery<Flight> query=em.createQuery("SELECT f FROM Flight f",Flight.class);
-		return query.getResultList();		
+		return query.getResultList();
 	}
+
 
 }

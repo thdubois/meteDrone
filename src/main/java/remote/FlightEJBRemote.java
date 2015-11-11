@@ -8,5 +8,5 @@ import entity.Flight;
 
 @Remote
 public interface FlightEJBRemote {
-	public List<Flight> findFlights(Long id);
+	public List<Flight> findFlights();
 }

@@ -8,5 +8,5 @@ import entity.Flight;
 
 @Remote
 public interface DroneEJBRemote {
-	public List<Flight> findFlightsById();
+	public List<Flight> findFlightsById(Long id);
 }
