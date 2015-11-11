@@ -7,10 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f")
+@NamedQueries({ 
+		@NamedQuery(name = "findFlightsById", 
+					query = "SELECT f FROM Flight f WHERE f.drone.id=:idDrone"), 
+		@NamedQuery(name = "findFlights", 
+					query = "SELECT f FROM Flight f")
+})
+
 public class Flight implements Serializable {
 	/**
 	 * 
@@ -24,10 +31,10 @@ public class Flight implements Serializable {
 	private Date date;
 
 	private Long duration;
-/*
+
 	@ManyToOne
 	private Drone drone;
-*/
+
 
 	public Flight() {
 		super();

@@ -7,6 +7,6 @@ import javax.ejb.Remote;
 import entity.Flight;
 
 @Remote
-public interface FlightEJBRemote {
-	public List<Flight> findFlights(Long id);
+public interface DroneEJBRemote {
+	public List<Flight> findFlightsById();
 }
