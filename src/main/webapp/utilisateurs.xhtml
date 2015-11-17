@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<h:head>
+<meta name="viewport" content="width=device-width"/>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/core.min.js"></script>
+
+<title>Add a User</title>
+</h:head>
+<h:body id="connexionBody">
+
+<ui:include src="header.xhtml" />
+<div class="container">
+  <div class="row">
+    
+    <!-- start: Main Menu -->
+    <div id="sidebar-left" class="col-lg-2 col-sm-1">
+      
+      
+    <ui:include src="leftMenu.xhtml" />
+    </div>
+    <!-- end: Main Menu -->
+    
+    <!-- start: Content -->
+    <div id="content" class="col-lg-10 col-sm-11">
+      <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+      <div class="row"> 
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-success btn-setting" data-toggle="modal">Nouvel Utilisateur</button><br/><br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header">
+              <h2><i class="fa fa-bar-chart"></i>Utilisateurs</h2>
+            </div>
+            <div class="box-content">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Mail</th>
+                    <th>Role</th>
+                    <th>Action</th>                                      
+                  </tr>
+                </thead>   
+                <tbody>
+                  <tr>
+                    <td class="center">Perard</td>
+                    <td class="center">Doriane</td>
+                    <td class="center">doriane.perard@gmail.com</td>
+                    <td class="center">
+                      <span class="label label-success">Admin</span>
+                    </td>
+                    <td class="center">
+                      <button class="label label-info">Fiche</button>
+                    </td>                                      
+                  </tr>
+                  <tr>
+                    <td class="center">Kastel</td>
+                    <td class="center">Olivier</td>
+                    <td class="center">olivier.kastel@gmail.com</td>
+                    <td class="center">
+                      <span class="label label-success">Admin</span>
+                    </td>
+                    <td class="center">
+                     <button class="label label-info">Fiche</button>
+                   </td>                                      
+                 </tr>
+                 <tr>
+                  <td class="center">Dubois</td>
+                  <td class="center">Thomas</td>
+                  <td class="center">thomas.dubois@gmail.com</td>
+                  <td class="center">
+                    <span class="label label-success">Admin</span>
+                  </td>
+                  <td class="center">
+                   <button class="label label-info">Fiche</button>
+                 </td>                                      
+               </tr>
+               <tr>
+                <td class="center">Bancker</td>
+                <td class="center">Jérémy</td>
+                <td class="center">jeremy.bancker@gmail.com</td>
+                <td class="center">
+                  <span class="label label-warning">Hôtesse d'accueil</span>
+                </td>
+                <td class="center">
+                 <button class="label label-info">Fiche</button>
+               </td>                                      
+             </tr>                            
+           </tbody>
+         </table>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Nouvel utilisateur</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <fieldset>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Nom</label>  
+              <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="Nom" class="form-control input-md" required=""/>
+                <span class="help-block">Entrez votre nom</span>  
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="prenom">Prénom</label>  
+              <div class="col-md-4">
+                <input id="prenom" name="prenom" type="text" placeholder="Prénom" class="form-control input-md"/>
+                <span class="help-block">Entrez votre prénom</span>  
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="password">Mot de passe</label>
+              <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md"/>
+                <span class="help-block">Entrez votre mot de passe</span>
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="mail">Mail</label>  
+              <div class="col-md-4">
+                <input id="mail" name="mail" type="text" placeholder="Mail" class="form-control input-md"/>
+                <span class="help-block">Entrez votre adresse mail</span>  
+              </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="role">Choisissez le rôle</label>
+              <div class="col-md-4">
+                <select id="role" name="role" class="form-control">
+                  <option value="1">Admin</option>
+                  <option value="2">Météorologue</option>
+                  <option value="3">Pilote</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <div class="col-md-8" style="text-align:center">
+                <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
+                <button id="supprimer" name="supprimer" class="btn btn-danger">Supprimer l'utilisateur</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="clearfix"></div>
+
+<ui:include src="footer.xhtml" />
+</h:body>
+</html>

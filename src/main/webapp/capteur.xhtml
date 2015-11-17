@@ -9,11 +9,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
 <h:head>
+<meta name="viewport" content="width=device-width"/>
 <link href="css/bootstrap.min.css" rel="stylesheet"/>
 <link href="css/style.css" rel="stylesheet"/>
 
 <script src="js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/core.min.js"></script>
+
 <script language="javascript" type="text/javascript" src="js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
 <script language="javascript" type="text/javascript" src="js/custom.js"></script>
@@ -32,7 +35,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <title>Add a User</title>
 </h:head>
-<h:body id="connexionBody">
+<h:body id="plateformeBody">
  <ui:include src="header.xhtml" /> 
   <!-- end: Header -->
   
@@ -42,7 +45,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
       <!-- start: Main Menu -->
       <div id="sidebar-left" class="col-lg-2 col-sm-1">
         
-        
+        <ui:include src="leftMenu.xhtml" />
       </div>
       <!-- end: Main Menu -->
             

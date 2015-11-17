@@ -8,27 +8,6 @@ $(function() {
       cos.push([i, Math.cos(i)]);
     }
 
-    var plot = $.plot("#placeholder", [
-      { data: sin, label: "sin(x)"},
-      { data: cos, label: "cos(x)"}
-    ], {
-      series: {
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      grid: {
-        hoverable: true,
-        clickable: true
-      },
-      yaxis: {
-        min: -1.2,
-        max: 1.2
-      }
-    });
 
     $("<div id='tooltip'></div>").css({
       position: "absolute",
@@ -51,3 +30,4 @@ $(function() {
 
     $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
   });
+

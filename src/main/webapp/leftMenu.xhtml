@@ -9,11 +9,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
 <h:head>
+<meta name="viewport" content="width=device-width"/>
 <link href="css/bootstrap.min.css" rel="stylesheet"/>
 <link href="css/style.css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/core.min.js"></script>
+
 <title>Add a User</title>
 </h:head>
-<h:body id="connexionBody">
+<h:body id="plateformBody">
 
 <ui:composition>
          <div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
@@ -22,7 +27,20 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <li><a href="drones.jsf"><i class="fa fa-fighter-jet"></i><span class="hidden-sm"> Drones</span></a></li> 
             <li><a href="abonnements.jsf"><i class="fa fa-rss"></i><span class="hidden-sm"> Mes Abonnements</span></a></li> 
             <li><a href="mesDocuments.jsf"><i class="fa fa-folder-o"></i><span class="hidden-sm"> Mes documents</span></a></li> 
-            <li class="active"><a href="mesReglages.jsf"><i class="fa fa-wrench"></i><span class="hidden-sm"> Mes Réglages</span></a></li> 
+            <li><a href="mesReglages.jsf"><i class="fa fa-wrench"></i><span class="hidden-sm"> Mes Réglages</span></a></li> 
+          	
+          	<!-- PARTIE RESERVÉE AUX ADMINISTRATEURS : AJOUTER UNE CONDITION -->
+          	<li>
+				<a class="dropmenu" href="charts-flot.html#"><i class="fa fa-user-secret"></i><span class="hidden-sm">Admin</span> <span class="label">3</span></a>
+				<ul style="background: #6E737D">
+					<li><a class="submenu" href="utilisateurs.jsf"><i class="fa fa-group"></i><span class="hidden-sm"> Utilisateurs</span></a></li>
+					<li><a class="submenu" href="page-inbox.html"><i class="fa fa-space-shuttle"></i><span class="hidden-sm"> Drones</span></a></li>
+					<li><a class="submenu" href="page-todo.html"><i class="fa fa-money"></i><span class="hidden-sm"> Résultats</span></a></li>
+					<!-- Profile Page - Cooming Soone
+					<li><a class="submenu" href="page-profile.html"><i class="fa fa-male"></i><span class="hidden-sm"> User Profile</span></a></li>
+					-->
+				</ul>	
+			</li>
           </ul>
         </div>
 </ui:composition>

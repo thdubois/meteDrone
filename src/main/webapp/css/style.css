@@ -5652,9 +5652,12 @@ ul.messagesList li span.date {
 }
 
 #connexionBody{
-    background:#2096F3;
+    background:#2096F3 !important;
 }
 
+#plateformBody{
+    background:#2096F3;	
+}
 
 #header-container{
     background:#1565C0;
@@ -5668,19 +5671,35 @@ ul.messagesList li span.date {
 }
 
 #connexion-page{
-    height: calc(100vh - 50px);
     background:#2096F3;
     margin-left: 15px;
     margin-right: 15px;
 }
 
-#logo-container{
-    background: #2096F3;
-    background-image: url('../img/background.png');
-    background-repeat: no-repeat;
-    height: 300px;
-    background-position-x: 50%; 
-    background-position-y: 30px; 
+@media screen and (min-width: 200px){
+	#logo-container{
+	    background: #2096F3;
+	    background-image: url('../img/background.png');
+	    background-repeat: no-repeat;
+	    height: 43vw;
+	    max-height: 300px;
+	    background-size: 45%;
+	    background-position-x: 50%;
+	    background-position-y: 30px;
+	}
+}
+
+@media screen and (min-width: 750px){
+	#logo-container{
+	    background: #2096F3;
+	    background-image: url('../img/background.png');
+	    background-repeat: no-repeat;
+	    height: 43vw;
+	    max-height: 300px;
+	    background-size: 330px;
+	    background-position-x: 50%;
+	    background-position-y: 30px;
+	}
 }
 
 #content{
@@ -5695,7 +5714,6 @@ ul.messagesList li span.date {
 
 
 #content {
-    width: 100%;
     margin: 0 auto;
     padding: 10px;
 }
