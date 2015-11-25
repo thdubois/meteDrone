@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class NumericData implements Serializable {
 
+	private static final long serialVersionUID = -3619557237066421013L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -21,5 +23,21 @@ public class NumericData implements Serializable {
 
 	@ManyToOne
 	private Numeric numeric;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Boolean getValue() {
+		return value;
+	}
+
+	public void setValue(Boolean value) {
+		this.value = value;
+	}
 
 }

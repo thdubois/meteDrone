@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class AnalogicData implements Serializable {
 
+	private static final long serialVersionUID = 3771436731002475501L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -21,5 +23,21 @@ public class AnalogicData implements Serializable {
 
 	@ManyToOne
 	private Analogic analogic;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Float getValue() {
+		return value;
+	}
+
+	public void setValue(Float value) {
+		this.value = value;
+	}
 
 }

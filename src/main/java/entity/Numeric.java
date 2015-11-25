@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Numeric extends Sensor implements Serializable {
 
+	private static final long serialVersionUID = -5047633522227576493L;
 	@OneToMany
 	private List<NumericData> numericDataList;
 

@@ -8,9 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import local.DroneEJBLocal;
-import local.FlightEJBLocal;
 import remote.DroneEJBRemote;
-import remote.FlightEJBRemote;
 import entity.Flight;
 
 @Stateless

@@ -30,8 +30,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <title>Add a User</title>
 </h:head>
-<h:body id="plateformBody">
-<ui:include src="header.xhtml" /> 
+<ui:fragment rendered="#{not identity.loggedIn}">
+		    <ui:include src="connexion.xhtml" /> 
+	    </ui:fragment>
+<h:body id="plateformBody" rendered="#{identity.loggedIn}"><ui:include src="header.xhtml" /> 
   <!-- end: Header -->
   
 <div class="container">

@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Unit implements Serializable {
 	
+	private static final long serialVersionUID = -3178519452296818370L;
+
 	@Id
 	@GeneratedValue
 	private Long id;

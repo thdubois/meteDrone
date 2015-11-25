@@ -29,7 +29,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <title>Add a User</title>
 </h:head>
-<h:body id="plateformBody">
+<ui:fragment rendered="#{not identity.loggedIn}">
+		    <ui:include src="connexion.xhtml" /> 
+	    </ui:fragment>
+<h:body id="plateformBody" rendered="#{identity.loggedIn}">
  <ui:include src="header.xhtml" /> 
   <!-- end: Header -->
   
@@ -56,12 +59,12 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             </div>
             <div class="box-content">
               <ul class="dashboard-list">
-                  <h2>KP-C124 Valence</h2>
+                  <h:h2>KP-C124 Valence</h:h2>
                     <li>
                       <div class="col-sm-2">
                         <a href="capteur.jsf" class="quick-button">
                           <i class="fa fa-arrow-up"></i>
-                          <p>Altimètre</p>
+                          <h:p>Altimètre</h:p>
                         </a>
                       </div>
                       <div class="col-sm-2">

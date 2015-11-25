@@ -3,7 +3,9 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
 
 
 
@@ -28,25 +30,26 @@ xmlns:f="http://java.sun.com/jsf/core">
      
     </div>
   </div>
-  <div id="connexion-page" class="row">
+    <div id="connexion-page" class="row">
     <div id="connexion-container" class="col-sm-4 col-sm-offset-4">
-      <h:form styleClass="form-horizontal">
+
+      <h:form styleClass="form-horizontal" rendered="#{not identity.loggedIn}">
       <fieldset>
         <legend>Connexion</legend>
         
         <h:outputLabel for="login">login <span class="requis">*</span></h:outputLabel>
-        <h:inputText styleClass="form-control input-md" id="login" value="" required="true" size="20" maxlength="20" />
+        <h:inputText styleClass="form-control input-md" id="login" value="#{loginCredentials.userId}" required="true" size="20" maxlength="20" />
         <h:message id="loginmMessage" for="login" errorClass="erreur" />
         <br />
         
         <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
-        <h:inputSecret styleClass="form-control input-md" id="motdepasse" value="" required="true" size="20" maxlength="20" />
+        <h:inputSecret styleClass="form-control input-md" id="motdepasse" value="#{loginCredentials.password}" required="true" size="20" maxlength="20" />
         <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
         <br />
         
         <h:messages globalOnly="true" infoClass="info" />
         
-        <h:commandButton value="Connexion" styleClass="btn btn-primary center-block" />
+        <h:commandButton value="Connexion" action="#{identity.login}" styleClass="btn btn-primary center-block" />
         <br />
       </fieldset>
     </h:form>     

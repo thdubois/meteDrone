@@ -18,8 +18,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <title>Add a User</title>
 </h:head>
-<h:body id="connexionBody">
-
+<ui:fragment rendered="#{not identity.loggedIn}">
+		    <ui:include src="connexion.xhtml" /> 
+	    </ui:fragment>
+<h:body id="plateformBody" rendered="#{identity.loggedIn}">
 <ui:include src="header.xhtml" />
 <div class="container">
   <div class="row">
@@ -121,11 +123,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
         <h4 class="modal-title">Nouvel utilisateur</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
+        <!--<form class="form-horizontal">
           <fieldset>
 
 
-            <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Nom</label>  
               <div class="col-md-4">
@@ -134,7 +135,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="prenom">Prénom</label>  
               <div class="col-md-4">
@@ -143,7 +143,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
 
-            <!-- Password input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="password">Mot de passe</label>
               <div class="col-md-4">
@@ -152,7 +151,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="mail">Mail</label>  
               <div class="col-md-4">
@@ -161,7 +159,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
 
-            <!-- Select Basic -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="role">Choisissez le rôle</label>
               <div class="col-md-4">
@@ -173,7 +170,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
 
-            <!-- Button (Double) -->
             <div class="form-group">
               <div class="col-md-8" style="text-align:center">
                 <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
@@ -181,7 +177,47 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               </div>
             </div>
           </fieldset>
-        </form>
+        </form>-->
+        
+        <h:form>
+         <fieldset>
+            <legend>Inscription</legend>
+            
+            <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="nom" value="#{userController.userPicket.lastName}" required="true" size="20" maxlength="20" />
+            <h:message id="nomMessage" for="nom" errorClass="erreur" />
+            <br />
+            
+            <h:outputLabel for="prenom">Prénom <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="prenom" value="#{userController.userPicket.firstName}" required="true" size="20" maxlength="20" />
+            <h:message id="prenomMessage" for="nom" errorClass="erreur" />
+            <br />
+            <h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="email" value="#{userController.userPicket.email}" required="true" size="20" maxlength="60" />
+            <h:message id="emailMessage" for="email" errorClass="erreur" />
+            <br />
+    
+            <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+            <h:inputSecret id="motdepasse" value="#{userController.password}" required="true" size="20" maxlength="20" />
+            <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
+            <br />
+    
+            <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
+            <h:inputSecret id="confirmation" value="#{userController.password}" required="true" size="20" maxlength="20" />
+            <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
+            <br />
+    
+            <h:outputLabel for="entreprise">Nom de l'entreprise <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="entreprise" value="#{userController.idCompany}" required="true" size="20" maxlength="20" />
+            <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
+            <br />
+        
+            <h:messages globalOnly="true" infoClass="info" />
+    
+            <h:commandButton value="Inscription"  action="#{userController.addUser()}"  styleClass="sansLabel" />
+            <br />
+          </fieldset>
+        </h:form>   	
       </div>
     </div>
   </div>
