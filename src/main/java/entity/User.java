@@ -7,9 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({ 
+	@NamedQuery(name = "findUserById", 
+				query = "SELECT u FROM User u WHERE u.id=:idUser"), 
+	@NamedQuery(name = "findUsers", 
+				query = "SELECT u FROM User u")
+})
 public class User implements Serializable{
 
 	/**
