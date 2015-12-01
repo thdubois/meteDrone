@@ -30,17 +30,20 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <li><a href="mesReglages.jsf"><i class="fa fa-wrench"></i><span class="hidden-sm"> Mes Réglages</span></a></li> 
           	
           	<!-- PARTIE RESERVÉE AUX ADMINISTRATEURS : AJOUTER UNE CONDITION -->
-          	<li>
-				<a class="dropmenu" href="charts-flot.html#"><i class="fa fa-user-secret"></i><span class="hidden-sm">Admin</span> <span class="label">3</span></a>
-				<ul style="background: #6E737D">
-					<li><a class="submenu" href="utilisateurs.jsf"><i class="fa fa-group"></i><span class="hidden-sm"> Utilisateurs</span></a></li>
-					<li><a class="submenu" href="page-inbox.html"><i class="fa fa-space-shuttle"></i><span class="hidden-sm"> Drones</span></a></li>
-					<li><a class="submenu" href="page-todo.html"><i class="fa fa-money"></i><span class="hidden-sm"> Résultats</span></a></li>
-					<!-- Profile Page - Cooming Soone
-					<li><a class="submenu" href="page-profile.html"><i class="fa fa-male"></i><span class="hidden-sm"> User Profile</span></a></li>
-					-->
-				</ul>	
-			</li>
+          	<ui:fragment
+				rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur')}">
+	          	<li>
+					<a class="dropmenu" href="charts-flot.html#"><i class="fa fa-user-secret"></i><span class="hidden-sm">Admin</span> <span class="label">3</span></a>
+					<ul style="background: #6E737D">
+						<li><a class="submenu" href="utilisateurs.jsf"><i class="fa fa-group"></i><span class="hidden-sm"> Utilisateurs</span></a></li>
+						<li><a class="submenu" href="page-inbox.html"><i class="fa fa-space-shuttle"></i><span class="hidden-sm"> Drones</span></a></li>
+						<li><a class="submenu" href="page-todo.html"><i class="fa fa-money"></i><span class="hidden-sm"> Résultats</span></a></li>
+						<!-- Profile Page - Cooming Soone
+						<li><a class="submenu" href="page-profile.html"><i class="fa fa-male"></i><span class="hidden-sm"> User Profile</span></a></li>
+						-->
+					</ul>	
+				</li>
+			 </ui:fragment>
           </ul>
         </div>
 </ui:composition>

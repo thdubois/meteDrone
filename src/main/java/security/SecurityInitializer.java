@@ -36,5 +36,9 @@ public class SecurityInitializer{
 		identityManager.add(admin);
 		RelationshipManager relationshipManager = partitionManager.createRelationshipManager();
 		BasicModel.grantRole(relationshipManager, user, admin);
+		
+		Role pilote = new Role("pilote");
+		identityManager.add(pilote);
+		
 		}
 }

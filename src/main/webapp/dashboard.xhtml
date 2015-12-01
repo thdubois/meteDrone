@@ -20,7 +20,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 </h:head>
   		<ui:fragment rendered="#{not identity.loggedIn}">
 		    <ui:include src="connexion.xhtml" /> 
-	  </ui:fragment>
+	    </ui:fragment>
 	  
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 <ui:include src="header.xhtml"/> 

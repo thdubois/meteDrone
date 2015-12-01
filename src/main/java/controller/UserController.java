@@ -1,12 +1,20 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.model.basic.BasicModel;
+import org.picketlink.idm.model.basic.Role;
+
+import entity.User;
 import remote.UserEJBRemote;
 
 @Named
@@ -18,12 +26,14 @@ public class UserController implements Serializable{
 	@EJB
 	private UserEJBRemote userEJB;
 	
-	
+    @Inject 
+    private IdentityManager identityManager;
+    
 	private Long idCompany;	
-	private String mail="jeremy";
-	//private Long idRole;
+	private String mail;
 	private String password;
 	org.picketlink.idm.model.basic.User userPicket;
+	private String role;
 	
 	@PostConstruct
 	public void init(){
@@ -31,8 +41,19 @@ public class UserController implements Serializable{
 	}
 	
 	public void addUser(){
-		userEJB.createUser(getUserPicket(), idCompany, password);
+		userEJB.createUser(getUserPicket(), idCompany,role, password);
+		
 	}
+	
+	public List<org.picketlink.idm.model.basic.User> findUsers(){
+		List<User> users = userEJB.findUsers();
+		List<org.picketlink.idm.model.basic.User> userPicket= new ArrayList<org.picketlink.idm.model.basic.User>();
+		for(User user: users){
+			userPicket.add(BasicModel.getUser(identityManager,user.getEmail()));
+		}
+		return userPicket;
+	}
+	
 	public String findCompanyName(){
 		return userEJB.findCompany(mail).getName();
 	}
@@ -44,15 +65,7 @@ public class UserController implements Serializable{
 	public void setIdCompany(Long idCompany) {
 		this.idCompany = idCompany;
 	}
-
-	/*public Long getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(Long idRole) {
-		this.idRole = idRole;
-	}
-	*/
+	
 	public org.picketlink.idm.model.basic.User getUserPicket() {
 		return userPicket;
 	}
@@ -75,6 +88,14 @@ public class UserController implements Serializable{
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	
