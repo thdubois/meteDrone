@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import local.DroneEJBLocal;
 import remote.DroneEJBRemote;
+import entity.Drone;
 import entity.Flight;
 
 @Stateless
@@ -23,5 +24,10 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 		return query.getResultList();
 	}
 	
-
+	@Override
+	public List<Drone> findDrones() {
+		TypedQuery<Drone> query=em.createNamedQuery("findDrones",Drone.class);
+		return query.getResultList();
+	}
+	
 }

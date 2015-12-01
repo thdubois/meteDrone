@@ -42,76 +42,24 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
           <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
-                  <h2><i class="fa fa-user"></i>Drones disponnibles</h2>
+                  <h2><i class="fa fa-user"></i>Drones disponibles</h2>
                 </div>
                 <div class="box-content">
-                  <table class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>Icon</th>
-                      <th>Nom</th>
-                      <th>Modèle</th>
-                      <th>Localisation</th>
-                      <th>Status</th>                                          
-                    </tr>
-                  </thead>   
-                  <tbody>
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>Fox-Trot</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Valence (26)</td>
-                    <td class="center">
-                      <span class="label label-success">Abonné</span>
-                    </td>                                       
-                  </tr>
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>Oscar</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Montélimar (26)</td>
-                    <td class="center">
-                      <span class="label label-success">Abonné</span>
-                    </td>                                       
-                  </tr>
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>Lima</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Lyon (69)</td>
-                    <td class="center">
-                      <span class="label label-default">Non abonné</span>
-                    </td>                                        
-                  </tr>
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>November</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Paris (69)</td>
-                    <td class="center">
-                      <span class="label label-default">Non abonné</span>
-                    </td>                                       
-                  </tr>  
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>Zoulou</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Lille (69)</td>
-                    <td class="center">
-                      <span class="label label-default">Non abonné</span>
-                    </td>                                       
-                  </tr>  
-                  <tr>
-                    <td class="center"><img height="20" src="img/drone.png"/></td>
-                    <td>Yanki</td>
-                    <td class="center">KP-C124</td>
-                    <td class="center">Strasbourg (69)</td>
-                    <td class="center">
-                      <span class="label label-success">Abonné</span>
-                    </td>                                       
-                  </tr>                                 
-                  </tbody>
-               </table>
+                <h:dataTable styleClass="table table-striped table-hover" value="#{droneController.drones}" var="item">
+					<h:column>
+						<f:facet name="header">Icon</f:facet>
+						<h:graphicImage styleClass="iconList" value="img/drone.png" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{item.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{item.model}" />
+					</h:column>
+				</h:dataTable>
+              
               </div>
             </div>
           </div>
