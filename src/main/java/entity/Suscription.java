@@ -21,6 +21,9 @@ public class Suscription implements Serializable {
 	
 	@ManyToOne
 	private Sensor sensor;
+	
+	@ManyToOne
+	private User user;
 
 	public Date getDateBegin() {
 		return dateBegin;
@@ -29,4 +32,13 @@ public class Suscription implements Serializable {
 	public void setDateBegin(Date dateBegin) {
 		this.dateBegin = dateBegin;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }

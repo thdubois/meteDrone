@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -34,6 +36,9 @@ public class User implements Serializable{
 	
 	@ManyToOne
 	private Company company;
+	
+	@OneToMany
+	private List<Suscription> suscriptionList;
 
 	public Company getCompany() {
 		return company;
@@ -59,6 +64,16 @@ public class User implements Serializable{
 		super();
 		this.email = email;
 	}
+
+	public List<Suscription> getSuscriptionList() {
+		return suscriptionList;
+	}
+
+	public void setSuscriptionList(List<Suscription> suscriptionList) {
+		this.suscriptionList = suscriptionList;
+	}
+	
+	
 	
 
 }

@@ -52,14 +52,22 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             
             
             
-		            <h:dataTable value="#{userController.findUsers()}" var="user">
+		    <h:dataTable styleClass="table table-striped table-hover" value="#{userController.findUsers()}" var="user">
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{user.firstName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Prénom</f:facet>
+					<h:outputText value="#{user.lastName}" />
+				</h:column>
 				<h:column>
 					<f:facet name="header">Email</f:facet>
 					<h:outputText value="#{user.email}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Nom</f:facet>
-					<h:outputText value="#{user.firstName}" />
+					<f:facet name="header">Company</f:facet>
+					<h:outputText value="#{userController.findCompanyName(user.email)}" />
 				</h:column>
 			</h:dataTable>
 			
@@ -68,7 +76,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			
 			
 			
-			
+			<!--
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
@@ -125,7 +133,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
                </td>                                      
              </tr>                            
            </tbody>
-         </table>
+         </table>-->
        </div>
      </div>
    </div>
@@ -232,7 +240,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
             <br />
             
-            <h:outputLabel for="role">Nom de l'entreprise <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="role">Nom du rôle <span class="requis">*</span></h:outputLabel>
             <h:inputText id="role" value="#{userController.role}" required="true" size="20" maxlength="20" />
             <h:message id="roleMessage" for="role" errorClass="erreur" />
             <br />

@@ -21,16 +21,45 @@ public class DroneController implements Serializable{
 	@EJB
 	private DroneEJBRemote droneEJB;
 	private List<Drone> drones;
+
+	private String model;
+	private String name;
+	private String city;
+	
+	public void addDrone(){
+		droneEJB.createDrone(model, name, city);
+	}
 	
 	public List<Drone> getDrones() {
 		return droneEJB.findDrones();
 	}
+	
 	public void setDrones(List<Drone> drones) {
 		this.drones = drones;
 	}
-	
 
-	
-	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 }

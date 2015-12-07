@@ -25,12 +25,12 @@ public class SecurityInitializer{
 	public void create() {
 		IdentityManager identityManager = this.partitionManager
 				.createIdentityManager();
-		User user = new User("stephanie");
+		User user = new User("admin");
 		user.setFirstName("Stephanie");
 		user.setLastName("Chollet");
 		user.setEmail("stephanie.chollet@esisar.com");
 		identityManager.add(user);
-		identityManager.updateCredential(user, new Password("stephanie"));
+		identityManager.updateCredential(user, new Password("admin"));
 
 		Role admin = new Role("administrateur");
 		identityManager.add(admin);

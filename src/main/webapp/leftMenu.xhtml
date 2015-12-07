@@ -31,7 +31,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
           	
           	<!-- PARTIE RESERVÉE AUX ADMINISTRATEURS : AJOUTER UNE CONDITION -->
           	<ui:fragment
-				rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur')}">
+				rendered="#{identity.loggedIn and  authorizationChecker.hasApplicationRole('administrateur')}">
 	          	<li>
 					<a class="dropmenu" href="charts-flot.html#"><i class="fa fa-user-secret"></i><span class="hidden-sm">Admin</span> <span class="label">3</span></a>
 					<ul style="background: #6E737D">

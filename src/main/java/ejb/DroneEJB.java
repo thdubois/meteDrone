@@ -9,8 +9,10 @@ import javax.persistence.TypedQuery;
 
 import local.DroneEJBLocal;
 import remote.DroneEJBRemote;
+import entity.Company;
 import entity.Drone;
 import entity.Flight;
+import entity.User;
 
 @Stateless
 public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
@@ -28,6 +30,14 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 	public List<Drone> findDrones() {
 		TypedQuery<Drone> query=em.createNamedQuery("findDrones",Drone.class);
 		return query.getResultList();
+	}
+	
+	public void createDrone(String model, String name, String city){
+		Drone droneEntity = new Drone();
+		droneEntity.setModel(model);
+		droneEntity.setName(name);
+		droneEntity.setCity(city);
+		em.persist(droneEntity);	
 	}
 	
 }
