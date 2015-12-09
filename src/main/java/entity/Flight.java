@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
 		@NamedQuery(name = "findFlights", 
 					query = "SELECT f FROM Flight f")
 })
-
 public class Flight implements Serializable {
 	/**
 	 * 

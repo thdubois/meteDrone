@@ -7,8 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ 
+	@NamedQuery(name = "findSuscriptionById", 
+				query = "SELECT s FROM Suscription s WHERE s.user.id=:idUser"), 
+	@NamedQuery(name = "findSuscriptions", 
+				query = "SELECT s FROM Suscription s")
+})
 public class Suscription implements Serializable {
 
 	private static final long serialVersionUID = 7946321758069056304L;
@@ -25,6 +33,14 @@ public class Suscription implements Serializable {
 	@ManyToOne
 	private User user;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Date getDateBegin() {
 		return dateBegin;
 	}
@@ -40,5 +56,15 @@ public class Suscription implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Sensor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
+	}
+	
+	
 	
 }

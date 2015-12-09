@@ -1,21 +1,27 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-@NamedQuery(name="findSensorByName", query = "SELECT s FROM Sensor s WHERE s.name='toto'")
 @Entity
-public class Sensor implements Serializable {
-
-	private static final long serialVersionUID = 5357810278215226315L;
+@Inheritance(strategy=InheritanceType.JOINED)
+@NamedQueries({ 
+	@NamedQuery(name = "findSensorsById", 
+				query = "SELECT s FROM Sensor s WHERE s.drone.id=:idDrone"), 
+	@NamedQuery(name = "findSensors", 
+				query = "SELECT s FROM Sensor s")
+})
+public class Sensor {
 
 	@Id
 	@GeneratedValue
@@ -37,6 +43,14 @@ public class Sensor implements Serializable {
 	
 	public Sensor(){
 	
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getName(){
@@ -70,4 +84,14 @@ public class Sensor implements Serializable {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+
+	public Drone getDrone() {
+		return drone;
+	}
+
+	public void setDrone(Drone drone) {
+		this.drone = drone;
+	}
+	
+	
 }

@@ -10,13 +10,10 @@ import javax.inject.Named;
 import entity.Drone;
 import remote.DroneEJBRemote;
 
-
 @Named
 @RequestScoped
 public class DroneController implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private DroneEJBRemote droneEJB;
@@ -27,7 +24,7 @@ public class DroneController implements Serializable{
 	private String city;
 	
 	public void addDrone(){
-		droneEJB.createDrone(model, name, city);
+		droneEJB.createDrone(name, model, city);
 	}
 	
 	public List<Drone> getDrones() {

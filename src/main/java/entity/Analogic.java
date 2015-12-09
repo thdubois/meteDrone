@@ -10,10 +10,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Analogic extends Sensor implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
-	@OneToMany
-	private List<AnalogicData> analogicDataList;
+	private static final long serialVersionUID = 6279249915682473657L;
 	
 	@ManyToOne
 	private Unit unit;

@@ -50,6 +50,40 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
       <!-- start: Content -->
       <div id="content" class="col-lg-10 col-sm-11">
         <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+      <div class="row">
+          <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                  <h2><i class="fa fa-user"></i>Capteurs disponibles</h2>
+                </div>
+                <div class="box-content">
+                <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.suscriptions}" var="item">
+					<h:column>
+						<f:facet name="header">Icon</f:facet>
+						<h:graphicImage styleClass="iconList" value="img/drone.png" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{item.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">User email</f:facet>
+						<h:outputText value="#{item.user.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Sensor Id</f:facet>
+						<h:outputText value="#{item.sensor.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date de début</f:facet>
+						<h:outputText value="#{item.dateBegin}" />
+					</h:column>
+				</h:dataTable>
+              
+              </div>
+            </div>
+          </div>
+        </div>  
       <div class="row"> 
         <div class="col-lg-12">
           <button type="button" class="btn btn-success btn-setting" data-toggle="modal" >Nouvel abonnement</button><br/><br/>
@@ -57,84 +91,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <div class="box-header">
               <h2><i class="fa fa-clone"></i>Mes abonnements</h2>
             </div>
-            <div class="box-content">
-            <!--<ul class="dashboard-list">
-                  <h2>KP-C124 Valence</h2>
-                    <li>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-arrow-up"></i>
-                          <p>Altimètre</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-eyedropper"></i>
-                          <p>Baromètre</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-leaf"></i>
-                          <p>Qualité de l'air</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-fire"></i>
-                          <p>Température</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-lightbulb-o"></i>
-                          <p>Luminosité</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-cloud"></i>
-                          <p>Humidité</p>
-                        </a>
-                      </div>
-                      <div class="clearfix"></div>                              
-                    </li>
-                    <li>
-                      <h2>KP-C124 Montélimar</h2>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-arrows"></i>
-                          <p>Accéléromètre</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-refresh"></i>
-                          <p>Gyroscope</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-location-arrow"></i>
-                          <p>GPS</p>
-                        </a>
-                      </div>
-                      <div href="capteur.jsf" class="col-sm-2">
-                        <a class="quick-button">
-                          <i class="fa fa-tachometer"></i>
-                          <p>Speedmeter</p>
-                        </a>
-                      </div>
-                      <div class="col-sm-2">
-                        <a href="capteur.jsf" class="quick-button">
-                          <i class="fa fa-wifi"></i>
-                          <p>Signal</p>
-                        </a>
-                      </div>
-                      <div class="clearfix"></div>                                                  
-                    </li>
-                  </ul>-->
-              
+            <div class="box-content">           
             
             </div> 
           </div>  
@@ -147,7 +104,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
       </div><!--/row-->   
     
   </div>
-
+  
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -158,71 +115,33 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
         <h4 class="modal-title">Nouvel abonnement</h4>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label class="control-label" for="selectError3">Selectionnez le drone</label>
-              <div class="controls">
-                <select id="selectError3" class="form-control">
-                <option>Fox-Trot (Valence 26)</option>
-                <option>Oscar (Montélimar 26)</option>
-                <option>Lima (Lyon 69)</option>
-                <option>November (Paris 92)</option>
-                <option>Zoulou (Lille 89)</option>
-                <option>Yanki (Strasbourg 67)</option>
-                </select>
-              </div>
-            <label class="control-label" for="selectError3">Selectionnez le capteur</label>
-            <div class="box-content">
-              <ul class="dashboard-list">
-                <h2>KP-C124 Valence</h2>
-                  <li>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-arrow-up"></i>
-                        <p><strong>Altimètre</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-eyedropper"></i>
-                        <p><strong>Baromètre</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-leaf"></i>
-                        <p><strong>Qualité de l'air</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-fire"></i>
-                        <p><strong>Température</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-lightbulb-o"></i>
-                        <p><strong>Luminosité</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="quick-button">
-                        <i class="fa fa-cloud"></i>
-                        <p><strong>Humidité</strong>49€/mois</p>
-                      </a>
-                    </div>
-                    <div class="clearfix"></div>                              
-                  </li>
-                </ul>
-              </div>
-            </div>  
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>
-          </div> 
-        </form>
-      </div>
-    </div>
+    <h:form>
+         <fieldset>
+            <legend>Ajout d'abonnement</legend>
+                        
+            <h:outputLabel for="inServiceDate">Date de début <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="inServiceDate" value="#{suscriptionController.dateBegin}" required="true" size="20" maxlength="20" />
+            <h:message id="inServiceDateMessage" for="inServiceDate" errorClass="erreur" />
+            <br />
+            
+            <h:outputLabel for="idUser">User_Id <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="idUser" value="#{suscriptionController.idUser}" required="true" size="20" maxlength="20" />
+            <h:message id="idUserMessage" for="idUser" errorClass="erreur" />
+            <br />
+            
+            <h:outputLabel for="idSensor">Sensor_Id <span class="requis">*</span></h:outputLabel>
+            <h:inputText id="idSensor" value="#{suscriptionController.idSensor}" required="true" size="20" maxlength="20" />
+            <h:message id="idSensorMessage" for="idSensor" errorClass="erreur" />
+            <br />
+        
+            <h:messages globalOnly="true" infoClass="info" />
+    
+            <h:commandButton value="Ajouter"  action="#{suscriptionController.addSuscription()}"  styleClass="sansLabel" />
+            <br />
+          </fieldset>
+        </h:form> 
+        </div>
+	</div>
   </div>
 </div>
   

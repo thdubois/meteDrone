@@ -32,7 +32,7 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 		return query.getResultList();
 	}
 	
-	public void createDrone(String model, String name, String city){
+	public void createDrone(String name, String model, String city){
 		Drone droneEntity = new Drone();
 		droneEntity.setModel(model);
 		droneEntity.setName(name);

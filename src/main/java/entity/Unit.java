@@ -18,10 +18,7 @@ public class Unit implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(nullable = false, unique=true)
+	//@Column(nullable = false, unique=true)
 	private String unit;
-	
-	@OneToMany
-	private List<Analogic> analogicList;
 
 }

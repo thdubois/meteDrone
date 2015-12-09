@@ -35,9 +35,6 @@ public class Drone implements Serializable{
 	private String name;
 	
 	private String city;
-	
-	@OneToMany
-	private List<Flight> flightList;
 
 	public Drone(){
 		
