@@ -57,33 +57,33 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <div class="box-header">
               <h2><i class="fa fa-clone"></i>Mes abonnements</h2>
             </div>
-            <div class="box-content">           
-            <h:dataTable styleClass="table table-striped table-hover" value="#{droneController.drones}" var="item">
-					<h:column>
-						<!-- ICI IL FAUDRA METTRE UN LIEN DYNAMIQUE POUR REDERIGIER L'ADMIN VERS UNE PAGE SPÉCIFIQUE À CHAQUE DRONE EN CLIQUANT SUR LE LOGO DU DRONE. -->
-					
+            <div class="box-content">
+            
+            <!-- CONTROLLEUR À AJOUTER (5/01/16 -->           
+            <h:dataTable styleClass="table table-striped table-hover" value="" var="item">
+					<h:column>	
 						<f:facet name="header">Nom du capteur</f:facet>
 						<h:graphicImage styleClass="iconList" value="img/drone.png" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Drone</f:facet>
-						<h:outputText value="#{item.id}" />
+						<f:facet name="header">Drone associé</f:facet>
+						<h:outputText value="" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Localisation</f:facet>
-						<h:outputText value="#{item.model}" />
+						<h:outputText value="" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Dernière date d'activité</f:facet>
-						<h:outputText value="#{item.name}" />
+						<h:outputText value="" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Status</f:facet>
-						<h:outputText value="#{item.city}" />
+						<h:outputText value="" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Fiche</f:facet>
-						<h:link  outcome="undrone.jsf" onclick="#{singleDroneController.initializeDrone(item.id)}">
+						<h:link  outcome="undrone.jsf" onclick="">
 						<span class="label label-default">Voir les données</span>
 						</h:link>
 					</h:column>
@@ -112,28 +112,28 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
         <h4 class="modal-title">Nouvel abonnement</h4>
       </div>
       <div class="modal-body">
-    <h:form>
+    <h:form styleClass="form-horizontal">
          <fieldset>
             <legend>Ajout d'abonnement</legend>
                         
             <h:outputLabel for="inServiceDate">Date de début <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="inServiceDate" value="#{suscriptionController.dateBegin}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="inServiceDate" value="#{suscriptionController.dateBegin}" required="true" size="20" maxlength="20" />
             <h:message id="inServiceDateMessage" for="inServiceDate" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="idUser">User_Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="idUser" value="#{suscriptionController.idUser}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="idUser" value="#{suscriptionController.idUser}" required="true" size="20" maxlength="20" />
             <h:message id="idUserMessage" for="idUser" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="idSensor">Sensor_Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="idSensor" value="#{suscriptionController.idSensor}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="idSensor" value="#{suscriptionController.idSensor}" required="true" size="20" maxlength="20" />
             <h:message id="idSensorMessage" for="idSensor" errorClass="erreur" />
             <br />
         
             <h:messages globalOnly="true" infoClass="info" />
     
-            <h:commandButton value="Ajouter"  action="#{suscriptionController.addSuscription()}"  styleClass="sansLabel" />
+            <h:commandButton styleClass="btn btn-primary" value="Ajouter"  action="#{suscriptionController.addSuscription()}" />
             <br />
           </fieldset>
         </h:form> 
