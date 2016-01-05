@@ -208,50 +208,50 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
           </fieldset>
         </form>-->
         
-        <h:form>
+        <h:form styleClass="form-horizontal">
          <fieldset>
             <legend>Inscription</legend>
             
             <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="nom" value="#{userController.userPicket.lastName}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="nom" value="#{userController.userPicket.lastName}" required="true" size="20" maxlength="20" />
             <h:message id="nomMessage" for="nom" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="prenom">Prénom <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="prenom" value="#{userController.userPicket.firstName}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="prenom" value="#{userController.userPicket.firstName}" required="true" size="20" maxlength="20" />
             <h:message id="prenomMessage" for="nom" errorClass="erreur" />
             <br />
             <h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="email" value="#{userController.userPicket.email}" required="true" size="20" maxlength="60" />
+            <h:inputText styleClass="form-control input-md" id="email" value="#{userController.userPicket.email}" required="true" size="20" maxlength="60" />
             <h:message id="emailMessage" for="email" errorClass="erreur" />
             <br />
     
             <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
-            <h:inputSecret id="motdepasse" value="#{userController.password}" required="true" size="20" maxlength="20" />
+            <h:inputSecret styleClass="form-control input-md" id="motdepasse" value="#{userController.password}" required="true" size="20" maxlength="20" />
             <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
             <br />
     
             <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
-            <h:inputSecret id="confirmation" value="#{userController.password}" required="true" size="20" maxlength="20" />
+            <h:inputSecret styleClass="form-control input-md" id="confirmation" value="#{userController.password}" required="true" size="20" maxlength="20" />
             <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
             <br />
     
             <h:outputLabel for="entreprise">Nom de l'entreprise <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="entreprise" value="#{userController.idCompany}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="entreprise" value="#{userController.idCompany}" required="true" size="20" maxlength="20" />
             <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="role">Nom du rôle <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="role" value="#{userController.role}" required="true" size="20" maxlength="20" />
+            <h:inputText styleClass="form-control input-md" id="role" value="#{userController.role}" required="true" size="20" maxlength="20" />
             <h:message id="roleMessage" for="role" errorClass="erreur" />
             <br />
         
             <h:messages globalOnly="true" infoClass="info" />
     
-            <h:commandButton value="Inscription"  action="#{userController.addUser()}"  styleClass="sansLabel" />
+            <h:commandButton styleClass="btn btn-primary" value="Inscription"  action="#{userController.addUser()}"  />
             <br />
           </fieldset>
-        </h:form>   	
+        </h:form>       	
       </div>
     </div>
   </div>
