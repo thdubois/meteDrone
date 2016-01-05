@@ -18,9 +18,7 @@ import javax.persistence.NamedQuery;
 					query = "SELECT f FROM Flight f")
 })
 public class Flight implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -762343915180969525L;
 
 	@Id
@@ -36,8 +34,7 @@ public class Flight implements Serializable {
 
 
 	public Flight() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Flight(Long id, Date date, Long duration) {
@@ -76,6 +73,13 @@ public class Flight implements Serializable {
 	public void setDuration(Long duration) {
 		this.duration = duration;
 	}
-	
+
+	public Drone getDrone() {
+		return drone;
+	}
+
+	public void setDrone(Drone drone) {
+		this.drone = drone;
+	}
 
 }

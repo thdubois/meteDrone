@@ -34,14 +34,13 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 	}
 
 	@Override
-	public void createSensor(int type, String name, String model, Date inServiceDate, Float price, Long idDrone) {
+	public void createSensor(int type, String name, String model, Date inServiceDate, Float price, Drone drone) {
 		if(type==0){
 			Analogic sensorEntity=new Analogic();
 			sensorEntity.setName(name);
 			sensorEntity.setModel(model);
 			sensorEntity.setInServiceDate(inServiceDate);
 			sensorEntity.setPrice(price);
-			Drone drone=em.find(Drone.class, idDrone);
 			sensorEntity.setDrone(drone);
 			em.persist(sensorEntity);
 		}
@@ -51,7 +50,6 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 			sensorEntity.setModel(model);
 			sensorEntity.setInServiceDate(inServiceDate);
 			sensorEntity.setPrice(price);
-			Drone drone=em.find(Drone.class, idDrone);
 			sensorEntity.setDrone(drone);
 			em.persist(sensorEntity);
 		}

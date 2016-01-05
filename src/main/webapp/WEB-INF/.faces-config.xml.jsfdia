@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PROCESS model-entity="JSFProcess"/>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#undrone.xhtml" PATH="/undrone.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#dronesAdmin.xhtml" PATH="/dronesAdmin.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dronesAdmin.xhtml:0" NAME="item"
+   PATH="/dronesAdmin.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="initSuccess::#undrone.xhtml" NAME="output"
+    PATH="/undrone.xhtml" TARGET="rules:#undrone.xhtml"
+    TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

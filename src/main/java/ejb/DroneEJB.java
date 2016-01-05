@@ -9,10 +9,8 @@ import javax.persistence.TypedQuery;
 
 import local.DroneEJBLocal;
 import remote.DroneEJBRemote;
-import entity.Company;
 import entity.Drone;
 import entity.Flight;
-import entity.User;
 
 @Stateless
 public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
@@ -37,6 +35,7 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 		droneEntity.setModel(model);
 		droneEntity.setName(name);
 		droneEntity.setCity(city);
+		droneEntity.setStatus("Fonctionnel");
 		em.persist(droneEntity);	
 	}
 	

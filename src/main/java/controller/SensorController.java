@@ -12,7 +12,6 @@ import javax.inject.Named;
 
 import entity.Drone;
 import entity.Sensor;
-import remote.DroneEJBRemote;
 import remote.SensorEJBRemote;
 
 @Named
@@ -30,11 +29,11 @@ public class SensorController implements Serializable{
 	private String price;
 	private String idDrone;
 	private String typeSensor;
-	
-	public void addSensor() throws ParseException{
+		
+	public void addSensorToDrone(Drone drone) throws ParseException{
 		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date date = dt.parse(inServiceDate); 
-		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, date, Float.parseFloat(price), Long.parseLong(idDrone));
+		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, date, Float.parseFloat(price), drone);
 	}
 	
 	public List<Sensor> getSensorsById(Long id){

@@ -11,7 +11,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({@NamedQuery(name= "findCompany" , query="SELECT c FROM User u,Company c WHERE u.email=:mail AND u.company.id=c.id")})
+@NamedQueries({ 
+	@NamedQuery(name = "findCompanies", 
+				query = "SELECT c FROM Company c"),
+})
+
 public class Company implements Serializable {
 
 	private static final long serialVersionUID = 5032221260864064561L;

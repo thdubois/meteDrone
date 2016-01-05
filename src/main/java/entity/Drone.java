@@ -21,9 +21,7 @@ import javax.persistence.OneToMany;
 })
 
 public class Drone implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8940788386134273107L;
 
 	@Id
@@ -35,17 +33,20 @@ public class Drone implements Serializable{
 	private String name;
 	
 	private String city;
+	
+	private String status;
 
 	public Drone(){
 		
 	}
 
-	public Drone(Long id, String model, String name, String city) {
+	public Drone(Long id, String model, String name, String city, String status) {
 		super();
 		this.id = id;
 		this.model = model;
 		this.name = name;
 		this.city = city;
+		this.status = status;
 	}
 
 	public String getModel() {
@@ -79,8 +80,13 @@ public class Drone implements Serializable{
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	
-	
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+		
 }
