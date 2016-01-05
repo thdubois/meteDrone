@@ -13,5 +13,5 @@ public interface SuscriptionEJBRemote {
 	public List<Suscription> findSuscriptionById(Long id);
 	public List<Suscription> findSuscriptions();
 	public void createSuscription(Date begin, Long idUser, Long idSensor);
-	public List<Sensor> findSensorsUserById(Long idUser);
+	public List<Sensor> findSensorsUserById(String mail);
 }

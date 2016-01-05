@@ -32,9 +32,9 @@ public class SuscriptionEJB implements SuscriptionEJBRemote, SuscriptionEJBLocal
 	}
 	
 	@Override
-	public List<Sensor> findSensorsUserById(Long id) {
+	public List<Sensor> findSensorsUserById(String mail) {
 		List<Sensor> sensors=null;
-		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("idUser", id);
+		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("mailUser", mail);
 		for (Suscription s:query.getResultList()){
 			sensors.add(em.find(Sensor.class, s.getSensor().getId()));
 		}

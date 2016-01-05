@@ -50,8 +50,8 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 	}
 
 	@Override
-	public Company findCompany(String mail) {
-		TypedQuery<Company> query = em.createNamedQuery("findCompany", Company.class).setParameter("mail",mail);
+	public Company findCompany(String email) {
+		TypedQuery<Company> query = em.createNamedQuery("findCompany", Company.class).setParameter("mail",email);
 		return query.getSingleResult();
 	}
 	

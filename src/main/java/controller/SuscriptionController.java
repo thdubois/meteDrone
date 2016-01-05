@@ -34,9 +34,10 @@ public class SuscriptionController implements Serializable{
 		Date date = dt.parse(dateBegin); 
 		suscriptionEJB.createSuscription(date, Long.parseLong(idUser), Long.parseLong(idSensor));
 	}
+	
 		
-	public List<Sensor> getSensorsUser(Long idUser) {
-		return suscriptionEJB.findSensorsUserById(idUser);
+	public List<Sensor> getSensorsUser(String mail) {
+		return suscriptionEJB.findSensorsUserById(mail);
 	}
 
 	public void setSensorsUser(List<Sensor> sensorsUser) {

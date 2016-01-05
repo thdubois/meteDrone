@@ -13,7 +13,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = "findSuscriptionById", 
-				query = "SELECT s FROM Suscription s WHERE s.user.id=:idUser"),
+				query = "SELECT s FROM Suscription s, User u WHERE s.user.id = u.id AND u.email =:mailUser "),
 	@NamedQuery(name = "findSuscriptions", 
 				query = "SELECT s FROM Suscription s")
 })

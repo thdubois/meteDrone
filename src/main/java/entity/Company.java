@@ -11,7 +11,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+
 @NamedQueries({ 
+
+	@NamedQuery(name= "findCompany" , 
+			query="SELECT c FROM User u,Company c WHERE u.email=:mail AND u.company.id=c.id"),
 	@NamedQuery(name = "findCompanies", 
 				query = "SELECT c FROM Company c"),
 })
