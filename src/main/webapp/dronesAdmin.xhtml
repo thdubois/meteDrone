@@ -145,28 +145,28 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
         <h4 class="modal-title">Nouveau Drone</h4>
       </div>
       <div class="modal-body">     
-        <h:form styleClass="form-horizontal">
+        <h:form>
          <fieldset>
             <legend>Inscription</legend>
                       
             <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="nom" value="#{droneController.name}" required="true" size="20" maxlength="60" />
+            <h:inputText id="nom" value="#{droneController.name}" required="true" size="20" maxlength="60" />
             <h:message id="nomMessage" for="nom" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="modele">Modele <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="modele" value="#{droneController.model}" required="true" size="20" maxlength="20" />
+            <h:inputText id="modele" value="#{droneController.model}" required="true" size="20" maxlength="20" />
             <h:message id="modeleMessage" for="nom" errorClass="erreur" />
             <br />
             
             <h:outputLabel for="ville">Ville <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="ville" value="#{droneController.city}" required="true" size="20" maxlength="20" />
+            <h:inputText id="ville" value="#{droneController.city}" required="true" size="20" maxlength="20" />
             <h:message id="villeMessage" for="ville" errorClass="erreur" />
             <br />
         
             <h:messages globalOnly="true" infoClass="info" />
     
-            <h:commandButton styleClass="btn btn-primary" value="Ajouter"  action="#{droneController.addDrone()}" />
+            <h:commandButton value="Ajouter"  action="#{droneController.addDrone()}"  styleClass="sansLabel" />
             <br />
           </fieldset>
         </h:form>   	

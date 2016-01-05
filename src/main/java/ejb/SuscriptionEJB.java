@@ -30,7 +30,16 @@ public class SuscriptionEJB implements SuscriptionEJBRemote, SuscriptionEJBLocal
 		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("idUser", id);
 		return query.getResultList();
 	}
-
+	
+	@Override
+	public List<Sensor> findSensorsUserById(Long id) {
+		List<Sensor> sensors=null;
+		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("idUser", id);
+		for (Suscription s:query.getResultList()){
+			sensors.add(em.find(Sensor.class, s.getSensor().getId()));
+		}
+		return sensors;
+	}
 	@Override
 	public List<Suscription> findSuscriptions() {
 		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptions",Suscription.class);

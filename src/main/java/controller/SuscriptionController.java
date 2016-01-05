@@ -9,6 +9,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+
+import entity.Sensor;
 import entity.Suscription;
 import remote.SuscriptionEJBRemote;
 
@@ -20,6 +22,8 @@ public class SuscriptionController implements Serializable{
 	@EJB
 	private SuscriptionEJBRemote suscriptionEJB;
 	private List<Suscription> suscriptions;
+	
+	private List<Sensor> sensorsUser;
 
 	private String idUser;	
 	private String idSensor;
@@ -30,7 +34,15 @@ public class SuscriptionController implements Serializable{
 		Date date = dt.parse(dateBegin); 
 		suscriptionEJB.createSuscription(date, Long.parseLong(idUser), Long.parseLong(idSensor));
 	}
-	
+		
+	public List<Sensor> getSensorsUser(Long idUser) {
+		return suscriptionEJB.findSensorsUserById(idUser);
+	}
+
+	public void setSensorsUser(List<Sensor> sensorsUser) {
+		this.sensorsUser = sensorsUser;
+	}
+
 	public List<Suscription> getSuscriptionById(Long id){
 		return suscriptionEJB.findSuscriptionById(id);
 	}
