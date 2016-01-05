@@ -2,225 +2,367 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
 
 
 
 <h:head>
-<meta name="viewport" content="width=device-width"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
+	<meta name="viewport" content="width=device-width" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/core.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.min.js"></script>
 
 
-<title>Un drone</title>
+	<title>Un drone</title>
 </h:head>
 <ui:fragment rendered="#{not identity.loggedIn}">
-<ui:include src="connexion.xhtml" /> 
+	<ui:include src="connexion.xhtml" />
 </ui:fragment>
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
-<ui:include src="header.xhtml" /> 
-  
-<div class="container">
-    <div class="row">
-        
-      <!-- start: Main Menu -->
-      <div id="sidebar-left" class="col-lg-2 col-sm-1">
-	  	<ui:include src="leftMenu.xhtml" />
-      </div>
-      <!-- end: Main Menu -->
-            
-      <!-- start: Content -->
-      <div id="content" class="col-lg-10 col-sm-11">
-      	      <div class="row"> 
-	        <div class="col-lg-12">
-	          <button type="button" class="btn btn-success btn-setting" data-toggle="modal" data-target="#myModal1">Nouveau Capteur</button><br/><br/>
-	        </div>
-      	</div>
-      
-      <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
-      <div class="row">
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-user"></i>Capteurs disponibles</h2>
-                </div>
-                <div class="box-content">
-                <h:dataTable styleClass="table table-striped table-hover" value="#{sensorController.getSensorsById(singleDroneController.drone.id)}" var="item">
-					<h:column>
-						<f:facet name="header">Icon</f:facet>
-						<h:graphicImage styleClass="iconList" value="img/drone.png" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{item.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{item.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Modele</f:facet>
-						<h:outputText value="#{item.model}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Date de mise en service</f:facet>
-						<h:outputText value="#{item.inServiceDate}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Prix</f:facet>
-						<h:outputText value="#{item.price}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Drone_Id Associé</f:facet>
-						<h:outputText value="#{item.drone.id}" />
-					</h:column>
-				</h:dataTable>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-              	      <div class="row"> 
-	        <div class="col-lg-12">
-	          <button type="button" class="btn btn-success btn-setting" data-toggle="modal" data-target="#myModal2">Planifier un vol</button><br/><br/>
-	        </div>
-      	</div>
-      
-      <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+	<ui:include src="header.xhtml" />
 
-      <div class="row">
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-user"></i>Vols programmés</h2>
-                </div>
-                <div class="box-content">
-                <h:dataTable styleClass="table table-striped table-hover" value="#{flightController.getFlightsId(singleDroneController.drone.id)}" var="item">
-					<h:column>
-						<f:facet name="header">Icon</f:facet>
-						<h:graphicImage styleClass="iconList" value="img/drone.png" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{item.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Date</f:facet>
-						<h:outputText value="#{item.date}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Duration</f:facet>
-						<h:outputText value="#{item.duration}" />
-					</h:column>
-				</h:dataTable>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end: Content -->
-        
-        </div><!--/row-->   
-    
-  </div>
-  
-<div id="myModal1" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<div class="container">
+		<div class="row">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nouveau Capteur</h4>
-      </div>
-      <div class="modal-body">     
-        <h:form>
-         <fieldset>
-            <legend>Création</legend>
-                      
-            <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="nom" value="#{sensorController.name}" required="true" size="20" maxlength="60" />
-            <h:message id="nomMessage" for="nom" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="modele">Modele <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="modele" value="#{sensorController.model}" required="true" size="20" maxlength="20" />
-            <h:message id="modeleMessage" for="modele" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="type">Type <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="type" value="#{sensorController.typeSensor}" required="true" size="20" maxlength="20" />
-            <h:message id="typeMessage" for="type" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="price">Price <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="price" value="#{sensorController.price}" required="true" size="20" maxlength="20" />
-            <h:message id="priceMessage" for="price" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="date">In Service Date <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="date" value="#{sensorController.inServiceDate}" required="true" size="20" maxlength="20" />
-            <h:message id="dateMessage" for="date" errorClass="erreur" />
-            <br />
-                   
-            <h:messages globalOnly="true" infoClass="info" />
-    
-            <h:commandButton value="Ajouter"  action="#{sensorController.addSensorToDrone(singleDroneController.drone)}"  styleClass="sansLabel" />
-            <br />
-          </fieldset>
-        </h:form>   	
-      </div>
-    </div>
-  </div>
-</div>
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-lg-2 col-sm-1">
+				<ui:include src="leftMenu.xhtml" />
+			</div>
+			<!-- end: Main Menu -->
 
-<div id="myModal2" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+			<!-- start: Content -->
+			<div id="content" class="col-lg-10 col-sm-11">
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal" data-target="#myModal1">Nouveau
+							Capteur</button>
+						<br /> <br />
+					</div>
+				</div>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nouveau Vol</h4>
-      </div>
-      <div class="modal-body">     
-        <h:form>
-		<!-- AJOUTER LE FORMULAIRE DE NOUVEAU VOL ICI -->
-		  <fieldset>
-            <legend>Programmation</legend>
-            
-            <h:outputLabel for="date">Date <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="date" value="#{flightController.date}" required="true" size="20" maxlength="20" />
-            <h:message id="dateMessage" for="date" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="duration">Duration <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="duration" value="#{flightController.duration}" required="true" size="20" maxlength="20" />
-            <h:message id="durationId" for="duration" errorClass="erreur" />
-            <br />
-                                        
-            <h:messages globalOnly="true" infoClass="info" />
-            
-            <h:outputText value="#{singleDroneController.drone.id}" />
-                
-            <h:commandButton value="Ajouter"  action="#{flightController.addFlightToDrone(singleDroneController.drone.id)}"  styleClass="sansLabel" />
-            <br />
-          </fieldset>
-        </h:form>   	
-      </div>
-    </div>
-  </div>
-</div>
-    
-  <div class="clearfix"></div>
-  
-<ui:include src="footer.xhtml" />
+				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-user"></i>Capteurs disponibles
+								</h2>
+							</div>
+							<div class="box-content">
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{sensorController.getSensorsById(singleDroneController.drone.id)}"
+									var="item">
+									<h:column>
+										<f:facet name="header">Icon</f:facet>
+										<h:graphicImage styleClass="iconList" value="img/drone.png" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Id</f:facet>
+										<h:outputText value="#{item.id}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{item.name}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Modele</f:facet>
+										<h:outputText value="#{item.model}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Date de mise en service</f:facet>
+										<h:outputText value="#{item.inServiceDate}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Prix</f:facet>
+										<h:outputText value="#{item.price}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Drone_Id Associé</f:facet>
+										<h:outputText value="#{item.drone.id}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Edition</f:facet>
+										<h:link outcome="" onclick="">
+											<span data-toggle="modal" data-target="#myModal3" class="label label-warning">Éditer</span>
+										</h:link>
+									</h:column>
+									<h:column>
+										<f:facet name="header">Suppression</f:facet>
+										<h:link outcome=""
+											onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'));">
+											<span class="label label-danger">Supprimer</span>
+										</h:link>
+									</h:column>
+								</h:dataTable>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal" data-target="#myModal2">Planifier un
+							vol</button>
+						<br /> <br />
+					</div>
+				</div>
+
+				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-user"></i>Vols programmés
+								</h2>
+							</div>
+							<div class="box-content">
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{flightController.getFlightsId(singleDroneController.drone.id)}"
+									var="item">
+									<h:column>
+										<f:facet name="header">Icon</f:facet>
+										<h:graphicImage styleClass="iconList" value="img/drone.png" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Id</f:facet>
+										<h:outputText value="#{item.id}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Date</f:facet>
+										<h:outputText value="#{item.date}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Duration</f:facet>
+										<h:outputText value="#{item.duration}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Edition</f:facet>
+										<h:link outcome="" onclick="">
+											<span class="label label-warning">Éditer</span>
+										</h:link>
+									</h:column>
+									<h:column>
+										<f:facet name="header">Suppression</f:facet>
+										<h:link outcome=""
+											onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'));">
+											<span class="label label-danger">Supprimer</span>
+										</h:link>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end: Content -->
+
+		</div>
+		<!--/row-->
+
+	</div>
+
+	<div id="myModal1" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Nouveau Capteur</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+							<legend>Création</legend>
+
+							<h:outputLabel for="nom">Nom <span class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="nom"
+								value="#{sensorController.name}" required="true" size="20"
+								maxlength="60" />
+							<h:message id="nomMessage" for="nom" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="modele">Modele <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="modele"
+								value="#{sensorController.model}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="modeleMessage" for="modele" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="type">Type <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="type"
+								value="#{sensorController.typeSensor}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="typeMessage" for="type" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="price">Price <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="price"
+								value="#{sensorController.price}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="priceMessage" for="price" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="date">In Service Date <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="date"
+								value="#{sensorController.inServiceDate}" required="true"
+								size="20" maxlength="20" />
+							<h:message id="dateMessage" for="date" errorClass="erreur" />
+							<br />
+
+							<h:messages globalOnly="true" infoClass="info" />
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{sensorController.addSensorToDrone(singleDroneController.drone)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Nouveau Vol</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<!-- AJOUTER LE FORMULAIRE DE NOUVEAU VOL ICI -->
+						<fieldset>
+							<legend>Programmation</legend>
+
+							<h:outputLabel for="date">Date <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="date"
+								value="#{flightController.date}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="dateMessage" for="date" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="duration">Duration <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="duration"
+								value="#{flightController.duration}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="durationId" for="duration" errorClass="erreur" />
+							<br />
+
+							<h:messages globalOnly="true" infoClass="info" />
+
+
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{flightController.addFlightToDrone(singleDroneController.drone.id)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="myModal3" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Editer le Capteur</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+							<legend>Création</legend>
+
+							<h:outputLabel for="nom">Nom <span class="requis">*</span>
+							</h:outputLabel>
+							<p:inputText styleClass="form-control input-md" id="nom"
+								value="#{sensorController.name}" required="true" size="20"
+								maxlength="60" ></p:inputText>
+							<p:watermark for="nom" value="Coucou"/>
+							<h:message id="nomMessage" for="nom" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="modele">Modele <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="modele"
+								value="#{sensorController.model}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="modeleMessage" for="modele" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="type">Type <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="type"
+								value="#{sensorController.typeSensor}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="typeMessage" for="type" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="price">Price <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="price"
+								value="#{sensorController.price}" required="true" size="20"
+								maxlength="20" />
+							<h:message id="priceMessage" for="price" errorClass="erreur" />
+							<br />
+
+							<h:outputLabel for="date">In Service Date <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="date"
+								value="#{sensorController.inServiceDate}" required="true"
+								size="20" maxlength="20" />
+							<h:message id="dateMessage" for="date" errorClass="erreur" />
+							<br />
+
+							<h:messages globalOnly="true" infoClass="info" />
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{sensorController.addSensorToDrone(singleDroneController.drone)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="clearfix"></div>
+
+	<ui:include src="footer.xhtml" />
 </h:body>
 </html>
