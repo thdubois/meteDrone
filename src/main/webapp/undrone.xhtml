@@ -3,9 +3,9 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
@@ -14,7 +14,6 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
 
-	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 
@@ -90,14 +89,15 @@
 									</h:column>
 									<h:column>
 										<f:facet name="header">Edition</f:facet>
-										<h:link outcome="" onclick="">
-											<span data-toggle="modal" data-target="#myModal3" class="label label-warning">Éditer</span>
+										<h:link outcome="" onclick="#{singleSensorController.initializeSensor(item.id)}">
+											<span data-toggle="modal" data-target="#myModal3" 
+												class="label label-warning">Éditer</span>
 										</h:link>
 									</h:column>
 									<h:column>
 										<f:facet name="header">Suppression</f:facet>
 										<h:link outcome=""
-											onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'));">
+											onclick="#{singleSensorController.deleteSensor(item.id)}">
 											<span class="label label-danger">Supprimer</span>
 										</h:link>
 									</h:column>
@@ -257,13 +257,9 @@
 						<fieldset>
 							<legend>Programmation</legend>
 
-							<h:outputLabel for="date">Date <span
-									class="requis">*</span>
-							</h:outputLabel>
-							<h:inputText styleClass="form-control input-md" id="date"
-								value="#{flightController.date}" required="true" size="20"
-								maxlength="20" />
-							<h:message id="dateMessage" for="date" errorClass="erreur" />
+							<p:outputLabel for="inline" value="Date:" />
+							<p:calendar id="inline" value="#{calendarView.date1}"
+								pattern="yyyy-MM-dd" mode="inline" />
 							<br />
 
 							<h:outputLabel for="duration">Duration <span
@@ -301,14 +297,14 @@
 				<div class="modal-body">
 					<h:form styleClass="form-horizontal">
 						<fieldset>
-							<legend>Création</legend>
+							<legend>Éditer le capteur</legend>
 
 							<h:outputLabel for="nom">Nom <span class="requis">*</span>
 							</h:outputLabel>
-							<p:inputText styleClass="form-control input-md" id="nom"
+							<h:inputText styleClass="form-control input-md" id="nom"
 								value="#{sensorController.name}" required="true" size="20"
-								maxlength="60" ></p:inputText>
-							<p:watermark for="nom" value="Coucou"/>
+								maxlength="60"></h:inputText>
+							<p:watermark for="nom" value="#{singleSensorController.sensor.name}" />
 							<h:message id="nomMessage" for="nom" errorClass="erreur" />
 							<br />
 
@@ -318,6 +314,7 @@
 							<h:inputText styleClass="form-control input-md" id="modele"
 								value="#{sensorController.model}" required="true" size="20"
 								maxlength="20" />
+							<p:watermark for="modele" value="#{singleSensorController.sensor.model}" />
 							<h:message id="modeleMessage" for="modele" errorClass="erreur" />
 							<br />
 
@@ -327,6 +324,7 @@
 							<h:inputText styleClass="form-control input-md" id="type"
 								value="#{sensorController.typeSensor}" required="true" size="20"
 								maxlength="20" />
+							<p:watermark for="type" value="#{singleSensorController.sensor.model}" />
 							<h:message id="typeMessage" for="type" errorClass="erreur" />
 							<br />
 
@@ -336,6 +334,7 @@
 							<h:inputText styleClass="form-control input-md" id="price"
 								value="#{sensorController.price}" required="true" size="20"
 								maxlength="20" />
+							<p:watermark for="type" value="#{singleSensorController.sensor.price}" />
 							<h:message id="priceMessage" for="price" errorClass="erreur" />
 							<br />
 
@@ -345,6 +344,7 @@
 							<h:inputText styleClass="form-control input-md" id="date"
 								value="#{sensorController.inServiceDate}" required="true"
 								size="20" maxlength="20" />
+							<p:watermark for="type" value="#{singleSensorController.sensor.inServiceDate}" />
 							<h:message id="dateMessage" for="date" errorClass="erreur" />
 							<br />
 

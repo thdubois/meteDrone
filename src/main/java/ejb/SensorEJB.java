@@ -56,7 +56,7 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 	}
 	
 	public void deleteSensor(Long id){
-		TypedQuery<Sensor> query=em.createNamedQuery("deleteSensor",Sensor.class).setParameter("id", id);
+		em.createNamedQuery("deleteSensor",Sensor.class).setParameter("id", id);
 	}
 	
 }
