@@ -36,6 +36,10 @@ public class SensorController implements Serializable{
 		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, date, Float.parseFloat(price), drone);
 	}
 	
+	public void deleteSensor(Sensor sensor){
+		
+	}
+	
 	public List<Sensor> getSensorsById(Long id){
 		return sensorEJB.findSensorsById(id);
 	}
