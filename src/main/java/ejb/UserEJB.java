@@ -68,9 +68,9 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 	}
 	
 	@Override
-	public User findUserByMail(String mail) {
+	public Long findUserByMail(String mail) {
 		TypedQuery<User> query = em.createNamedQuery("findUserByMail", User.class).setParameter("mail", mail);
-		return query.getSingleResult();
+		return query.getSingleResult().getId();
 	}
 	
 	@Override

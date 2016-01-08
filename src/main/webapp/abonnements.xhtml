@@ -49,37 +49,18 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             </div>
             <div class="box-content">
             
-            <!-- CONTROLLEUR À AJOUTER (5/01/16 -->           
-            <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.getSuscriptionsUser(identity.account.loginName)}" var="item">
-					<h:column>	
-						<f:facet name="header">Nom du capteur</f:facet>
-						<h:graphicImage styleClass="iconList" value="img/drone.png" />
+            <!-- CONTROLLEUR À AJOUTER (5/01/16 --> 
+                      
+            <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.findSuscriptionsUser()}" var="item">
+					<h:column>
+						<f:facet name="header">Associated Sensor Id</f:facet>
+						<h:outputText value="#{item.sensor.id}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Associated Drone Id</f:facet>
-						<h:outputText value="#{item.drone.id}" />
+						<f:facet name="header">User Mail</f:facet>
+						<h:outputText value="#{item.user.email}" />
 					</h:column>
-					<h:column>
-						<f:facet name="header">Localisation</f:facet>
-						<h:outputText value="#{item.drone.city}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Suscription Beginning</f:facet>
-						<h:outputText value="#{item.inServiceDate}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Status</f:facet>
-						<h:outputText value="#{item.drone.status}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Sensor</f:facet>
-						<h:link  outcome="" onclick="">
-						<span class="label label-default">Data</span>
-						</h:link>
-					</h:column>
-					
-
-				</h:dataTable>
+			</h:dataTable>
             </div> 
           </div>  
         </div><!--/col-->

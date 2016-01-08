@@ -61,8 +61,12 @@ public class UserController implements Serializable{
 	}
 	
 	public void deleteUser(String mailUser){
-		User user=userEJB.findUserByMail(mailUser);
-		userEJB.deleteUser(user);
+		//User user=userEJB.findUserByMail(mailUser);
+		//userEJB.deleteUser(user);
+	}
+		
+	public Long findUserBymail(String email){
+		return userEJB.findUserByMail(email);
 	}
 	
 	public Company findCompanyById(String mail){

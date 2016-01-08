@@ -12,7 +12,6 @@ import entity.Suscription;
 public interface SuscriptionEJBLocal {
 	public List<Suscription> findSuscriptionById(Long id);
 	public List<Suscription> findSuscriptions();
-	public List<Sensor> findSensorsUserById(String mail);
+	public List<Suscription> findSuscriptionsUserById();
 	public void createSuscription(Date begin, Long idUser, Long idSensor);
-
 }

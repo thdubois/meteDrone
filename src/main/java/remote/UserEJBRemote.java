@@ -14,5 +14,5 @@ public interface UserEJBRemote {
 	public void deleteUser(User user);
 	public List<User> findUsers();
 	public User findUserById();
-	public User findUserByMail(String mail);
+	public Long findUserByMail(String mail);
 }

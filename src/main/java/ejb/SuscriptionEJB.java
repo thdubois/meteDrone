@@ -1,6 +1,5 @@
 package ejb;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,18 +37,11 @@ public class SuscriptionEJB implements SuscriptionEJBRemote, SuscriptionEJBLocal
 	}
 	
 	@Override
-	public List<Sensor> findSensorsUserById(String email) {
-		/*List<Sensor> sensors=null;
-		//TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("mailUser", email);
-		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("mailUser", email);
-		for (Suscription s:query.getResultList()){
-			sensors.add(em.find(Sensor.class, s.getSensor().getId()));
-		}
-		return sensors;*/
+	public List<Suscription> findSuscriptionsUserById() {
 		UserEJB userEjb = new UserEJB();
-		User user=userEjb.findUserByMail("toto");
-		logger.info("EMAIL" +user.getEmail());
-		return new ArrayList<Sensor>();
+		Long userId=userEjb.findUserByMail("toto");
+		TypedQuery<Suscription> query=em.createNamedQuery("findSuscriptionById",Suscription.class).setParameter("userId", userId);
+		return query.getResultList();
 	}
 	@Override
 	public List<Suscription> findSuscriptions() {
