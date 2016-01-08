@@ -27,6 +27,10 @@ public class DroneController implements Serializable{
 		droneEJB.createDrone(name, model, city);
 	}
 	
+	public void deleteDrone(Long droneId){
+		droneEJB.deleteDrone(droneId);
+	}
+	
 	public List<Drone> getDrones() {
 		return droneEJB.findDrones();
 	}

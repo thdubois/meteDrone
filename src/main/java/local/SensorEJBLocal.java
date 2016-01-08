@@ -12,6 +12,6 @@ import entity.Sensor;
 public interface SensorEJBLocal {
 	public List<Sensor> findSensorsById(Long id);
 	public List<Sensor> findSensors();
-	public void deleteSensor(Long id);
+	public void deleteSensor(Long sensorId);
 	public void createSensor(int type, String name, String model, Date inServiceDate, Float price, Drone drone);
 }

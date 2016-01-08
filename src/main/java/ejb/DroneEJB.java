@@ -39,4 +39,9 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 		em.persist(droneEntity);	
 	}
 	
+	public void deleteDrone(Long droneId){
+		Drone drone=em.find(Drone.class, droneId);
+		em.remove(drone);
+	}
+	
 }

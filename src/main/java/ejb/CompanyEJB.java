@@ -24,10 +24,11 @@ public class CompanyEJB implements CompanyEJBRemote, CompanyEJBLocal {
 		return query.getResultList();
 	}
 	
-	public void createCompany(String name){
+	public Long createCompany(String name){
 		Company companyEntity = new Company();
 		companyEntity.setName(name);
-		em.persist(companyEntity);	
+		em.persist(companyEntity);
+		return companyEntity.getId();
 	}
 	
 }

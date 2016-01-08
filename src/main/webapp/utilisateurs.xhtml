@@ -36,112 +36,42 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
     
     <!-- start: Content -->
     <div id="content" class="col-lg-10 col-sm-11">
-      <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
-      <!--
       <div class="row"> 
         <div class="col-lg-12">
-          <button type="button" class="btn btn-success btn-setting" data-toggle="modal">Nouvel Utilisateur</button><br/><br/>
-        </div>
-      </div>
-      -->
-      <!-- TEST CREATION D'UNE COMPANY -->
-      <div class="row"> 
-        <div class="col-lg-12">
-          <button type="button" class="btn btn-success btn-setting" data-toggle="modal">Nouvel Utilisateur</button><br/><br/>
+          <button type="button" class="btn btn-success btn-setting" data-toggle="modal">New User</button><br/><br/>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h2><i class="fa fa-bar-chart"></i>Utilisateurs</h2>
+              <h2><i class="fa fa-bar-chart"></i>Users</h2>
             </div>
-            <div class="box-content">
-            
-            
-            
-		    <h:dataTable styleClass="table table-striped table-hover" value="#{userController.findUsers()}" var="user">
+            <div class="box-content">            
+		    <h:dataTable styleClass="table table-striped table-hover" value="#{userController.findUsers()}" var="user">			
 				<h:column>
-					<f:facet name="header">Nom</f:facet>
+					<f:facet name="header">Name</f:facet>
 					<h:outputText value="#{user.firstName}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Prénom</f:facet>
+					<f:facet name="header">Surname</f:facet>
 					<h:outputText value="#{user.lastName}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Email</f:facet>
+					<f:facet name="header">Mail</f:facet>
 					<h:outputText value="#{user.email}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">Company</f:facet>
 					<h:outputText value="#{userController.findCompanyName(user.email)}" />
 				</h:column>
+				<!--<h:column>
+					<f:facet name="header">Suppression</f:facet>
+					<h:form>
+						<h:commandLink class="label label-danger" action="#{userController.deleteUser(user.email)}" value="Supprimer" />
+					</h:form>
+				</h:column>-->
 			</h:dataTable>
-			
-			
-			
-			
-			
-			
-			<!--
-              <table class="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Mail</th>
-                    <th>Role</th>
-                    <th>Action</th>                                      
-                  </tr>
-                </thead>   
-                <tbody>
-                  <tr>
-                    <td class="center">Perard</td>
-                    <td class="center">Doriane</td>
-                    <td class="center">doriane.perard@gmail.com</td>
-                    <td class="center">
-                      <span class="label label-success">Admin</span>
-                    </td>
-                    <td class="center">
-                      <button class="label label-info">Fiche</button>
-                    </td>                                      
-                  </tr>
-                  <tr>
-                    <td class="center">Kastel</td>
-                    <td class="center">Olivier</td>
-                    <td class="center">olivier.kastel@gmail.com</td>
-                    <td class="center">
-                      <span class="label label-success">Admin</span>
-                    </td>
-                    <td class="center">
-                     <button class="label label-info">Fiche</button>
-                   </td>                                      
-                 </tr>
-                 <tr>
-                  <td class="center">Dubois</td>
-                  <td class="center">Thomas</td>
-                  <td class="center">thomas.dubois@gmail.com</td>
-                  <td class="center">
-                    <span class="label label-success">Admin</span>
-                  </td>
-                  <td class="center">
-                   <button class="label label-info">Fiche</button>
-                 </td>                                      
-               </tr>
-               <tr>
-                <td class="center">Bancker</td>
-                <td class="center">Jérémy</td>
-                <td class="center">jeremy.bancker@gmail.com</td>
-                <td class="center">
-                  <span class="label label-warning">Hôtesse d'accueil</span>
-                </td>
-                <td class="center">
-                 <button class="label label-info">Fiche</button>
-               </td>                                      
-             </tr>                            
-           </tbody>
-         </table>-->
        </div>
      </div>
    </div>
@@ -156,92 +86,44 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nouvel utilisateur</h4>
+        <h4 class="modal-title">New User</h4>
       </div>
       <div class="modal-body">
-        <!--<form class="form-horizontal">
-          <fieldset>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Nom</label>  
-              <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="Nom" class="form-control input-md" required=""/>
-                <span class="help-block">Entrez votre nom</span>  
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prenom">Prénom</label>  
-              <div class="col-md-4">
-                <input id="prenom" name="prenom" type="text" placeholder="Prénom" class="form-control input-md"/>
-                <span class="help-block">Entrez votre prénom</span>  
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Mot de passe</label>
-              <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md"/>
-                <span class="help-block">Entrez votre mot de passe</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="mail">Mail</label>  
-              <div class="col-md-4">
-                <input id="mail" name="mail" type="text" placeholder="Mail" class="form-control input-md"/>
-                <span class="help-block">Entrez votre adresse mail</span>  
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="role">Choisissez le rôle</label>
-              <div class="col-md-4">
-                <select id="role" name="role" class="form-control">
-                  <option value="1">Admin</option>
-                  <option value="2">Météorologue</option>
-                  <option value="3">Pilote</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-8" style="text-align:center">
-                <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
-                <button id="supprimer" name="supprimer" class="btn btn-danger">Supprimer l'utilisateur</button>
-              </div>
-            </div>
-          </fieldset>
-        </form>-->
-        
+              
         <h:form styleClass="form-horizontal">
          <fieldset>
             <legend>Inscription</legend>
             
-            <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="nom">Name <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="nom" value="#{userController.userPicket.lastName}" required="true" size="20" maxlength="20" />
             <h:message id="nomMessage" for="nom" errorClass="erreur" />
             <br />
             
-            <h:outputLabel for="prenom">Prénom <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="prenom">Surname <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="prenom" value="#{userController.userPicket.firstName}" required="true" size="20" maxlength="20" />
             <h:message id="prenomMessage" for="nom" errorClass="erreur" />
             <br />
-            <h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="email">Mail <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="email" value="#{userController.userPicket.email}" required="true" size="20" maxlength="60" />
             <h:message id="emailMessage" for="email" errorClass="erreur" />
             <br />
     
-            <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="motdepasse">Password <span class="requis">*</span></h:outputLabel>
             <h:inputSecret styleClass="form-control input-md" id="motdepasse" value="#{userController.password}" required="true" size="20" maxlength="20" />
             <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
             <br />
     
-            <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="confirmation">Password confirmation <span class="requis">*</span></h:outputLabel>
             <h:inputSecret styleClass="form-control input-md" id="confirmation" value="#{userController.password}" required="true" size="20" maxlength="20" />
             <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
             <br />
     
-            <h:outputLabel for="entreprise">Nom de l'entreprise <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="entreprise">Company Id <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="entreprise" value="#{userController.idCompany}" required="true" size="20" maxlength="20" />
             <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
             <br />
             
-            <h:outputLabel for="role">Nom du rôle <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="role">Role name <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="role" value="#{userController.role}" required="true" size="20" maxlength="20" />
             <h:message id="roleMessage" for="role" errorClass="erreur" />
             <br />

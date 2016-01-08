@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import remote.SensorEJBRemote;
 import entity.Analogic;
 import entity.Drone;
+import entity.Flight;
 import entity.Numeric;
 import entity.Sensor;
 import local.SensorEJBLocal;
@@ -55,8 +56,10 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 		}
 	}
 	
-	public void deleteSensor(Long id){
-		em.createNamedQuery("deleteSensor",Sensor.class).setParameter("id", id);
+	public void deleteSensor(Long sensorId){
+		Sensor sensor=em.find(Sensor.class, sensorId);
+		sensor.setDrone(null);
+		em.merge(sensor);
 	}
 	
 }

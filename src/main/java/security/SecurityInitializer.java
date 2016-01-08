@@ -31,6 +31,20 @@ public class SecurityInitializer{
 		user.setEmail("stephanie.chollet@esisar.com");
 		identityManager.add(user);
 		identityManager.updateCredential(user, new Password("admin"));
+		
+		User user2= new User("toto");
+		user2.setFirstName("Thomas");
+		user2.setLastName("Dudu");
+		user2.setEmail("toto");
+		identityManager.add(user2);
+		identityManager.updateCredential(user2, new Password("toto"));
+		
+		User user3= new User("jeje");
+		user3.setFirstName("Jeremy");
+		user3.setLastName("Bancker");
+		user3.setEmail("jeje");
+		identityManager.add(user3);
+		identityManager.updateCredential(user3, new Password("jeje"));
 
 		Role admin = new Role("administrateur");
 		identityManager.add(admin);
@@ -39,6 +53,11 @@ public class SecurityInitializer{
 		
 		Role pilote = new Role("pilote");
 		identityManager.add(pilote);
+		BasicModel.grantRole(relationshipManager, user2, pilote);
+		
+		Role meteorologue = new Role("meteorologue");
+		identityManager.add(meteorologue);
+		BasicModel.grantRole(relationshipManager, user3, meteorologue);
 		
 		}
 }

@@ -18,13 +18,12 @@ import javax.persistence.OneToMany;
 	@NamedQuery(name = "findUserById", 
 				query = "SELECT u FROM User u WHERE u.id=:idUser"), 
 	@NamedQuery(name = "findUsers", 
-				query = "SELECT u FROM User u")
+				query = "SELECT u FROM User u"),
+	@NamedQuery(name = "findUserByMail", 
+				query = "SELECT u FROM User u WHERE u.email=:mail")
 })
 public class User implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1658650721601124975L;
 
 	@Id
@@ -72,8 +71,4 @@ public class User implements Serializable{
 	public void setSuscriptionList(List<Suscription> suscriptionList) {
 		this.suscriptionList = suscriptionList;
 	}
-	
-	
-	
-
 }

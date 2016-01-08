@@ -36,9 +36,4 @@ public class SingleSensorController implements Serializable{
 		return "initSuccess";
 	}
 	
-	public void deleteSensor(Long id){
-		//initializeSensor(id);
-		sensorEJB.deleteSensor(id);
-	}
-	
 }

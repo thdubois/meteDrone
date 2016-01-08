@@ -10,5 +10,5 @@ import entity.Company;
 @Local
 public interface CompanyEJBLocal {
 	public List<Company> findCompanies();
-	public void createCompany(String name);
+	public Long createCompany(String name);
 }

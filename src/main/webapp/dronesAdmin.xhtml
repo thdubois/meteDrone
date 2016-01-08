@@ -75,16 +75,12 @@
 										<h:outputText value="#{item.model}" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">Name</f:facet>
+										<f:facet name="header">Nom</f:facet>
 										<h:outputText value="#{item.name}" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">City</f:facet>
+										<f:facet name="header">Ville</f:facet>
 										<h:outputText value="#{item.city}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">Status</f:facet>
-										<h:outputText value="#{item.status}" />
 									</h:column>
 									<h:column>
 										<f:facet name="header">Fiche</f:facet>
@@ -93,8 +89,12 @@
 											<span class="label label-default">Voir le drone</span>
 										</h:link>
 									</h:column>
-
-
+									<h:column>
+										<f:facet name="header">Delete</f:facet>
+										<h:form>
+											<h:commandLink class="label label-danger" action="#{droneController.deleteDrone(item.id)}" value="Supprimer" />
+										</h:form>
+									</h:column>
 								</h:dataTable>
 
 							</div>

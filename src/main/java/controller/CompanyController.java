@@ -20,6 +20,10 @@ public class CompanyController implements Serializable{
 	private List<Company> companies;
 	private String name;
 
+	public void addCompany(){
+		companyEJB.createCompany(name);		
+	}
+	
 	public List<Company> getCompanies() {
 		return companyEJB.findCompanies();
 	}

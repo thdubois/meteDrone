@@ -31,7 +31,7 @@ public class SensorController implements Serializable{
 	private String typeSensor;
 		
 	public void addSensorToDrone(Drone drone) throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
 		Date date = dt.parse(inServiceDate); 
 		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, date, Float.parseFloat(price), drone);
 	}

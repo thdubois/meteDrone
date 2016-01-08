@@ -36,8 +36,8 @@ public class SuscriptionController implements Serializable{
 	}
 	
 		
-	public List<Sensor> getSensorsUser(String mail) {
-		return suscriptionEJB.findSensorsUserById(mail);
+	public List<Sensor> getSuscriptionsUser(String email) {
+		return suscriptionEJB.findSensorsUserById(email);
 	}
 
 	public void setSensorsUser(List<Sensor> sensorsUser) {

@@ -38,4 +38,9 @@ public class FlightEJB implements FlightEJBRemote, FlightEJBLocal {
 		flightEntity.setDrone(drone);
 		em.persist(flightEntity);	
 	}
+	
+	public void deleteFlight(Long flightId){
+		Flight flight=em.find(Flight.class, flightId);
+		em.remove(flight);
+	}
 }
