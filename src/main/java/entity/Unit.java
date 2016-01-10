@@ -1,13 +1,10 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Unit implements Serializable {
@@ -18,7 +15,23 @@ public class Unit implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
-	//@Column(nullable = false, unique=true)
+	@Column(nullable = false, unique=true)
 	private String unit;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+	
 }

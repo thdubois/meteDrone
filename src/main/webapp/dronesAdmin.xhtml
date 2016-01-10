@@ -83,20 +83,18 @@
 										<h:outputText value="#{item.city}" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">Fiche</f:facet>
-										<h:link outcome="undrone.jsf"
-											onclick="#{singleDroneController.initializeDrone(item.id)}">
-											<span class="label label-default">Voir le drone</span>
-										</h:link>
+										<f:facet name="header">File</f:facet>
+										<h:form>
+											<h:commandLink class="label label-default" action="#{singleDroneController.initializeDrone(item.id)}" value="See Drone" />
+										</h:form>
 									</h:column>
 									<h:column>
 										<f:facet name="header">Delete</f:facet>
 										<h:form>
-											<h:commandLink class="label label-danger" action="#{droneController.deleteDrone(item.id)}" value="Supprimer" />
+											<h:commandLink class="label label-danger" action="#{droneController.deleteDrone(item.id)}" value="Delete" />
 										</h:form>
 									</h:column>
 								</h:dataTable>
-
 							</div>
 						</div>
 					</div>

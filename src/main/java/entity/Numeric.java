@@ -1,14 +1,14 @@
 package entity;
 
-import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
-public class Numeric extends Sensor implements Serializable {
-
-	private static final long serialVersionUID = 3342298343539501528L;
+@NamedQueries({ 
+	@NamedQuery(name= "findNumerics" , 
+			query="SELECT n FROM Numeric n"),
+})
+public class Numeric extends Sensor {
 
 }

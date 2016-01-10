@@ -1,23 +1,22 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
-
 @NamedQueries({ 
-
 	@NamedQuery(name= "findCompany" , 
 			query="SELECT c FROM User u,Company c WHERE u.email=:mail AND u.company.id=c.id"),
 	@NamedQuery(name = "findCompanies", 
 				query = "SELECT c FROM Company c"),
+	@NamedQuery(name= "findCompanyByName" , 
+				query="SELECT c FROM Company c WHERE c.name=:companyName"),
 })
 
 public class Company implements Serializable {
@@ -28,10 +27,8 @@ public class Company implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+	@Column(nullable=false,unique=true)
 	private String name;
-
-	@OneToMany(mappedBy="company")
-	private List<User> userList;
 
 	public Long getId() {
 		return id;
@@ -48,14 +45,4 @@ public class Company implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<User> getUserList() {
-		return userList;
-	}
-
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
-
-	
 }

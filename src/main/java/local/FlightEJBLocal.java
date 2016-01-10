@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import entity.Drone;
 import entity.Flight;
 
 @Local

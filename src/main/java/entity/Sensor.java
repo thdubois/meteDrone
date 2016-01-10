@@ -17,11 +17,9 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({ 
 	@NamedQuery(name = "findSensorsById", 
-				query = "SELECT s FROM Sensor s WHERE s.drone.id=:idDrone"), 
+				query = "SELECT s FROM Sensor s WHERE s.drone.id=:droneId"), 
 	@NamedQuery(name = "findSensors", 
-				query = "SELECT s FROM Sensor s"),
-	@NamedQuery(name = "deleteSensor", 
-				query = "DELETE FROM Sensor s WHERE s.id=:id"),
+				query = "SELECT s FROM Sensor s")
 })
 public class Sensor {
 
@@ -94,6 +92,5 @@ public class Sensor {
 	public void setDrone(Drone drone) {
 		this.drone = drone;
 	}
-	
-	
+		
 }

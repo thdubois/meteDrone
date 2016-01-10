@@ -29,6 +29,7 @@ public class SingleDroneController implements Serializable{
 	private Drone drone;
 	
 	public String initializeDrone(Long id){
+		setDrone(null);
 		setDrone(em.find(Drone.class, id));
 		return "initSuccess";
 	}
@@ -39,10 +40,6 @@ public class SingleDroneController implements Serializable{
 
 	public void setDrone(Drone drone) {
 		this.drone = drone;
-	}
-	
-	public void deleteSensor(Long sensorId){
-		sensorEJB.deleteSensor(sensorId);
 	}
 	
 	public void deleteFlight(Long flightId){

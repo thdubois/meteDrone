@@ -1,18 +1,26 @@
 package entity;
 
-import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
-public class Analogic extends Sensor implements Serializable {
-
-	private static final long serialVersionUID = 6279249915682473657L;
+@NamedQueries({ 
+	@NamedQuery(name= "findAnalogics" , 
+			query="SELECT a FROM Analogic a"),
+})
+public class Analogic extends Sensor {
 	
 	@ManyToOne
 	private Unit unit;
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
 
 }

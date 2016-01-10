@@ -8,7 +8,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import remote.CompanyEJBRemote;
+import remote.UserEJBRemote;
 import entity.Company;
+import entity.User;
 
 @Named
 @RequestScoped
@@ -17,6 +19,10 @@ public class CompanyController implements Serializable{
 	private static final long serialVersionUID = -7409725665370146963L;
 	@EJB
 	private CompanyEJBRemote companyEJB;
+	
+	@EJB
+	private UserEJBRemote userEJB;
+	
 	private List<Company> companies;
 	private String name;
 
@@ -30,6 +36,13 @@ public class CompanyController implements Serializable{
 
 	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
+	}
+	
+	public void deleteCompany(Long companyId){
+		List<User> users=userEJB.findUserByCompany(companyId);
+		for (User u: users){
+			userEJB.deleteCompany(u);
+		}
 	}
 
 	public String getName() {

@@ -28,13 +28,13 @@ public class SecurityInitializer{
 		User user = new User("admin");
 		user.setFirstName("Stephanie");
 		user.setLastName("Chollet");
-		user.setEmail("stephanie.chollet@esisar.com");
+		user.setEmail("admin");
 		identityManager.add(user);
 		identityManager.updateCredential(user, new Password("admin"));
 		
 		User user2= new User("toto");
 		user2.setFirstName("Thomas");
-		user2.setLastName("Dudu");
+		user2.setLastName("Dubois");
 		user2.setEmail("toto");
 		identityManager.add(user2);
 		identityManager.updateCredential(user2, new Password("toto"));

@@ -37,7 +37,7 @@ public class SensorController implements Serializable{
 	}
 	
 	public void deleteSensor(Sensor sensor){
-		
+				
 	}
 	
 	public List<Sensor> getSensorsById(Long id){

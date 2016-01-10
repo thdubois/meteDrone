@@ -23,6 +23,14 @@ public class AnalogicData implements Serializable {
 
 	@ManyToOne
 	private Analogic analogic;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Date getDate() {
 		return date;

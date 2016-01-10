@@ -2,12 +2,13 @@ package controller;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import ejb.SensorEJB;
+import remote.SensorEJBRemote;
 import entity.Sensor;
 
 @Named
@@ -19,7 +20,8 @@ public class SingleSensorController implements Serializable{
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 	
-	private SensorEJB sensorEJB;
+	@EJB
+	private SensorEJBRemote sensorEJB;
 	
 	private Sensor sensor;
 	
@@ -34,6 +36,10 @@ public class SingleSensorController implements Serializable{
 	public String initializeSensor(Long id){
 		setSensor(em.find(Sensor.class, id));
 		return "initSuccess";
+	}
+	
+	public void deleteSensor(Long sensorId){
+		sensorEJB.deleteSensor(sensorId);
 	}
 	
 }

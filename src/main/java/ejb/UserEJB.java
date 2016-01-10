@@ -3,6 +3,7 @@ package ejb;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.basic.BasicModel;
 import org.picketlink.idm.model.basic.Role;
 
+import remote.CompanyEJBRemote;
 import remote.UserEJBRemote;
 import local.UserEJBLocal;
 import entity.Company;
@@ -33,10 +35,17 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 	@Inject 
 	private IdentityManager identityManager;
 	
+	@EJB
+	private CompanyEJBRemote companyEJB;
+	
 	@Override
-	public void createUser(org.picketlink.idm.model.basic.User user, Long idCompany,String role, String password){
+	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password){
+		
 		User userEntity = new User(user.getEmail());
-		Company company = em.find(Company.class, idCompany);
+		Company company = companyEJB.findCompanyByName(companyName);
+		if (company==null){
+			company=companyEJB.createCompany(companyName);
+		}
 		userEntity.setCompany(company);
 		em.persist(userEntity);
 
@@ -48,11 +57,20 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 		RelationshipManager relationshipManager = partitionManager.createRelationshipManager();
 		BasicModel.grantRole(relationshipManager, user, rolePicket);
 	}
+	
+	public void createSuperUsers(User user){
+		em.persist(user);
+	}
 
 	@Override
 	public Company findCompany(String email) {
 		TypedQuery<Company> query = em.createNamedQuery("findCompany", Company.class).setParameter("mail",email);
 		return query.getSingleResult();
+	}
+	
+	public List<User> findUserByCompany(Long companyId) {
+		TypedQuery<User> query = em.createNamedQuery("findUserByCompany", User.class).setParameter("companyId",companyId).setParameter("companyId",companyId);
+		return query.getResultList();
 	}
 	
 	@Override
@@ -62,15 +80,15 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 	}
 	
 	@Override
-	public User findUserById() {
-		TypedQuery<User> query = em.createNamedQuery("findUserById", User.class);
+	public User findUserByMail(String mail) {
+		TypedQuery<User> query = em.createNamedQuery("findUserByMail", User.class).setParameter("mail", mail);
 		return query.getSingleResult();
 	}
 	
 	@Override
-	public Long findUserByMail(String mail) {
-		TypedQuery<User> query = em.createNamedQuery("findUserByMail", User.class).setParameter("mail", mail);
-		return query.getSingleResult().getId();
+	public void deleteCompany(User user){
+		user.setCompany(null);
+		em.merge(user);
 	}
 	
 	@Override
@@ -78,4 +96,26 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 		em.remove(user);
 	}
 	
+	@Override
+	public void	initializeUsers(){
+		Company company=new Company();
+		company.setName("meteDrone");
+		em.persist(company);
+
+		User user=new User();
+		user.setEmail("admin");
+		user.setCompany(company);
+		em.persist(user);
+		
+		User user2=new User();
+		user2.setEmail("toto");
+		user2.setCompany(company);
+		em.persist(user2);
+		
+		User user3=new User();
+		user3.setEmail("jeje");
+		user3.setCompany(company);
+		em.persist(user3);
+	}
+
 }

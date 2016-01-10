@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -24,11 +25,21 @@ public class CompanyEJB implements CompanyEJBRemote, CompanyEJBLocal {
 		return query.getResultList();
 	}
 	
-	public Long createCompany(String name){
+	public Company createCompany(String name){
 		Company companyEntity = new Company();
 		companyEntity.setName(name);
 		em.persist(companyEntity);
-		return companyEntity.getId();
+		return companyEntity;
+	}
+	
+	public Company findCompanyByName(String companyName){
+		try{
+			TypedQuery<Company> query = em.createNamedQuery("findCompanyByName", Company.class).setParameter("companyName",companyName);
+			return query.getSingleResult();
+		}
+		catch (NoResultException e){
+			return null;
+		}
 	}
 	
 }

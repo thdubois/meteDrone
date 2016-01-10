@@ -7,8 +7,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-
-
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -84,20 +82,9 @@
 										<h:outputText value="#{item.price}" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">Drone_Id</f:facet>
-										<h:outputText value="#{item.drone.id}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">Edition</f:facet>
-										<h:link outcome="" onclick="#{singleSensorController.initializeSensor(item.id)}">
-											<span data-toggle="modal" data-target="#myModal3" 
-												class="label label-warning">Éditer</span>
-										</h:link>
-									</h:column>
-									<h:column>
 										<f:facet name="header">Delete</f:facet>
 										<h:form>
-											<h:commandLink class="label label-danger" action="#{singleDroneController.deleteSensor(item.id)}" value="Supprimer" />
+											<h:commandLink class="label label-danger" action="#{singleSensorController.deleteSensor(item.id)}" value="Delete" />
 										</h:form>
 									</h:column>
 								</h:dataTable>

@@ -6,8 +6,6 @@ xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
-
 <h:head>
 <meta name="viewport" content="width=device-width"/>
 <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -72,6 +70,23 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 					</h:form>
 				</h:column>-->
 			</h:dataTable>
+			
+			
+			<div class="box-header">
+              <h2><i class="fa fa-bar-chart"></i>Companies</h2>
+            </div>
+            <div class="box-content">            
+		    <h:dataTable styleClass="table table-striped table-hover" value="#{companyController.companies}" var="company">			
+				<h:column>
+					<f:facet name="header">Company Id</f:facet>
+					<h:outputText value="#{company.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Surname</f:facet>
+					<h:outputText value="#{company.name}" />
+				</h:column>
+			</h:dataTable>
+			</div>
        </div>
      </div>
    </div>
@@ -118,8 +133,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
             <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
             <br />
     
-            <h:outputLabel for="entreprise">Company Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="entreprise" value="#{userController.idCompany}" required="true" size="20" maxlength="20" />
+            <h:outputLabel for="entreprise">Company Name <span class="requis">*</span></h:outputLabel>
+            <h:inputText styleClass="form-control input-md" id="entreprise" value="#{userController.companyName}" required="true" size="20" maxlength="20" />
             <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
             <br />
             

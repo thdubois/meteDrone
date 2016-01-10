@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,15 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 
 @Entity
 @NamedQueries({ 
-	@NamedQuery(name = "findUserById", 
-				query = "SELECT u FROM User u WHERE u.id=:idUser"), 
 	@NamedQuery(name = "findUsers", 
-				query = "SELECT u FROM User u"),
+			query = "SELECT u FROM User u"),
+	@NamedQuery(name = "findUserById", 
+				query = "SELECT u FROM User u WHERE u.id=:userId"), 
+	@NamedQuery(name = "findUserByCompany", 
+				query = "SELECT u FROM User u WHERE u.company.id=:companyId"),
 	@NamedQuery(name = "findUserByMail", 
 				query = "SELECT u FROM User u WHERE u.email=:mail")
 })
@@ -35,9 +35,6 @@ public class User implements Serializable{
 	
 	@ManyToOne
 	private Company company;
-	
-	@OneToMany
-	private List<Suscription> suscriptionList;
 
 	public Long getId() {
 		return id;
@@ -70,13 +67,5 @@ public class User implements Serializable{
 	public User(String email) {
 		super();
 		this.email = email;
-	}
-
-	public List<Suscription> getSuscriptionList() {
-		return suscriptionList;
-	}
-
-	public void setSuscriptionList(List<Suscription> suscriptionList) {
-		this.suscriptionList = suscriptionList;
 	}
 }

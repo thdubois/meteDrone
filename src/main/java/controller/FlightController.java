@@ -31,7 +31,7 @@ public class FlightController implements Serializable{
 	private String date;
 	
 	public void addFlightToDrone(Long idDrone) throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
 		Date newDate = dt.parse(date); 
 		flightEJB.createFlight(newDate, duration, idDrone);
 	}

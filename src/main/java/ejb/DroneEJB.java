@@ -11,6 +11,7 @@ import local.DroneEJBLocal;
 import remote.DroneEJBRemote;
 import entity.Drone;
 import entity.Flight;
+import entity.Sensor;
 
 @Stateless
 public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
@@ -40,6 +41,12 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 	}
 	
 	public void deleteDrone(Long droneId){
+		TypedQuery<Sensor> query=em.createNamedQuery("findSensorsById",Sensor.class).setParameter("droneId", droneId);
+		List<Sensor> sensors=query.getResultList();
+		for (Sensor s: sensors){
+			s.setDrone(null);
+			em.persist(s);
+		}
 		Drone drone=em.find(Drone.class, droneId);
 		em.remove(drone);
 	}

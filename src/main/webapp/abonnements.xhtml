@@ -48,17 +48,33 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
               <h2><i class="fa fa-clone"></i>My Suscriptions </h2>
             </div>
             <div class="box-content">
-            
-            <!-- CONTROLLEUR À AJOUTER (5/01/16 --> 
-                      
-            <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.findSuscriptionsUser()}" var="item">
+                                  
+            <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.findSuscriptionsUser(identity.account.loginName)}" var="item">
 					<h:column>
 						<f:facet name="header">Associated Sensor Id</f:facet>
 						<h:outputText value="#{item.sensor.id}" />
 					</h:column>
 					<h:column>
+						<f:facet name="header">Associated Sensor Name</f:facet>
+						<h:outputText value="#{item.sensor.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Associated Sensor Price</f:facet>
+						<h:outputText value="#{item.sensor.price}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">User Mail</f:facet>
+						<h:outputText value="#{item.user.id}" />
+					</h:column>
+					<h:column>
 						<f:facet name="header">User Mail</f:facet>
 						<h:outputText value="#{item.user.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Option</f:facet>
+						<h:form>
+							<h:commandLink class="label label-danger" action="#{suscriptionController.deleteSuscription(item.id)}" value="Delete" />
+						</h:form>
 					</h:column>
 			</h:dataTable>
             </div> 
@@ -85,26 +101,21 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
       <div class="modal-body">
     <h:form styleClass="form-horizontal">
          <fieldset>
-            <legend>Ajout d'abonnement</legend>
+            <legend>New Suscription</legend>
                         
-            <h:outputLabel for="inServiceDate">Date de début <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="inServiceDate">Beginning Date <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="inServiceDate" value="#{suscriptionController.dateBegin}" required="true" size="20" maxlength="20" />
             <h:message id="inServiceDateMessage" for="inServiceDate" errorClass="erreur" />
             <br />
             
-            <h:outputLabel for="idUser">User_Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="idUser" value="#{suscriptionController.idUser}" required="true" size="20" maxlength="20" />
-            <h:message id="idUserMessage" for="idUser" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="idSensor">Sensor_Id <span class="requis">*</span></h:outputLabel>
+            <h:outputLabel for="idSensor">Sensor Id <span class="requis">*</span></h:outputLabel>
             <h:inputText styleClass="form-control input-md" id="idSensor" value="#{suscriptionController.idSensor}" required="true" size="20" maxlength="20" />
             <h:message id="idSensorMessage" for="idSensor" errorClass="erreur" />
             <br />
         
             <h:messages globalOnly="true" infoClass="info" />
     
-            <h:commandButton styleClass="btn btn-primary" value="Ajouter"  action="#{suscriptionController.addSuscription()}" />
+            <h:commandButton styleClass="btn btn-primary" value="Ajouter"  action="#{suscriptionController.addSuscription(identity.account.loginName)}" />
             <br />
           </fieldset>
         </h:form> 

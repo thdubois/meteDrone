@@ -10,53 +10,41 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import entity.Sensor;
 import entity.Suscription;
 import remote.SuscriptionEJBRemote;
+import remote.UserEJBRemote;
 
 @Named
 @RequestScoped
 public class SuscriptionController implements Serializable{
 
 	private static final long serialVersionUID = 424193175379048984L;
+	
 	@EJB
 	private SuscriptionEJBRemote suscriptionEJB;
-	private List<Suscription> suscriptions;
 	
-	private List<Sensor> sensorsUser;
-
-	private String idUser;	
+	@EJB
+	private UserEJBRemote userEJB;
+		
 	private String idSensor;
 	private String dateBegin;
 	
-	public void addSuscription() throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-		Date date = dt.parse(dateBegin); 
-		suscriptionEJB.createSuscription(date, Long.parseLong(idUser), Long.parseLong(idSensor));
+	public void addSuscription(String mail) throws ParseException{
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date date = dt.parse(dateBegin);
+		suscriptionEJB.createSuscription(date, userEJB.findUserByMail(mail).getId(), Long.parseLong(idSensor));
 	}
 	
-	public List<Suscription> findSuscriptionsUser() {
-		return suscriptionEJB.findSuscriptionsUserById();
+	public void deleteSuscription(Long suscriptId){
+		suscriptionEJB.deleteSuscription(suscriptId);
 	}
-
-	public void setSensorsUser(List<Sensor> sensorsUser) {
-		this.sensorsUser = sensorsUser;
+	
+	public List<Suscription> findSuscriptionsUser(String email) {
+		return suscriptionEJB.findSuscriptionsUserById(email);
 	}
-
-	/*public List<Suscription> getSuscriptionById(Long id){
-		return suscriptionEJB.findSuscriptionById(id);
-	}*/
 	
 	public List<Suscription> getSuscriptions(){
 		return suscriptionEJB.findSuscriptions();
-	}
-
-	public String getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(String idUser) {
-		this.idUser = idUser;
 	}
 
 	public String getIdSensor() {

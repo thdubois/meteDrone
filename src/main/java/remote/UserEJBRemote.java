@@ -9,10 +9,12 @@ import entity.Company;
 
 @Remote
 public interface UserEJBRemote {
-	public void createUser(org.picketlink.idm.model.basic.User user, Long company, String role, String password);
-	public Company findCompany(String mail);
+	public void	initializeUsers();
+	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password);
 	public void deleteUser(User user);
+	public void deleteCompany(User user);
+	public Company findCompany(String email);
 	public List<User> findUsers();
-	public User findUserById();
-	public Long findUserByMail(String mail);
+	public User findUserByMail(String mail);
+	public List<User> findUserByCompany(Long companyId);
 }

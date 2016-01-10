@@ -12,9 +12,7 @@ import javax.inject.Named;
 
 import org.picketlink.idm.IdentityManager;
 import org.picketlink.idm.model.basic.BasicModel;
-import org.picketlink.idm.model.basic.Role;
 
-import entity.Company;
 import entity.User;
 import remote.CompanyEJBRemote;
 import remote.UserEJBRemote;
@@ -48,7 +46,7 @@ public class UserController implements Serializable{
 	
 	public void addUser(){
 		
-		userEJB.createUser(getUserPicket(),idCompany,role,password);
+		userEJB.createUser(getUserPicket(),companyName,role,password);
 	}
 	
 	public List<org.picketlink.idm.model.basic.User> findUsers(){
@@ -59,18 +57,9 @@ public class UserController implements Serializable{
 		}
 		return userPicket;
 	}
-	
-	public void deleteUser(String mailUser){
-		//User user=userEJB.findUserByMail(mailUser);
-		//userEJB.deleteUser(user);
-	}
 		
 	public Long findUserBymail(String email){
-		return userEJB.findUserByMail(email);
-	}
-	
-	public Company findCompanyById(String mail){
-		return userEJB.findCompany(mail);
+		return userEJB.findUserByMail(email).getId();
 	}
 	
 	public String findCompanyName(String email){
@@ -124,7 +113,4 @@ public class UserController implements Serializable{
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
-
 }

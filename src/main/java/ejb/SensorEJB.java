@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 import remote.SensorEJBRemote;
 import entity.Analogic;
 import entity.Drone;
-import entity.Flight;
 import entity.Numeric;
 import entity.Sensor;
 import local.SensorEJBLocal;
@@ -24,7 +23,7 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 
 	@Override
 	public List<Sensor> findSensorsById(Long id) {
-		TypedQuery<Sensor> query=em.createNamedQuery("findSensorsById",Sensor.class).setParameter("idDrone", id);
+		TypedQuery<Sensor> query=em.createNamedQuery("findSensorsById",Sensor.class).setParameter("droneId", id);
 		return query.getResultList();
 	}
 

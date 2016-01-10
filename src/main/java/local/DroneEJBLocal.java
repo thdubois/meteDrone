@@ -12,4 +12,5 @@ public interface DroneEJBLocal {
 	public List<Flight> findFlightsById(Long id);
 	public List<Drone> findDrones();
 	public void createDrone(String model, String name, String city);
+	public void deleteDrone(Long droneId);
 }
