@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -27,7 +28,9 @@ public class Flight implements Serializable {
 
 	private Date date;
 
-	private Long duration;
+	private String beginHour;
+	
+	private String endHour;
 
 	@ManyToOne
 	private Drone drone;
@@ -37,17 +40,21 @@ public class Flight implements Serializable {
 		
 	}
 
-	public Flight(Long id, Date date, Long duration) {
+	public Flight(Long id, Date date ,String beginHour,String endHour) {
 		super();
 		this.id = id;
 		this.date = date;
-		this.duration = duration;
+		this.beginHour = beginHour;
+		this.endHour = endHour;
+		
 	}
 
-	public Flight(Date date, Long duration) {
+	public Flight( Date date ,String beginHour,String endHour) {
 		super();
 		this.date = date;
-		this.duration = duration;
+		this.beginHour = beginHour;
+		this.endHour = endHour;
+		
 	}
 
 	public Long getId() {
@@ -66,12 +73,22 @@ public class Flight implements Serializable {
 		this.date = date;
 	}
 
-	public Long getDuration() {
-		return duration;
+
+
+	public String getBeginHour() {
+		return beginHour;
 	}
 
-	public void setDuration(Long duration) {
-		this.duration = duration;
+	public void setBeginHour(String beginHour) {
+		this.beginHour = beginHour;
+	}
+
+	public String getEndHour() {
+		return endHour;
+	}
+
+	public void setEndHour(String endHour) {
+		this.endHour = endHour;
 	}
 
 	public Drone getDrone() {

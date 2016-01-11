@@ -2,94 +2,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
 
 <h:head>
-<meta name="viewport" content="width=device-width"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/core.min.js"></script>
-
-
-<title>Add a User</title>
+	<meta name="viewport" content="width=device-width" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.min.js"></script>
+	<title>Drones</title>
 </h:head>
+
 <h:body id="plateformBody">
-<ui:include src="header.xhtml" /> 
-  
-<div class="container">
-    <div class="row">
-        
-      <!-- start: Main Menu -->
-      <div id="sidebar-left" class="col-lg-2 col-sm-1">
-	  	<ui:include src="leftMenu.xhtml" />
-      </div>
-      <!-- end: Main Menu -->
-            
-      <!-- start: Content -->
-      <div id="content" class="col-lg-10 col-sm-11">
-        <!-- Main container : c'est ici que les widgets et graphs seront affichés-->
-      <div class="row"> 
-      </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-user"></i>Drones disponibles</h2>
-                </div>
-                <div class="box-content">
-                
-                <!-- ON AFFICHE ICI LA LISTE DES DRONES DONT L'UTILISATEUR EST ABONNÉ À UN DE SES CAPTEUR -->
-                <h:dataTable styleClass="table table-striped table-hover"
-							 value="#{droneController.drones}" 
-							 var="item">
-							<h:column>
-								<f:facet name="header">Icon</f:facet>
-								<h:graphicImage styleClass="iconList" value="img/drone.png" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Id</f:facet>
-								<h:outputText value="#{item.id}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Model</f:facet>
-								<h:outputText value="#{item.model}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Name</f:facet>
-								<h:outputText value="#{item.name}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">City</f:facet>
-								<h:outputText value="#{item.city}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">File</f:facet>
-								<h:form>
-									<h:commandLink class="label label-default" action="#{singleDroneController.initializeDrone(item.id)}" value="See Drone" />
-								</h:form>
-							</h:column>
-				</h:dataTable>                  
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end: Content -->
-        
-        </div><!--/row-->   
-    
-  </div>
-  
-  
-  <div class="clearfix"></div>
-  
-<ui:include src="footer.xhtml" />
+	<ui:include src="header.xhtml" />
+	<div class="container">
+		<div class="row">
+			<div id="sidebar-left" class="col-lg-2 col-sm-1">
+				<ui:include src="leftMenu.xhtml" />
+			</div>
+			<div id="content" class="col-lg-10 col-sm-11">
+				<div class="row"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-user"></i>Available Drones
+								</h2>
+							</div>
+							<div class="box-content">
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{droneController.drones}" var="item">
+									<h:column>
+										<f:facet name="header">Icon</f:facet>
+										<h:graphicImage styleClass="iconList" value="img/drone.png" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Id</f:facet>
+										<h:outputText value="#{item.id}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Modele</f:facet>
+										<h:outputText value="#{item.model}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{item.name}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">City</f:facet>
+										<h:outputText value="#{item.city}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">About</f:facet>
+										<h:form>
+											<h:commandLink class="label label-default" action="#{singleDroneController.initializeDrone(item.id)}" value="See Drone" />
+										</h:form>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<ui:include src="footer.xhtml" />
 </h:body>
 </html>

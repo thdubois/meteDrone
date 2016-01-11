@@ -2,132 +2,156 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
 <h:head>
-<meta name="viewport" content="width=device-width"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/core.min.js"></script>
+	<meta name="viewport" content="width=device-width" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.min.js"></script>
 
 
-<title>Add a User</title>
+	<title>Add a User</title>
 </h:head>
 <ui:fragment rendered="#{not identity.loggedIn}">
-		    <ui:include src="connexion.xhtml" /> 
-	    </ui:fragment>
+	<ui:include src="connexion.xhtml" />
+</ui:fragment>
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
- <ui:include src="header.xhtml" /> 
-  <!-- end: Header -->
-  
-<div class="container">
-    <div class="row">
-        
-      <!-- start: Main Menu -->
-      <div id="sidebar-left" class="col-lg-2 col-sm-1">
-        
-        
-	  <ui:include src="leftMenu.xhtml" />
-      </div>
-      <!-- end: Main Menu -->
-            
-      <!-- start: Content -->
-      <div id="content" class="col-lg-10 col-sm-11">
-        <!-- Main container : c'est ici que les widgets et graphs seront affichés--> 
-      <div class="row"> 
-        <div class="col-lg-12">
-          <button type="button" class="btn btn-success btn-setting" data-toggle="modal" >New Suscription </button><br/><br/>
-          <div class="box">
-            <div class="box-header">
-              <h2><i class="fa fa-clone"></i>My Suscriptions </h2>
-            </div>
-            <div class="box-content">
-                                  
-            <h:dataTable styleClass="table table-striped table-hover" value="#{suscriptionController.findSuscriptionsUser(identity.account.loginName)}" var="item">
-					<h:column>
-						<f:facet name="header">Associated Sensor Id</f:facet>
-						<h:outputText value="#{item.sensor.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Associated Sensor Name</f:facet>
-						<h:outputText value="#{item.sensor.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Associated Sensor Price</f:facet>
-						<h:outputText value="#{item.sensor.price}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">User Mail</f:facet>
-						<h:outputText value="#{item.user.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">User Mail</f:facet>
-						<h:outputText value="#{item.user.email}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Option</f:facet>
-						<h:form>
-							<h:commandLink class="label label-danger" action="#{suscriptionController.deleteSuscription(item.id)}" value="Delete" />
-						</h:form>
-					</h:column>
-			</h:dataTable>
-            </div> 
-          </div>  
-        </div><!--/col-->
-        
-      </div>
-      </div>
-      <!-- end: Content -->
-        
-      </div><!--/row-->   
-    
-  </div>
-  
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<ui:include src="header.xhtml" />
+	<!-- end: Header -->
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nouvel abonnement</h4>
-      </div>
-      <div class="modal-body">
-    <h:form styleClass="form-horizontal">
-         <fieldset>
-            <legend>New Suscription</legend>
-                        
-            <h:outputLabel for="inServiceDate">Beginning Date <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="inServiceDate" value="#{suscriptionController.dateBegin}" required="true" size="20" maxlength="20" />
-            <h:message id="inServiceDateMessage" for="inServiceDate" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="idSensor">Sensor Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="idSensor" value="#{suscriptionController.idSensor}" required="true" size="20" maxlength="20" />
-            <h:message id="idSensorMessage" for="idSensor" errorClass="erreur" />
-            <br />
-        
-            <h:messages globalOnly="true" infoClass="info" />
-    
-            <h:commandButton styleClass="btn btn-primary" value="Ajouter"  action="#{suscriptionController.addSuscription(identity.account.loginName)}" />
-            <br />
-          </fieldset>
-        </h:form> 
-        </div>
+	<div class="container">
+		<div class="row">
+
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-lg-2 col-sm-1">
+
+
+				<ui:include src="leftMenu.xhtml" />
+			</div>
+			<!-- end: Main Menu -->
+
+			<!-- start: Content -->
+			<div id="content" class="col-lg-10 col-sm-11">
+				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal">New Suscription</button>
+						<br />
+						<br />
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-clone"></i>My Subscriptions
+								</h2>
+							</div>
+							<div class="box-content">
+
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{suscriptionController.findSuscriptionsUser(identity.account.loginName)}"
+									var="item">
+									<h:column>
+										<f:facet name="header">Associated Sensor Name</f:facet>
+										<h:outputText value="#{item.sensor.name}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Associated Sensor Price</f:facet>
+										<h:outputText value="#{item.sensor.price}€/mois" />
+									</h:column>
+									
+									<h:column>
+										<f:facet name="header">City</f:facet>
+										<h:outputText value="#{item.sensor.drone.city}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Begin Date</f:facet>
+										<h:outputText value="#{item.dateBegin}" >
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+									<h:column>
+										<f:facet name="header">Data</f:facet>
+										<h:form>
+											<h:commandLink class="label label-default" action="#{singleSensorController.initializeSensor(item.id)}" value="See Sensor Data" />
+										</h:form>
+									</h:column>
+									<h:column>
+										<f:facet name="header">Option</f:facet>
+										<h:form>
+											<h:commandLink class="label label-danger"
+												action="#{suscriptionController.deleteSuscription(item.id)}"
+												value="Delete" />
+										</h:form>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+					</div>
+					<!--/col-->
+
+				</div>
+			</div>
+			<!-- end: Content -->
+
+		</div>
+		<!--/row-->
+
 	</div>
-  </div>
-</div>
 
-  
-  <div class="clearfix"></div>
-	  <ui:include src="footer.xhtml" />
-  
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Nouvel abonnement</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+							<legend>New Suscription</legend>
+							<h:outputLabel for="inServiceDate">Beginning Date <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<p:outputLabel for="inline" value="Begin Date:" />
+							<p:calendar id="inline" pattern = "dd/MM/yyyy" value="#{suscriptionController.dateBegin}"
+								mode="inline" />
+								
+
+
+							<h:selectOneMenu id="subscriptions"
+								value="#{suscriptionController.idSensor}">
+								<f:selectItems value="#{suscriptionController.findDroneSensors()}" var="sensor" itemValue="#{sensor.id}" itemLabel="#{sensor.drone.city} - #{sensor.name} - #{sensor.price} €/mois" />
+								
+							</h:selectOneMenu>
+							<br></br>
+
+						
+
+							<h:messages globalOnly="true" infoClass="info" />
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{suscriptionController.addSuscription(identity.account.loginName)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="clearfix"></div>
+	<ui:include src="footer.xhtml" />
+
 </h:body>
 
 

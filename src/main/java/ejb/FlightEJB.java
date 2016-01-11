@@ -30,10 +30,11 @@ public class FlightEJB implements FlightEJBRemote, FlightEJBLocal {
 		return query.getResultList();
 	}
 	
-	public void createFlight(Date date, Long duration, Long idDrone){
+	public void createFlight(Date date, Long idDrone, String beginHour, String endHour){
 		Flight flightEntity = new Flight();
 		flightEntity.setDate(date);
-		flightEntity.setDuration(duration);
+		flightEntity.setBeginHour(beginHour);
+		flightEntity.setEndHour(endHour);
 		Drone drone=em.find(Drone.class, idDrone);
 		flightEntity.setDrone(drone);
 		em.persist(flightEntity);	

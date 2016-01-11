@@ -35,14 +35,17 @@
 
 			<!-- start: Content -->
 			<div id="content" class="col-lg-10 col-sm-11">
-				<div class="row">
-					<div class="col-lg-12">
-						<button type="button" class="btn btn-success btn-setting"
-							data-toggle="modal" data-target="#myModal1">New Sensor
-						</button>
-						<br /> <br />
+				<ui:fragment
+					rendered="#{authorizationChecker.hasApplicationRole('administrateur')}">
+					<div class="row">
+						<div class="col-lg-12">
+							<button type="button" class="btn btn-success btn-setting"
+								data-toggle="modal" data-target="#myModal1">New Sensor
+							</button>
+							<br /> <br />
+						</div>
 					</div>
-				</div>
+				</ui:fragment>
 
 				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
 				<div class="row">
@@ -62,10 +65,6 @@
 										<h:graphicImage styleClass="iconList" value="img/drone.png" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">Id</f:facet>
-										<h:outputText value="#{item.id}" />
-									</h:column>
-									<h:column>
 										<f:facet name="header">Name</f:facet>
 										<h:outputText value="#{item.name}" />
 									</h:column>
@@ -75,16 +74,20 @@
 									</h:column>
 									<h:column>
 										<f:facet name="header">In Service Date</f:facet>
-										<h:outputText value="#{item.inServiceDate}" />
+										<h:outputText value="#{item.inServiceDate}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
 									</h:column>
 									<h:column>
 										<f:facet name="header">Price</f:facet>
 										<h:outputText value="#{item.price}" />
 									</h:column>
-									<h:column>
+									<h:column rendered="#{authorizationChecker.hasApplicationRole('administrateur')}">
 										<f:facet name="header">Delete</f:facet>
 										<h:form>
-											<h:commandLink class="label label-danger" action="#{singleSensorController.deleteSensor(item.id)}" value="Delete" />
+											<h:commandLink class="label label-danger"
+												action="#{singleSensorController.deleteSensor(item.id)}"
+												value="Delete" />
 										</h:form>
 									</h:column>
 								</h:dataTable>
@@ -93,14 +96,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<button type="button" class="btn btn-success btn-setting"
-							data-toggle="modal" data-target="#myModal2">Add flight
-						</button>
-						<br /> <br />
+				<ui:fragment
+					rendered="#{authorizationChecker.hasApplicationRole('administrateur') or authorizationChecker.hasApplicationRole('pilote') }">
+					<div class="row">
+						<div class="col-lg-12">
+							<button type="button" class="btn btn-success btn-setting"
+								data-toggle="modal" data-target="#myModal2">Add flight
+							</button>
+							<br /> <br />
+						</div>
 					</div>
-				</div>
+				</ui:fragment>
 
 				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
 
@@ -121,27 +127,29 @@
 										<h:graphicImage styleClass="iconList" value="img/drone.png" />
 									</h:column>
 									<h:column>
-										<f:facet name="header">Id</f:facet>
-										<h:outputText value="#{item.id}" />
-									</h:column>
-									<h:column>
 										<f:facet name="header">Date</f:facet>
-										<h:outputText value="#{item.date}" />
+										<h:outputText value="#{item.date}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
 									</h:column>
 									<h:column>
-										<f:facet name="header">Duration</f:facet>
-										<h:outputText value="#{item.duration}" />
+										<f:facet name="header">Begin Hour</f:facet>
+										<h:outputText value="#{item.beginHour}">
+											<f:convertDateTime type="date" pattern="HH:mm" />
+										</h:outputText>
 									</h:column>
 									<h:column>
-										<f:facet name="header">Edition</f:facet>
-										<h:link id="FlightDelete" outcome="" onclick="">
-											<span class="label label-warning">Éditer</span>
-										</h:link>
+										<f:facet name="header">End Hour</f:facet>
+										<h:outputText value="#{item.endHour}">
+											<f:convertDateTime type="date" pattern="HH:mm" />
+										</h:outputText>
 									</h:column>
-									<h:column>
+									<h:column rendered="#{authorizationChecker.hasApplicationRole('administrateur') or authorizationChecker.hasApplicationRole('pilote')}">
 										<f:facet name="header">Delete</f:facet>
 										<h:form>
-											<h:commandLink class="label label-danger" action="#{singleDroneController.deleteFlight(item.id)}" value="Supprimer" />
+											<h:commandLink class="label label-danger"
+												action="#{singleDroneController.deleteFlight(item.id)}"
+												value="Supprimer" />
 										</h:form>
 									</h:column>
 								</h:dataTable>
@@ -171,7 +179,8 @@
 						<fieldset>
 							<legend>Creation</legend>
 
-							<h:outputLabel for="nom">Name <span class="requis">*</span>
+							<h:outputLabel for="nom">Name <span
+									class="requis">*</span>
 							</h:outputLabel>
 							<h:inputText styleClass="form-control input-md" id="nom"
 								value="#{sensorController.name}" required="true" size="20"
@@ -188,14 +197,16 @@
 							<h:message id="modeleMessage" for="modele" errorClass="erreur" />
 							<br />
 
-							<h:outputLabel for="type">Type <span
+							<h:outputLabel for="entreprise">Type <span
 									class="requis">*</span>
 							</h:outputLabel>
-							<h:inputText styleClass="form-control input-md" id="type"
-								value="#{sensorController.typeSensor}" required="true" size="20"
-								maxlength="20" />
-							<h:message id="typeMessage" for="type" errorClass="erreur" />
-							<br />
+							<h:selectOneMenu id="subscriptions"
+								value="#{sensorController.typeSensor}">
+								<f:selectItem id="item1" itemLabel="Numeric" itemValue="1" />
+								<f:selectItem id="item2" itemLabel="Analogic" itemValue="0" />
+
+							</h:selectOneMenu>
+							<br></br>
 
 							<h:outputLabel for="price">Price <span
 									class="requis">*</span>
@@ -209,10 +220,9 @@
 							<h:outputLabel for="date">In Service Date <span
 									class="requis">*</span>
 							</h:outputLabel>
-							<h:inputText styleClass="form-control input-md" id="date"
-								value="#{sensorController.inServiceDate}" required="true"
-								size="20" maxlength="20" />
-							<h:message id="dateMessage" for="date" errorClass="erreur" />
+							<p:calendar id="inline" pattern="dd/MM/yyyy"
+								value="#{sensorController.inServiceDate}" mode="inline" />
+
 							<br />
 
 							<h:messages globalOnly="true" infoClass="info" />
@@ -240,24 +250,32 @@
 					<h:form styleClass="form-horizontal">
 						<!-- AJOUTER LE FORMULAIRE DE NOUVEAU VOL ICI -->
 						<fieldset>
-							<legend>Programmation</legend>
+							<legend>Programation</legend>
 
-							<h:outputLabel for="duration">Date (format dd/mm/YYYY hh:mm)<span
+							<h:outputLabel for="date">In Service Date <span
 									class="requis">*</span>
 							</h:outputLabel>
-							<h:inputText styleClass="form-control input-md" id="date"
-								value="#{flightController.date}" required="true" size="20"
-								maxlength="20" />
-							<h:message id="dateId" for="date" errorClass="erreur" />
-
-							<h:outputLabel for="duration">Duration (minutes)<span
-									class="requis">*</span>
-							</h:outputLabel>
-							<h:inputText styleClass="form-control input-md" id="duration"
-								value="#{flightController.duration}" required="true" size="20"
-								maxlength="20" />
-							<h:message id="durationId" for="duration" errorClass="erreur" />
+							<p:calendar id="inline" value="#{flightController.date}"
+								pattern="yyyy-MM-dd" mode="inline" />
 							<br />
+
+							<h:outputLabel for="beginHour">Begin Hour (hh:mm) <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="beginHour"
+								value="#{flightController.beginHour}" required="true" size="20"
+								maxlength="20" />
+
+							<h:outputLabel for="endHour">End Hour (hh:mm) <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<h:inputText styleClass="form-control input-md" id="endHour"
+								value="#{flightController.endHour}" required="true" size="20"
+								maxlength="20" />
+
+
+
+
 
 							<h:messages globalOnly="true" infoClass="info" />
 
@@ -292,7 +310,8 @@
 							<h:inputText styleClass="form-control input-md" id="nom"
 								value="#{sensorController.name}" required="true" size="20"
 								maxlength="60"></h:inputText>
-							<p:watermark for="nom" value="#{singleSensorController.sensor.name}" />
+							<p:watermark for="nom"
+								value="#{singleSensorController.sensor.name}" />
 							<h:message id="nomMessage" for="nom" errorClass="erreur" />
 							<br />
 
@@ -302,7 +321,8 @@
 							<h:inputText styleClass="form-control input-md" id="modele"
 								value="#{sensorController.model}" required="true" size="20"
 								maxlength="20" />
-							<p:watermark for="modele" value="#{singleSensorController.sensor.model}" />
+							<p:watermark for="modele"
+								value="#{singleSensorController.sensor.model}" />
 							<h:message id="modeleMessage" for="modele" errorClass="erreur" />
 							<br />
 
@@ -312,7 +332,8 @@
 							<h:inputText styleClass="form-control input-md" id="type"
 								value="#{sensorController.typeSensor}" required="true" size="20"
 								maxlength="20" />
-							<p:watermark for="type" value="#{singleSensorController.sensor.model}" />
+							<p:watermark for="type"
+								value="#{singleSensorController.sensor.model}" />
 							<h:message id="typeMessage" for="type" errorClass="erreur" />
 							<br />
 
@@ -322,7 +343,8 @@
 							<h:inputText styleClass="form-control input-md" id="price"
 								value="#{sensorController.price}" required="true" size="20"
 								maxlength="20" />
-							<p:watermark for="type" value="#{singleSensorController.sensor.price}" />
+							<p:watermark for="type"
+								value="#{singleSensorController.sensor.price}" />
 							<h:message id="priceMessage" for="price" errorClass="erreur" />
 							<br />
 
@@ -332,7 +354,8 @@
 							<h:inputText styleClass="form-control input-md" id="date"
 								value="#{sensorController.inServiceDate}" required="true"
 								size="20" maxlength="20" />
-							<p:watermark for="type" value="#{singleSensorController.sensor.inServiceDate}" />
+							<p:watermark for="type"
+								value="#{singleSensorController.sensor.inServiceDate}" />
 							<h:message id="dateMessage" for="date" errorClass="erreur" />
 							<br />
 

@@ -2,254 +2,116 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
-
-
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-<meta name="viewport" content="width=device-width"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/core.min.js"></script>
-
-<title>Add a User</title>
+	<meta name="viewport" content="width=device-width" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.min.js"></script>
+	<title>Dashboard</title>
 </h:head>
-  		<ui:fragment rendered="#{not identity.loggedIn}">
-		    <ui:include src="connexion.xhtml" /> 
-	    </ui:fragment>
-	  
+
+<ui:fragment rendered="#{not identity.loggedIn}">
+	<ui:include src="connexion.xhtml" />
+</ui:fragment>
+
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
-<ui:include src="header.xhtml"/> 
-  <!-- end: Header -->
-  
-<div class="container">
-    <div class="row">
-        
-      <!-- start: Main Menu -->
-      <div id="sidebar-left" class="col-lg-2 col-sm-1">
-        
-        
-	  <ui:include src="leftMenu.xhtml" />
-	  
-      </div>
-      <!-- end: Main Menu -->
-            
-      <!-- start: Content -->
-      <div id="content" class="col-lg-10 col-sm-11">
-      
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-bar-chart"></i>Numeric Sensors List</h2>
-            	</div>
-              	<div class="box-content">
-                <h:dataTable styleClass="table table-striped table-hover"
-							 value="#{numericController.numerics}" 
-							 var="item">
-							<h:column>
-								<f:facet name="header">Sensor Id</f:facet>
-								<h:outputText value="#{item.id}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Name</f:facet>
-								<h:outputText value="#{item.name}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Model</f:facet>
-								<h:outputText value="#{item.model}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Price</f:facet>
-								<h:outputText value="#{item.price}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">In Service Date</f:facet>
-								<h:outputText value="#{item.inServiceDate}" />
-							</h:column>
-				</h:dataTable>   
-                  
-              	</div>
-            </div>
-          </div>
-          
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-area-chart"></i>Analogic Sensors List</h2>
-                </div>
-                <div class="box-content">
-                <h:dataTable styleClass="table table-striped table-hover"
-							 value="#{analogicController.analogics}" 
-							 var="item">
-							<h:column>
-								<f:facet name="header">Sensor Id</f:facet>
-								<h:outputText value="#{item.id}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Name</f:facet>
-								<h:outputText value="#{item.name}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Model</f:facet>
-								<h:outputText value="#{item.model}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Sensor Price</f:facet>
-								<h:outputText value="#{item.price}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">In Service Date</f:facet>
-								<h:outputText value="#{item.inServiceDate}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Associated Drone Id</f:facet>
-								<h:outputText value="#{item.drone.id}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Localisation</f:facet>
-								<h:outputText value="#{item.drone.city}" />
-							</h:column>
-				</h:dataTable>                   
-              </div>
-            </div>
-          </div>
-        </div>
-
-          <div class="row">
-            <div class="col-md-4">
-              <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-newspaper-o"></i>News</h2>
-                </div>
-                <div class="box-content">
-                  Emplacement des news
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-building"></i>Notre entreprise</h2>
-                </div>
-                <div class="box-content">
-                  <p>Métédrone” est une société composée de 4 personnes, spécialisée dans l’utilisation de drones météo. Cette société a l’habitude d’envoyer des drones dans des zones stratégiques afin d’y effectuer des relevés. Les données sont ensuite revendues et exploitées par des organismes divers (Météo France, Aiguilleurs du ciel, Météorologistes indépendants …).</p>
-                  <img id="firm-logo" height="100" src="img/meteDroneLight.png"/>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box">
-                <div class="box-header">
-                  <h2><i class="fa fa-phone"></i>Contactez-nous</h2>
-                </div>
-                <div class="box-content">
-                  <ul class="dashboard-list">
-                    <li>
-                      <a href="widgets.html#">
-                        <img class="avatar" alt="Jérémy" src="img/maleuser.png"/>
-                      </a>
-                      <strong>Nom:</strong> <a href="widgets.html#">Jérémy Bancker</a>
-                      <strong>Mail:</strong>jeremy.bancker@etu.esisar.grenoble-inp.fr<br/>
-                      <strong>Role:</strong> Admin                                
-                    </li>
-                    <li>
-                      <a href="widgets.html#">
-                        <img class="avatar" alt="Thomas" src="img/maleuser.png"/>
-                      </a>
-                      <strong>Nom:</strong> <a href="widgets.html#">Thomas Dubois</a><br/>
-                      <strong>Mail:</strong> thomas.dubois@etu.esisar.grenoble-inp.fr<br/>
-                      <strong>Role:</strong> Admin                                   
-                    </li>
-                    <li>
-                      <a href="widgets.html#">
-                        <img class="avatar" alt="Doriane" src="img/maleuser.png"/>
-                      </a>
-                      <strong>Nom:</strong> <a href="widgets.html#">Doriane Perard</a><br/>
-                      <strong>Mail:</strong> doriane.perard@etu.esisar.grenoble-inp.fr<br/>
-                      <strong>Role:</strong> Admin                                    
-                    </li>
-                    <li>
-                      <a href="widgets.html#">
-                        <img class="avatar" alt="Olivier" src="img/maleuser.png"/>
-                      </a>
-                      <strong>Nom:</strong> <a href="widgets.html#">Olivier Kastel</a><br/>
-                      <strong>Mail:</strong> olivier.kastel@etu.esisar.grenoble-inp.fr<br/>
-                      <strong>Role:</strong> Admin                                    
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-      <!-- end: Content -->
-        
-        </div><!--/row-->   
-    
-  </div>
-  
-  <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nouveau Capteur</h4>
-      </div>
-      <div class="modal-body">     
-        <h:form>
-         <fieldset>
-            <legend>Ajout de Capteur</legend>
-                     
-            <h:outputLabel for="nom">Nom <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="nom" value="#{sensorController.name}" required="true" size="20" maxlength="60" />
-            <h:message id="nomMessage" for="nom" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="modele">Modele <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="modele" value="#{sensorController.model}" required="true" size="20" maxlength="20" />
-            <h:message id="modeleMessage" for="modele" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="type">Type de Capteur <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="type" value="#{sensorController.typeSensor}" required="true" size="20" maxlength="20" />
-            <h:message id="typeMessage" for="type" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="inServiceDate">Date de mise en service <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="inServiceDate" value="#{sensorController.inServiceDate}" required="true" size="20" maxlength="20" />
-            <h:message id="inServiceDateMessage" for="inServiceDate" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="prix">Prix <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="prix" value="#{sensorController.price}" required="true" size="20" maxlength="20" />
-            <h:message id="prixMessage" for="prix" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="idDrone">Drone_Id <span class="requis">*</span></h:outputLabel>
-            <h:inputText id="idDrone" value="#{sensorController.idDrone}" required="true" size="20" maxlength="20" />
-            <h:message id="idDroneMessage" for="idDrone" errorClass="erreur" />
-            <br />
-        
-            <h:messages globalOnly="true" infoClass="info" />
-    
-            <h:commandButton value="Ajouter"  action="#{sensorController.addSensor()}"  styleClass="sansLabel" />
-            <br />
-          </fieldset>
-        </h:form>   	
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="clearfix"></div>
-  
-<ui:include src="footer.xhtml" />
+	<ui:include src="header.xhtml" />
+	<div class="container">
+		<div class="row">
+			<div id="sidebar-left" class="col-lg-2 col-sm-1">
+				<ui:include src="leftMenu.xhtml" />
+			</div>
+			<div id="content" class="col-lg-10 col-sm-11">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-area-chart"></i>Sensors Summary
+								</h2>
+							</div>
+							<div class="box-content">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-newspaper-o"></i>News
+								</h2>
+							</div>
+							<div class="box-content">News</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-building"></i>Our Company
+								</h2>
+							</div>
+							<div class="box-content">
+								<p>Métédrone” est une société composée de 4 personnes,
+									spécialisée dans l’utilisation de drones météo. Cette société a
+									l’habitude d’envoyer des drones dans des zones stratégiques
+									afin d’y effectuer des relevés. Les données sont ensuite
+									revendues et exploitées par des organismes divers (Météo
+									France, Aiguilleurs du ciel, Météorologistes indépendants …).</p>
+								<img id="firm-logo" height="100" src="img/meteDroneLight.png" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-phone"></i>Contact Us
+								</h2>
+							</div>
+							<div class="box-content">
+								<ul class="dashboard-list">
+									<li><a href="widgets.html#"> <img class="avatar"
+											alt="Jérémy" src="img/maleuser.png" />
+									</a> <strong>Name:</strong> <a href="widgets.html#">Jérémy
+											Bancker</a> <strong>Mail:</strong>jeremy.bancker@etu.esisar.grenoble-inp.fr<br />
+										<strong>Role:</strong> Admin</li>
+									<li><a href="widgets.html#"> <img class="avatar"
+											alt="Thomas" src="img/maleuser.png" />
+									</a> <strong>Name:</strong> <a href="widgets.html#">Thomas
+											Dubois</a><br /> <strong>Mail:</strong>
+										thomas.dubois@etu.esisar.grenoble-inp.fr<br /> <strong>Role:</strong>
+										Admin</li>
+									<li><a href="widgets.html#"> <img class="avatar"
+											alt="Doriane" src="img/maleuser.png" />
+									</a> <strong>Name:</strong> <a href="widgets.html#">Doriane
+											Perard</a><br /> <strong>Mail:</strong>
+										doriane.perard@etu.esisar.grenoble-inp.fr<br /> <strong>Role:</strong>
+										Admin</li>
+									<li><a href="widgets.html#"> <img class="avatar"
+											alt="Olivier" src="img/maleuser.png" />
+									</a> <strong>Name:</strong> <a href="widgets.html#">Olivier
+											Kastel</a><br /> <strong>Mail:</strong>
+										olivier.kastel@etu.esisar.grenoble-inp.fr<br /> <strong>Role:</strong>
+										Admin</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<ui:include src="footer.xhtml" />
 </h:body>
 </html>

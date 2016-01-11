@@ -13,7 +13,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-	<title>Service meteo</title>
+	<title>Weather SOAP</title>
 </h:head>
 
 <ui:fragment rendered="#{not identity.loggedIn}">
@@ -22,8 +22,6 @@
 
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />
-	<!-- end: Header -->
-
 	<div class="container">
 		<div class="row">
 			<div id="sidebar-left" class="col-lg-2 col-sm-1">
@@ -35,26 +33,34 @@
 						<div class="box">
 							<div class="box-header">
 								<h2>
-									<i class="fa fa-sun-o"></i>Prevision meteo
+									<i class="fa fa-sun-o"></i>Weather Forecast
 								</h2>
 							</div>
 							<div class="box-content">
 								<h:form>
 									<fieldset>
-										<h:inputText id="ville" value="#{villeController.ville}"
-											required="true" size="20" maxlength="20" />
-										<h:message id="villeMessage" for="ville" errorClass="erreur" />
-										<h:messages globalOnly="true" infoClass="info" />
-										<h:commandButton value="Chercher"
-											action="#{villeController.previsionMeteo()}"
-											styleClass="sansLabel" style="display:inline;margin-left:5px"/>
-										<br />
+
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="input-group">
+													<span class="input-group-btn" style="width:250px;"> <h:inputText
+															styleClass="form-control" id="ville"
+															value="#{villeController.ville}" required="true" length="20" style="width:100%;"/> <h:message
+															id="villeMessage" for="ville" errorClass="erreur" /> <h:messages
+															globalOnly="true" infoClass="info" /></span> <span
+														class="input-group-btn"> <h:commandButton
+															styleClass="btn btn-secondary" value="Chercher"
+															action="#{villeController.previsionMeteo()}" />
+													</span><br />
+												</div>
+											</div>
+										</div>
 									</fieldset>
 								</h:form>
 								<h:dataTable styleClass="table table-striped table-hover"
 									value="#{villeController.listMeteo}" var="item">
 									<h:column>
-										<f:facet name="header">Ville</f:facet>
+										<f:facet name="header">City</f:facet>
 										<h:outputText value="#{villeController.ville}" />
 									</h:column>
 									<h:column>

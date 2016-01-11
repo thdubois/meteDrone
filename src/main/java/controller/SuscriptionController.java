@@ -10,7 +10,9 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import entity.Sensor;
 import entity.Suscription;
+import remote.SensorEJBRemote;
 import remote.SuscriptionEJBRemote;
 import remote.UserEJBRemote;
 
@@ -22,18 +24,23 @@ public class SuscriptionController implements Serializable{
 	
 	@EJB
 	private SuscriptionEJBRemote suscriptionEJB;
+	@EJB
+	private SensorEJBRemote sensorEJB;
 	
 	@EJB
 	private UserEJBRemote userEJB;
 		
 	private String idSensor;
-	private String dateBegin;
+	private Date dateBegin = new Date();
 	
 	public void addSuscription(String mail) throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
-		Date date = dt.parse(dateBegin);
-		suscriptionEJB.createSuscription(date, userEJB.findUserByMail(mail).getId(), Long.parseLong(idSensor));
+		suscriptionEJB.createSuscription(dateBegin, userEJB.findUserByMail(mail).getId(), Long.parseLong(idSensor));
 	}
+	
+	public List <Sensor> findDroneSensors(){
+		return sensorEJB.findDroneSensors();
+	}
+	
 	
 	public void deleteSuscription(Long suscriptId){
 		suscriptionEJB.deleteSuscription(suscriptId);
@@ -55,11 +62,11 @@ public class SuscriptionController implements Serializable{
 		this.idSensor = idSensor;
 	}
 
-	public String getDateBegin() {
+	public Date getDateBegin() {
 		return dateBegin;
 	}
 
-	public void setDateBegin(String dateBegin) {
+	public void setDateBegin(Date dateBegin) {
 		this.dateBegin = dateBegin;
 	}
 	

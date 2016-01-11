@@ -11,4 +11,24 @@
     TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#drones.xhtml" PATH="/drones.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#drones.xhtml:0" NAME="item"
+   PATH="/drones.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="initSuccess::#undrone.xhtml" NAME="output"
+    PATH="/undrone.xhtml" TARGET="rules:#undrone.xhtml"
+    TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#abonnements.xhtml" PATH="/abonnements.xhtml"
+  SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#abonnements.xhtml:0" NAME="item"
+   PATH="/abonnements.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="initSuccess::#capteur.xhtml" NAME="output"
+    PATH="/capteur.xhtml" TARGET="rules:#capteur.xhtml"
+    TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#capteur.xhtml" PATH="/capteur.xhtml"
+  SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

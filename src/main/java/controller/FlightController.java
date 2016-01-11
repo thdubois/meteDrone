@@ -27,13 +27,12 @@ public class FlightController implements Serializable{
 	
 	private List<Flight> flightsId;
  	
-	private Long duration;
-	private String date;
+	private Date date = new Date();
+	private String beginHour;
+	private String endHour;
 	
 	public void addFlightToDrone(Long idDrone) throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
-		Date newDate = dt.parse(date); 
-		flightEJB.createFlight(newDate, duration, idDrone);
+		flightEJB.createFlight(date, idDrone, beginHour, endHour);
 	}
 	
 	public List<Flight> getFlights(){
@@ -52,20 +51,31 @@ public class FlightController implements Serializable{
 		this.flightsId = flightsId;
 	}
 
-	public Long getDuration() {
-		return duration;
-	}
 
-	public void setDuration(Long duration) {
-		this.duration = duration;
-	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	public String getBeginHour() {
+		return beginHour;
+	}
+
+	public void setBeginHour(String beginHour) {
+		this.beginHour = beginHour;
+	}
+
+	public String getEndHour() {
+		return endHour;
+	}
+
+	public void setEndHour(String endHour) {
+		this.endHour = endHour;
+	}
+
+	
 }

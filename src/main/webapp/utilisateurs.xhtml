@@ -2,163 +2,194 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-<meta name="viewport" content="width=device-width"/>
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/core.min.js"></script>
+	<meta name="viewport" content="width=device-width" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.min.js"></script>
 
-<title>Add a User</title>
+	<title>Add a User</title>
 </h:head>
 <ui:fragment rendered="#{not identity.loggedIn}">
-		    <ui:include src="connexion.xhtml" /> 
-	    </ui:fragment>
+	<ui:include src="connexion.xhtml" />
+</ui:fragment>
 <h:body id="plateformBody" rendered="#{identity.loggedIn }">
-<ui:include src="header.xhtml" />
-<div class="container">
-  <div class="row">
-    
-    <!-- start: Main Menu -->
-    <div id="sidebar-left" class="col-lg-2 col-sm-1">
-      
-      
-    <ui:include src="leftMenu.xhtml" />
-    </div>
-    <!-- end: Main Menu -->
-    
-    <!-- start: Content -->
-    <div id="content" class="col-lg-10 col-sm-11">
-      <div class="row"> 
-        <div class="col-lg-12">
-          <button type="button" class="btn btn-success btn-setting" data-toggle="modal">New User</button><br/><br/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header">
-              <h2><i class="fa fa-bar-chart"></i>Users</h2>
-            </div>
-            <div class="box-content">            
-		    <h:dataTable styleClass="table table-striped table-hover" value="#{userController.findUsers()}" var="user">			
-				<h:column>
-					<f:facet name="header">Name</f:facet>
-					<h:outputText value="#{user.firstName}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Surname</f:facet>
-					<h:outputText value="#{user.lastName}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Mail</f:facet>
-					<h:outputText value="#{user.email}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Company</f:facet>
-					<h:outputText value="#{userController.findCompanyName(user.email)}" />
-				</h:column>
-				<!--<h:column>
-					<f:facet name="header">Suppression</f:facet>
-					<h:form>
-						<h:commandLink class="label label-danger" action="#{userController.deleteUser(user.email)}" value="Supprimer" />
-					</h:form>
-				</h:column>-->
-			</h:dataTable>
-			
-			
-			<div class="box-header">
-              <h2><i class="fa fa-bar-chart"></i>Companies</h2>
-            </div>
-            <div class="box-content">            
-		    <h:dataTable styleClass="table table-striped table-hover" value="#{companyController.companies}" var="company">			
-				<h:column>
-					<f:facet name="header">Company Id</f:facet>
-					<h:outputText value="#{company.id}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Surname</f:facet>
-					<h:outputText value="#{company.name}" />
-				</h:column>
-			</h:dataTable>
+	<ui:include src="header.xhtml" />
+	<div class="container">
+		<div class="row">
+
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-lg-2 col-sm-1">
+
+
+				<ui:include src="leftMenu.xhtml" />
 			</div>
-       </div>
-     </div>
-   </div>
- </div>
- 
-</div>
+			<!-- end: Main Menu -->
 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+			<!-- start: Content -->
+			<div id="content" class="col-lg-10 col-sm-11">
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal">New User</button>
+						<br /> <br />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-bar-chart"></i>Users
+								</h2>
+							</div>
+							<div class="box-content">
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{userController.findUsers()}" var="user">
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{user.firstName}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Surname</f:facet>
+										<h:outputText value="#{user.lastName}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Mail</f:facet>
+										<h:outputText value="#{user.email}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Company</f:facet>
+										<h:outputText
+											value="#{userController.findCompanyName(user.email)}" />
+									</h:column>
+								</h:dataTable>
+							</div><br/>
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-bar-chart"></i>Companies
+								</h2>
+							</div>
+							<div class="box-content">
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{companyController.companies}" var="company">
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{company.name}" />
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New User</h4>
-      </div>
-      <div class="modal-body">
-              
-        <h:form styleClass="form-horizontal">
-         <fieldset>
-            <legend>Inscription</legend>
-            
-            <h:outputLabel for="nom">Name <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="nom" value="#{userController.userPicket.lastName}" required="true" size="20" maxlength="20" />
-            <h:message id="nomMessage" for="nom" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="prenom">Surname <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="prenom" value="#{userController.userPicket.firstName}" required="true" size="20" maxlength="20" />
-            <h:message id="prenomMessage" for="nom" errorClass="erreur" />
-            <br />
-            <h:outputLabel for="email">Mail <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="email" value="#{userController.userPicket.email}" required="true" size="20" maxlength="60" />
-            <h:message id="emailMessage" for="email" errorClass="erreur" />
-            <br />
-    
-            <h:outputLabel for="motdepasse">Password <span class="requis">*</span></h:outputLabel>
-            <h:inputSecret styleClass="form-control input-md" id="motdepasse" value="#{userController.password}" required="true" size="20" maxlength="20" />
-            <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
-            <br />
-    
-            <h:outputLabel for="confirmation">Password confirmation <span class="requis">*</span></h:outputLabel>
-            <h:inputSecret styleClass="form-control input-md" id="confirmation" value="#{userController.password}" required="true" size="20" maxlength="20" />
-            <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
-            <br />
-    
-            <h:outputLabel for="entreprise">Company Name <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="entreprise" value="#{userController.companyName}" required="true" size="20" maxlength="20" />
-            <h:message id="entrepriseMessage" for="entreprise" errorClass="erreur" />
-            <br />
-            
-            <h:outputLabel for="role">Role name <span class="requis">*</span></h:outputLabel>
-            <h:inputText styleClass="form-control input-md" id="role" value="#{userController.role}" required="true" size="20" maxlength="20" />
-            <h:message id="roleMessage" for="role" errorClass="erreur" />
-            <br />
-        
-            <h:messages globalOnly="true" infoClass="info" />
-    
-            <h:commandButton styleClass="btn btn-primary" value="Inscription"  action="#{userController.addUser()}"  />
-            <br />
-          </fieldset>
-        </h:form>       	
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">New User</h4>
+					</div>
+					<div class="modal-body">
+
+						<h:form styleClass="form-horizontal">
+							<fieldset>
+								<legend>Inscription</legend>
+
+								<h:outputLabel for="nom">Name <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputText styleClass="form-control input-md" id="nom"
+									value="#{userController.userPicket.lastName}" required="true"
+									size="20" maxlength="20" />
+								<h:message id="nomMessage" for="nom" errorClass="erreur" />
+								<br />
+
+								<h:outputLabel for="prenom">Surname <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputText styleClass="form-control input-md" id="prenom"
+									value="#{userController.userPicket.firstName}" required="true"
+									size="20" maxlength="20" />
+								<h:message id="prenomMessage" for="nom" errorClass="erreur" />
+								<br />
+								<h:outputLabel for="email">Mail <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputText styleClass="form-control input-md" id="email"
+									value="#{userController.userPicket.email}" required="true"
+									size="20" maxlength="60" />
+								<h:message id="emailMessage" for="email" errorClass="erreur" />
+								<br />
+
+								<h:outputLabel for="motdepasse">Password <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputSecret styleClass="form-control input-md"
+									id="motdepasse" value="#{userController.password}"
+									required="true" size="20" maxlength="20" />
+								<h:message id="motDePasseMessage" for="motdepasse"
+									errorClass="erreur" />
+								<br />
+
+								<h:outputLabel for="confirmation">Password confirmation <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputSecret styleClass="form-control input-md"
+									id="confirmation" value="#{userController.password}"
+									required="true" size="20" maxlength="20" />
+								<h:message id="confirmationMessage" for="confirmation"
+									errorClass="erreur" />
+								<br />
+
+								<h:outputLabel for="entreprise">Company Name <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:inputText styleClass="form-control input-md" id="entreprise"
+									value="#{userController.companyName}" required="true" size="20"
+									maxlength="20" />
+								<h:message id="entrepriseMessage" for="entreprise"
+									errorClass="erreur" />
+								<br />
+
+								<h:outputLabel for="entreprise">Select the role <span
+										class="requis">*</span>
+								</h:outputLabel>
+								<h:selectOneMenu id="subscriptions"
+									value="#{userController.role}">
+									<f:selectItem id="item1" itemLabel="Administrateur"
+										itemValue="administrateur" />
+									<f:selectItem id="item2" itemLabel="Pilote" itemValue="pilote" />
+									<f:selectItem id="item3" itemLabel="Météorologue"
+										itemValue="meteorologue" />
+								</h:selectOneMenu>
+								<br></br>
 
 
-<div class="clearfix"></div>
+								<h:messages globalOnly="true" infoClass="info" />
 
-<ui:include src="footer.xhtml" />
+								<h:commandButton styleClass="btn btn-primary"
+									value="Inscription" action="#{userController.addUser()}" />
+								<br />
+							</fieldset>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+	<ui:include src="footer.xhtml" />
 </h:body>
 </html>

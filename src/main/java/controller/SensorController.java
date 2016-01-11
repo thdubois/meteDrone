@@ -25,15 +25,14 @@ public class SensorController implements Serializable{
 
 	private String name;	
 	private String model;
-	private String inServiceDate;
+	private Date inServiceDate = new Date();
 	private String price;
 	private String idDrone;
 	private String typeSensor;
 		
 	public void addSensorToDrone(Drone drone) throws ParseException{
-		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 
-		Date date = dt.parse(inServiceDate); 
-		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, date, Float.parseFloat(price), drone);
+		
+		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, inServiceDate, Float.parseFloat(price), drone);
 	}
 	
 	public void deleteSensor(Sensor sensor){
@@ -76,11 +75,11 @@ public class SensorController implements Serializable{
 		this.name = name;
 	}
 
-	public String getInServiceDate() {
+	public Date getInServiceDate() {
 		return inServiceDate;
 	}
 
-	public void setInServiceDate(String inServiceDate) {
+	public void setInServiceDate(Date inServiceDate) {
 		this.inServiceDate = inServiceDate;
 	}
 

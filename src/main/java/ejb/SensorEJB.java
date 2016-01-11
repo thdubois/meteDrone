@@ -32,6 +32,11 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 		TypedQuery<Sensor> query=em.createNamedQuery("findSensors",Sensor.class);
 		return query.getResultList();
 	}
+	
+	public List<Sensor> findDroneSensors(){
+		TypedQuery<Sensor> query=em.createNamedQuery("findDroneSensors",Sensor.class);
+		return query.getResultList();
+	}
 
 	@Override
 	public void createSensor(int type, String name, String model, Date inServiceDate, Float price, Drone drone) {
