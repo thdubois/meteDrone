@@ -1,10 +1,12 @@
 package ejb;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import remote.AnalogicDataEJBRemote;
 import entity.Analogic;
@@ -25,5 +27,11 @@ public class AnalogicDataEJB implements AnalogicDataEJBRemote, AnalogicDataEJBLo
 		Analogic analogic = em.find(Analogic.class, analogicId);
 		analogicData.setAnalogic(analogic);
 		em.persist(analogicData);
+	}
+	
+	@Override
+	public List<AnalogicData> findAnalogicData(Long sensorId) {
+		TypedQuery<AnalogicData> query=em.createNamedQuery("findAnalogicData",AnalogicData.class).setParameter("sensorId", sensorId);
+		return query.getResultList();
 	}
 }

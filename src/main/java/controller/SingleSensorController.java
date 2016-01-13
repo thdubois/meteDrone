@@ -8,7 +8,11 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import remote.AnalogicEJBRemote;
+import remote.NumericEJBRemote;
 import remote.SensorEJBRemote;
+import entity.Analogic;
+import entity.Numeric;
 import entity.Sensor;
 
 @Named
@@ -23,6 +27,12 @@ public class SingleSensorController implements Serializable{
 	@EJB
 	private SensorEJBRemote sensorEJB;
 	
+	@EJB
+	private NumericEJBRemote numericEJB;
+	
+	@EJB
+	private AnalogicEJBRemote analogicEJB;
+	
 	private Sensor sensor;
 	
 	public Sensor getSensor() {
@@ -33,9 +43,18 @@ public class SingleSensorController implements Serializable{
 		this.sensor = sensor;
 	}
 
-	public String initializeSensor(Long id){
-		setSensor(em.find(Sensor.class, id));
-		return "initSuccess";
+	public String initializeSensor(Long sensorId){
+		setSensor(em.find(Sensor.class, sensorId));
+		
+		if(em.find(Analogic.class, sensorId) != null){			
+			return "analogic";
+		}
+		else if(em.find(Numeric.class, sensorId) != null){
+			return "numeric";
+		}
+		else{
+			return "sensor";
+		}
 	}
 	
 	public void deleteSensor(Long sensorId){
