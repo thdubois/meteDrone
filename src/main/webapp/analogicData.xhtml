@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
@@ -12,12 +13,9 @@
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
-
-	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 
-	<script language="javascript" type="text/javascript" src="js/jquery.js"></script>
 	<script language="javascript" type="text/javascript"
 		src="js/jquery.flot.js"></script>
 	<script language="javascript" type="text/javascript" src="js/custom.js"></script>
@@ -61,14 +59,13 @@
 						<div class="box">
 							<div class="box-header">
 								<h2>
-									<i class="fa fa-area-chart"></i>Graphique
+									<i class="fa fa-area-chart"></i>Chart
 								</h2>
 							</div>
 							<div class="box-content">
-								<div class="demo-container">
-									<div id="placeholder" style="width: 100%; height: 100%"
-										class="demo-placeholder"></div>
-								</div>
+								<p:chart type="line"
+									model="#{analogicDataController.genChart(singleSensorController.sensor.id)}"
+									style="height:300px;" />
 							</div>
 						</div>
 					</div>
@@ -78,10 +75,9 @@
 						<div class="box">
 							<div class="box-header">
 								<h2>
-									<i class="fa fa-list-ol"></i>Valeurs
+									<i class="fa fa-list-ol"></i>Data Values
 								</h2>
 							</div>
-							<h:outputText value="#{singleSensorController.sensor.id}" />
 							<div class="box-content">
 								<h:dataTable styleClass="table table-striped table-hover"
 									value="#{analogicDataController.findAnalogicData(singleSensorController.sensor.id)}"

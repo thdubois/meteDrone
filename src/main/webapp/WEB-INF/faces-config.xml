@@ -37,5 +37,26 @@
    <to-view-id>/dashboard.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/undrone.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>analogic</from-outcome>
+   <to-view-id>/analogicData.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+<navigation-rule>
+  <from-view-id>/undrone.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>numeric</from-outcome>
+   <to-view-id>/numericData.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+<navigation-rule>
+  <from-view-id>/undrone.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sensor</from-outcome>
+   <to-view-id>/dashboard.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 </faces-config>
 

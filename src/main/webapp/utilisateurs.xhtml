@@ -5,7 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
 
 <h:head>
 	<meta name="viewport" content="width=device-width" />
@@ -36,6 +37,7 @@
 			<div id="content" class="col-lg-10 col-sm-11">
 				<div class="row">
 					<div class="col-lg-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" />
 						<button type="button" class="btn btn-success btn-setting"
 							data-toggle="modal" data-target="#myModal1">New User</button>
 						<button type="button" class="btn btn-success btn-setting"
@@ -123,7 +125,7 @@
 
 						<h:form styleClass="form-horizontal" id="newUserForm">
 							<fieldset>
-							<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
 								<h:outputLabel for="nom">Name <span
 										class="requis">*</span>
 								</h:outputLabel>
@@ -141,12 +143,22 @@
 									size="20" maxlength="20" />
 								<h:message id="prenomMessage" for="nom" errorClass="erreur" />
 								<br />
+
+
+
 								<h:outputLabel for="email">Mail <span
 										class="requis">*</span>
-								</h:outputLabel>
-								<h:inputText styleClass="form-control input-md" id="email"
-									value="#{userController.userPicket.email}" required="true"
-									size="20" maxlength="60" />
+								</h:outputLabel><br></br>
+								<p:inputText id="email" required="true" label="email" size="40" styleClass="form-control input-md"
+									requiredMessage="Please enter your email address."
+									validatorMessage="Invalid email format"
+									value="#{userController.userPicket.email}">
+
+									<f:validateRegex
+										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+								</p:inputText>
+							
 								<h:message id="emailMessage" for="email" errorClass="erreur" />
 								<br />
 
@@ -155,9 +167,11 @@
 									<h:outputLabel for="pwd1" value="Password 1: *" />
 									<p:password styleClass="form-control input-md" id="pwd1"
 										value="#{userController.password}" match="pwd2"
-										label="Password 1" required="true" /><br></br>
+										label="Password 1" required="true" />
+									<br></br>
 
-									<h:outputLabel for="pwd2" value="Password 2: *" /><br></br>
+									<h:outputLabel for="pwd2" value="Password 2: *" />
+									<br></br>
 									<p:password styleClass="form-control input-md" id="pwd2"
 										value="#{userController.password}" label="Password 2"
 										required="true" />
@@ -197,7 +211,7 @@
 								<h:messages globalOnly="true" infoClass="info" />
 								<br></br> <br></br>
 
-								<p:commandButton styleClass="btn btn-primary" update="matchGrid"
+								<h:commandButton styleClass="btn btn-primary"
 									value="Inscription" action="#{userController.addUser()}" />
 
 								<br />
