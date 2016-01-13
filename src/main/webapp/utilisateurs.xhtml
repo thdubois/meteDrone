@@ -4,13 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
-	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 
@@ -37,10 +37,14 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<button type="button" class="btn btn-success btn-setting"
-							data-toggle="modal">New User</button>
+							data-toggle="modal" data-target="#myModal1">New User</button>
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal" data-target="#myModal2">New
+							Subscription</button>
 						<br /> <br />
 					</div>
 				</div>
+
 				<div class="row">
 					<div class="col-md-12">
 						<div class="box">
@@ -70,7 +74,22 @@
 											value="#{userController.findCompanyName(user.email)}" />
 									</h:column>
 								</h:dataTable>
-							</div><br/>
+								<h:outputText value="#{suscriptionController.email}" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="button" class="btn btn-success btn-setting"
+							data-toggle="modal" data-target="#myModal3">New Company</button>
+						<br /> <br />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box">
 							<div class="box-header">
 								<h2>
 									<i class="fa fa-bar-chart"></i>Companies
@@ -91,7 +110,7 @@
 			</div>
 		</div>
 
-		<div id="myModal" class="modal fade" role="dialog">
+		<div id="myModal1" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
@@ -102,10 +121,9 @@
 					</div>
 					<div class="modal-body">
 
-						<h:form styleClass="form-horizontal">
+						<h:form styleClass="form-horizontal" id="newUserForm">
 							<fieldset>
-								<legend>Inscription</legend>
-
+							<p:messages id="messages" showDetail="true" autoUpdate="true" />
 								<h:outputLabel for="nom">Name <span
 										class="requis">*</span>
 								</h:outputLabel>
@@ -132,39 +150,39 @@
 								<h:message id="emailMessage" for="email" errorClass="erreur" />
 								<br />
 
-								<h:outputLabel for="motdepasse">Password <span
-										class="requis">*</span>
-								</h:outputLabel>
-								<h:inputSecret styleClass="form-control input-md"
-									id="motdepasse" value="#{userController.password}"
-									required="true" size="20" maxlength="20" />
-								<h:message id="motDePasseMessage" for="motdepasse"
-									errorClass="erreur" />
-								<br />
 
-								<h:outputLabel for="confirmation">Password confirmation <span
-										class="requis">*</span>
-								</h:outputLabel>
-								<h:inputSecret styleClass="form-control input-md"
-									id="confirmation" value="#{userController.password}"
-									required="true" size="20" maxlength="20" />
-								<h:message id="confirmationMessage" for="confirmation"
-									errorClass="erreur" />
-								<br />
+								<h:panelGrid columns="1" id="matchGrid" cellpadding="5">
+									<h:outputLabel for="pwd1" value="Password 1: *" />
+									<p:password styleClass="form-control input-md" id="pwd1"
+										value="#{userController.password}" match="pwd2"
+										label="Password 1" required="true" /><br></br>
+
+									<h:outputLabel for="pwd2" value="Password 2: *" /><br></br>
+									<p:password styleClass="form-control input-md" id="pwd2"
+										value="#{userController.password}" label="Password 2"
+										required="true" />
+								</h:panelGrid>
+
+
 
 								<h:outputLabel for="entreprise">Company Name <span
 										class="requis">*</span>
 								</h:outputLabel>
-								<h:inputText styleClass="form-control input-md" id="entreprise"
-									value="#{userController.companyName}" required="true" size="20"
-									maxlength="20" />
-								<h:message id="entrepriseMessage" for="entreprise"
-									errorClass="erreur" />
+								<br></br>
+
+								<h:selectOneMenu id="company"
+									value="#{userController.companyName}">
+									<f:selectItems value="#{companyController.companies}"
+										var="companies" itemValue="#{companies.name}"
+										itemLabel="#{companies.name}" />
+
+								</h:selectOneMenu>
 								<br />
 
 								<h:outputLabel for="entreprise">Select the role <span
 										class="requis">*</span>
 								</h:outputLabel>
+								<br></br>
 								<h:selectOneMenu id="subscriptions"
 									value="#{userController.role}">
 									<f:selectItem id="item1" itemLabel="Administrateur"
@@ -173,17 +191,115 @@
 									<f:selectItem id="item3" itemLabel="Météorologue"
 										itemValue="meteorologue" />
 								</h:selectOneMenu>
-								<br></br>
+
 
 
 								<h:messages globalOnly="true" infoClass="info" />
+								<br></br> <br></br>
 
-								<h:commandButton styleClass="btn btn-primary"
+								<p:commandButton styleClass="btn btn-primary" update="matchGrid"
 									value="Inscription" action="#{userController.addUser()}" />
+
 								<br />
 							</fieldset>
 						</h:form>
+
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Subscription</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+							<legend>New Subscription</legend>
+
+							<h:outputLabel for="inServiceDate">Select User <span
+									class="requis">*</span>
+							</h:outputLabel>
+
+							<h:selectOneMenu id="userList"
+								value="#{suscriptionController.email}">
+								<f:selectItems value="#{userController.findUsers()}" var="user"
+									itemValue="#{user.email}"
+									itemLabel="#{user.firstName} #{user.lastName} - #{user.email}" />
+
+
+							</h:selectOneMenu>
+							<br></br>
+
+							<h:outputLabel for="inServiceDate">Beginning Date <span
+									class="requis">*</span>
+							</h:outputLabel>
+							<br></br>
+
+							<p:calendar id="inline" pattern="dd/MM/yyyy"
+								value="#{suscriptionController.dateBegin}" mode="inline" />
+
+							<h:outputLabel for="inServiceDate">Select Sensor <span
+									class="requis">*</span>
+							</h:outputLabel>
+
+							<h:selectOneMenu id="subscriptions"
+								value="#{suscriptionController.idSensor}">
+								<f:selectItems
+									value="#{suscriptionController.findDroneSensors()}"
+									var="sensor" itemValue="#{sensor.id}"
+									itemLabel="#{sensor.drone.city} - #{sensor.name} - #{sensor.price} €/mois" />
+
+							</h:selectOneMenu>
+							<br></br>
+
+
+
+							<h:messages globalOnly="true" infoClass="info" />
+
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{suscriptionController.addSuscription(suscriptionController.email)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModal3" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Company</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+
+							<h:outputLabel for="companyName">Company Name <span
+									class="requis">*</span>
+							</h:outputLabel>
+
+							<h:inputText styleClass="form-control input-md" id="companyName"
+								value="#{companyController.name}" required="true" size="20"
+								maxlength="20" />
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{companyController.addCompany()}" />
+							<br />
+						</fieldset>
+					</h:form>
 				</div>
 			</div>
 		</div>
@@ -191,5 +307,7 @@
 	<div class="clearfix"></div>
 
 	<ui:include src="footer.xhtml" />
+
 </h:body>
+
 </html>

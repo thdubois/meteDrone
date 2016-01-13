@@ -21,7 +21,9 @@ import javax.persistence.OneToMany;
 	@NamedQuery(name = "findSensors", 
 				query = "SELECT s FROM Sensor s"),
 	@NamedQuery(name="findDroneSensors",
-				query="SELECT s FROM Sensor s WHERE s.drone IS NOT NULL")
+				query="SELECT s FROM Sensor s WHERE s.drone IS NOT NULL"),
+	@NamedQuery(name="findRemovedSensors",
+				query="SELECT s FROM Sensor s WHERE s.drone IS NULL")
 })
 public class Sensor {
 

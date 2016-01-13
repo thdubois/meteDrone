@@ -35,6 +35,50 @@
 
 			<!-- start: Content -->
 			<div id="content" class="col-lg-10 col-sm-11">
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-user"></i>Drone Name
+								</h2>
+							</div>
+							<div class="box-content">
+								<center>
+									<img src="img/dronePicture.jpeg" height="150" /><br></br> <b>Drone
+										Name :</b>
+									<h:outputText value="#{singleDroneController.drone.name}" />
+								</center>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-user"></i>Drone Info
+								</h2>
+							</div>
+							<div class="box-content">
+								<b>Drone Name :</b>
+								<h:outputText value="#{singleDroneController.drone.name}" />
+								<br></br> <b>Id :</b>
+								<h:outputText value="#{singleDroneController.drone.id}" />
+								<br></br> <b>Model :</b>
+								<h:outputText value="#{singleDroneController.drone.model}" />
+								<br></br> <b>Id :</b>
+								<h:outputText value="#{singleDroneController.drone.city}" />
+								<br></br> <b>City :</b>
+								<h:outputText value="#{singleDroneController.drone.id}" />
+								<br></br> <b>Status :</b>
+								<h:outputText value="#{singleDroneController.drone.status}" />
+								<br></br>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<ui:fragment
 					rendered="#{authorizationChecker.hasApplicationRole('administrateur')}">
 					<div class="row">
@@ -42,6 +86,9 @@
 							<button type="button" class="btn btn-success btn-setting"
 								data-toggle="modal" data-target="#myModal1">New Sensor
 							</button>
+							<button type="button" class="btn btn-warning btn-setting"
+								data-toggle="modal" data-target="#myModal4">Reaffect
+								Sensor</button>
 							<br /> <br />
 						</div>
 					</div>
@@ -82,12 +129,13 @@
 										<f:facet name="header">Price</f:facet>
 										<h:outputText value="#{item.price}" />
 									</h:column>
-									<h:column rendered="#{authorizationChecker.hasApplicationRole('administrateur')}">
-										<f:facet name="header">Delete</f:facet>
+									<h:column
+										rendered="#{authorizationChecker.hasApplicationRole('administrateur')}">
+										<f:facet name="header">Remove</f:facet>
 										<h:form>
-											<h:commandLink class="label label-danger"
+											<h:commandLink class="label label-warning"
 												action="#{singleSensorController.deleteSensor(item.id)}"
-												value="Delete" />
+												value="Remove" />
 										</h:form>
 									</h:column>
 								</h:dataTable>
@@ -144,7 +192,8 @@
 											<f:convertDateTime type="date" pattern="HH:mm" />
 										</h:outputText>
 									</h:column>
-									<h:column rendered="#{authorizationChecker.hasApplicationRole('administrateur') or authorizationChecker.hasApplicationRole('pilote')}">
+									<h:column
+										rendered="#{authorizationChecker.hasApplicationRole('administrateur') or authorizationChecker.hasApplicationRole('pilote')}">
 										<f:facet name="header">Delete</f:facet>
 										<h:form>
 											<h:commandLink class="label label-danger"
@@ -371,6 +420,37 @@
 		</div>
 	</div>
 
+	<div id="myModal4" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Reaffect a Sensor</h4>
+				</div>
+				<div class="modal-body">
+					<h:form styleClass="form-horizontal">
+						<fieldset>
+
+							<h:selectOneMenu id="removedSensor"
+								value="#{sensorController.sensorId}">
+								<f:selectItems value="#{sensorController.findRemovedSensors()}"
+									var="sensor" itemValue="#{sensor.id}"
+									itemLabel="#{sensor.name} - #{sensor.model}" />
+							</h:selectOneMenu><br></br><br></br>
+
+							
+
+							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+								action="#{sensorController.reaffectSensorToDrone(singleDroneController.drone, sensorController.sensorId)}" />
+							<br />
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="clearfix"></div>
 

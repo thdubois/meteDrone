@@ -15,4 +15,6 @@ public interface SensorEJBLocal {
 	public void deleteSensor(Long sensorId);
 	public void createSensor(int type, String name, String model, Date inServiceDate, Float price, Drone drone);
 	public List<Sensor> findDroneSensors();
+	public List<Sensor> findRemovedSensors();
+	public void reaffectSensor(Drone drone, Long sensorId);
 }

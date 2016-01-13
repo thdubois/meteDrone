@@ -32,7 +32,14 @@ public class SuscriptionController implements Serializable{
 		
 	private String idSensor;
 	private Date dateBegin = new Date();
+	private String email;
 	
+	public void fillEmail(String email){
+		setEmail(email);
+	}
+	
+
+
 	public void addSuscription(String mail) throws ParseException{
 		suscriptionEJB.createSuscription(dateBegin, userEJB.findUserByMail(mail).getId(), Long.parseLong(idSensor));
 	}
@@ -70,4 +77,11 @@ public class SuscriptionController implements Serializable{
 		this.dateBegin = dateBegin;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

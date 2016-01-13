@@ -51,4 +51,6 @@ public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
 		em.remove(drone);
 	}
 	
+	
+	
 }

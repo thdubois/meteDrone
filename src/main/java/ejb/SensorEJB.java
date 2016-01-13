@@ -33,6 +33,21 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
 		return query.getResultList();
 	}
 	
+	@Override
+	public List<Sensor> findRemovedSensors() {
+		TypedQuery<Sensor> query=em.createNamedQuery("findRemovedSensors",Sensor.class);
+		return query.getResultList();
+	}
+	
+	@Override
+	public void reaffectSensor(Drone drone, Long sensorId) {
+		Sensor sensor = em.find(Sensor.class, sensorId);
+		sensor.setDrone(drone);
+		em.merge(sensor);
+	}
+	
+
+	@Override
 	public List<Sensor> findDroneSensors(){
 		TypedQuery<Sensor> query=em.createNamedQuery("findDroneSensors",Sensor.class);
 		return query.getResultList();

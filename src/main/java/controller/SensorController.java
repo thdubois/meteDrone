@@ -29,10 +29,16 @@ public class SensorController implements Serializable{
 	private String price;
 	private String idDrone;
 	private String typeSensor;
+	private Long sensorId;
 		
 	public void addSensorToDrone(Drone drone) throws ParseException{
 		
 		sensorEJB.createSensor(Integer.parseInt(typeSensor), name, model, inServiceDate, Float.parseFloat(price), drone);
+	}
+	
+	public void reaffectSensorToDrone(Drone drone, Long sensorId) throws ParseException{
+		
+		sensorEJB.reaffectSensor(drone, sensorId);
 	}
 	
 	public void deleteSensor(Sensor sensor){
@@ -46,6 +52,11 @@ public class SensorController implements Serializable{
 	public List<Sensor> getSensors(){
 		return sensorEJB.findSensors();
 	}
+	
+	public List<Sensor> findRemovedSensors(){
+		return sensorEJB.findRemovedSensors();
+	}
+	
 	
 	public void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
@@ -105,6 +116,14 @@ public class SensorController implements Serializable{
 
 	public void setTypeSensor(String typeSensor) {
 		this.typeSensor = typeSensor;
+	}
+
+	public Long getSensorId() {
+		return sensorId;
+	}
+
+	public void setSensorId(Long idSensor) {
+		this.sensorId = idSensor;
 	}
 	
 	

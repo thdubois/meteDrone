@@ -34,6 +34,7 @@ public class SingleDroneController implements Serializable{
 		return "initSuccess";
 	}
 	
+	
 	public Drone getDrone() {
 		return drone;
 	}

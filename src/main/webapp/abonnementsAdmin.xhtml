@@ -12,12 +12,13 @@
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<script src="js/jquery.js"></script>
 	<link href="css/style.css" rel="stylesheet" />
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 
 
-	<title>Subscriptions</title>
+	<title>Add a User</title>
 </h:head>
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
@@ -35,13 +36,14 @@
 
 				<ui:include src="leftMenu.xhtml" />
 			</div>
+			<!-- end: Main Menu -->
+
+			<!-- start: Content -->
 			<div id="content" class="col-lg-10 col-sm-11">
+				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
 				<div class="row">
 					<div class="col-lg-12">
-						<button type="button" class="btn btn-success btn-setting"
-							data-toggle="modal">New Suscription</button>
-						<br />
-						<br />
+						<br /> <br />
 						<div class="box">
 							<div class="box-header">
 								<h2>
@@ -51,8 +53,11 @@
 							<div class="box-content">
 
 								<h:dataTable styleClass="table table-striped table-hover"
-									value="#{suscriptionController.findSuscriptionsUser(identity.account.loginName)}"
-									var="item">
+									value="#{suscriptionController.suscriptions}" var="item">
+									<h:column>
+										<f:facet name="header">User</f:facet>
+										<h:outputText value="#{item.user.email}" />
+									</h:column>
 									<h:column>
 										<f:facet name="header">Associated Sensor Name</f:facet>
 										<h:outputText value="#{item.sensor.name}" />
@@ -61,21 +66,23 @@
 										<f:facet name="header">Associated Sensor Price</f:facet>
 										<h:outputText value="#{item.sensor.price}€/mois" />
 									</h:column>
-									
+
 									<h:column>
 										<f:facet name="header">City</f:facet>
 										<h:outputText value="#{item.sensor.drone.city}" />
 									</h:column>
 									<h:column>
 										<f:facet name="header">Begin Date</f:facet>
-										<h:outputText value="#{item.dateBegin}" >
+										<h:outputText value="#{item.dateBegin}">
 											<f:convertDateTime pattern="dd/MM/yyyy" />
 										</h:outputText>
 									</h:column>
 									<h:column>
 										<f:facet name="header">Data</f:facet>
 										<h:form>
-											<h:commandLink class="label label-default" action="#{singleSensorController.initializeSensor(item.id)}" value="See Sensor Data" />
+											<h:commandLink class="label label-default"
+												action="#{singleSensorController.initializeSensor(item.id)}"
+												value="See Sensor Data" />
 										</h:form>
 									</h:column>
 									<h:column>
@@ -101,48 +108,7 @@
 
 	</div>
 
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">New Subscription</h4>
-				</div>
-				<div class="modal-body">
-					<h:form styleClass="form-horizontal">
-						<fieldset>
-							
-							<h:outputLabel for="inServiceDate">Beginning Date <span
-									class="requis">*</span>
-							</h:outputLabel>
-							<p:outputLabel for="inline" value="Begin Date:" />
-							<p:calendar id="inline" pattern = "dd/MM/yyyy" value="#{suscriptionController.dateBegin}"
-								mode="inline" />
-								
-
-
-							<h:selectOneMenu id="subscriptions"
-								value="#{suscriptionController.idSensor}">
-								<f:selectItems value="#{suscriptionController.findDroneSensors()}" var="sensor" itemValue="#{sensor.id}" itemLabel="#{sensor.drone.city} - #{sensor.name} - #{sensor.price} €/mois" />
-								
-							</h:selectOneMenu>
-							<br></br>
-
-						
-
-							<h:messages globalOnly="true" infoClass="info" />
-
-							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
-								action="#{suscriptionController.addSuscription(identity.account.loginName)}" />
-							<br />
-						</fieldset>
-					</h:form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<div class="clearfix"></div>
