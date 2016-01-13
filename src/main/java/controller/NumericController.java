@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import entity.Numeric;
 import remote.NumericEJBRemote;
+import entity.Numeric;
 
 @Named
 @RequestScoped

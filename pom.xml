@@ -52,6 +52,17 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.8.10</version>
+		</dependency>
+
+
+
+
+
+
 
 
 	</dependencies>
@@ -64,7 +75,6 @@
 				<groupId>org.jboss.as.plugins</groupId>
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.4.Final</version>
-
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -72,7 +82,6 @@
 				<configuration>
 					<!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-
 				</configuration>
 			</plugin>
 		</plugins>

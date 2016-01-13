@@ -21,6 +21,11 @@ public class AnalogicEJB implements AnalogicEJBRemote {
 	public List<Analogic> findAnalogics() {
 		TypedQuery<Analogic> query=em.createNamedQuery("findAnalogics",Analogic.class);
 		return query.getResultList();
-	}
+	}	
 	
+	@Override
+	public Analogic findAnalogic(Long sensorId) {
+		TypedQuery<Analogic> query=em.createNamedQuery("findAnalogic",Analogic.class).setParameter("sensorId", sensorId);
+		return query.getSingleResult();
+	}
 }

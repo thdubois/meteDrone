@@ -23,4 +23,9 @@ public class NumericEJB implements NumericEJBRemote {
 		return query.getResultList();
 	}
 	
+	@Override
+	public Numeric findNumeric(Long sensorId) {
+		TypedQuery<Numeric> query=em.createNamedQuery("findNumeric",Numeric.class).setParameter("sensorId", sensorId);
+		return query.getSingleResult();
+	}
 }

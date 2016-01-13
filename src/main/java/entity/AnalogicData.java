@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 @Entity
+@NamedQueries({ 
+		@NamedQuery(name = "findAnalogicData", 
+					query = "SELECT a FROM AnalogicData a WHERE a.analogic.id=:sensorId")
+})
 public class AnalogicData implements Serializable {
 
 	private static final long serialVersionUID = 3771436731002475501L;
@@ -19,11 +24,11 @@ public class AnalogicData implements Serializable {
 
 	private Date date;
 
-	private Float value;
+	private Double value;
 
 	@ManyToOne
 	private Analogic analogic;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -40,12 +45,19 @@ public class AnalogicData implements Serializable {
 		this.date = date;
 	}
 
-	public Float getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Float value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
+	public Analogic getAnalogic() {
+		return analogic;
+	}
+
+	public void setAnalogic(Analogic analogic) {
+		this.analogic = analogic;
+	}
 }

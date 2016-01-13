@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#undrone.xhtml" PATH="/undrone.xhtml"
-  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#dronesAdmin.xhtml" PATH="/dronesAdmin.xhtml"
   SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#dronesAdmin.xhtml:0" NAME="item"
@@ -11,6 +9,8 @@
     TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#undrone.xhtml" PATH="/undrone.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#drones.xhtml" PATH="/drones.xhtml"
   SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#drones.xhtml:0" NAME="item"
@@ -24,11 +24,27 @@
   SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#abonnements.xhtml:0" NAME="item"
    PATH="/abonnements.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="initSuccess::#capteur.xhtml" NAME="output"
-    PATH="/capteur.xhtml" TARGET="rules:#capteur.xhtml"
-    TITLE="initSuccess" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="analogic::#analogicData.xhtml" NAME="output"
+    PATH="/analogicData.xhtml" TARGET="rules:#analogicData.xhtml"
+    TITLE="analogic" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#abonnements.xhtml:1" NAME="item1"
+   PATH="/abonnements.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="numeric::#numericData.xhtml" NAME="output"
+    PATH="/numericData.xhtml" TARGET="rules:#numericData.xhtml"
+    TITLE="numeric" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#abonnements.xhtml:2" NAME="item2"
+   PATH="/abonnements.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sensor::#dashboard.xhtml" NAME="output"
+    PATH="/dashboard.xhtml" TARGET="rules:#dashboard.xhtml"
+    TITLE="sensor" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#capteur.xhtml" PATH="/capteur.xhtml"
-  SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#analogicData.xhtml"
+  PATH="/analogicData.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#dashboard.xhtml" PATH="/dashboard.xhtml"
+  SHAPE="272,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#numericData.xhtml" PATH="/numericData.xhtml"
+  SHAPE="272,433,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
