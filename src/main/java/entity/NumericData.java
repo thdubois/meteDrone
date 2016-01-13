@@ -40,4 +40,13 @@ public class NumericData implements Serializable {
 		this.value = value;
 	}
 
+	public Numeric getNumeric() {
+		return numeric;
+	}
+
+	public void setNumeric(Numeric numeric) {
+		this.numeric = numeric;
+	}
+	
+
 }
