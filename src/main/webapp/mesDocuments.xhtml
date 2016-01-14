@@ -49,7 +49,13 @@
 									<i class="fa fa-eur"></i>My invoices
 								</h2>
 							</div>
-							<div class="box-content">My PDF invoices</div>
+							<div class="box-content">
+								My PDF invoices
+								<h:form target="_blank">	
+								<h:commandButton value="Invoice December 2015"
+									action="#{downloadInvoice.downloadInvoice(identity.account.loginName, 'décembre', 2015)}" />
+									</h:form>
+							</div>
 						</div>
 					</div>
 				</div>

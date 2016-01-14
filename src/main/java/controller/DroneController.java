@@ -16,8 +16,10 @@ import remote.DroneEJBRemote;
 public class DroneController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	@EJB
 	private DroneEJBRemote droneEJB;
+	
 	private List<Drone> drones;
 
 	private String model;

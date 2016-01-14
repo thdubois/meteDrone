@@ -59,6 +59,7 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote, Serializable{
 		Role rolePicket = BasicModel.getRole(identityManager, role);
 		RelationshipManager relationshipManager = partitionManager.createRelationshipManager();
 		BasicModel.grantRole(relationshipManager, user, rolePicket);
+		
 	}
 	
 	public void createSuperUsers(User user){
