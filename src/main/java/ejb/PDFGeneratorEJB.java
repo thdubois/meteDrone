@@ -92,7 +92,7 @@ public class PDFGeneratorEJB {
 				int fontSize = 32;
 				contentStream.beginText();
 				contentStream.setFont(font, fontSize);
-				contentStream.moveTextPositionByAmount((page.getMediaBox().getWidth()) / 2, page.getMediaBox().getHeight() - marginTop);
+				contentStream.moveTextPositionByAmount((page.getMediaBox().getWidth() - 125) / 2, page.getMediaBox().getHeight() - marginTop);
 				contentStream.drawString("Invoice");
 				contentStream.endText();
 
