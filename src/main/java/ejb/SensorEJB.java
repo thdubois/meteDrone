@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +17,9 @@ import entity.Sensor;
 import local.SensorEJBLocal;
 
 @Stateless
-public class SensorEJB implements SensorEJBRemote, SensorEJBLocal {
+public class SensorEJB implements SensorEJBRemote, SensorEJBLocal, Serializable {
 	
+	private static final long serialVersionUID = -105973508621065464L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

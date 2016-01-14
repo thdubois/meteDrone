@@ -10,6 +10,6 @@ import entity.Company;
 @Local
 public interface CompanyEJBLocal {
 	public List<Company> findCompanies();
-	public Company createCompany(String name);
+	public Company createCompany(String name) throws Exception;;
 	public Company findCompanyByName(String companyName);
 }

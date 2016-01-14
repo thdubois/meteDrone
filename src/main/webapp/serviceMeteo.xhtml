@@ -5,20 +5,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
-
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 	<title>Weather SOAP</title>
 </h:head>
 
+
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
+
 
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />
@@ -37,8 +38,7 @@
 								</h2>
 							</div>
 							<div class="box-content">
-								<p:chart type="line"
-									model="#{villeController.genChart()}"
+								<p:chart type="line" model="#{villeController.genChart()}"
 									style="height:300px;" />
 							</div>
 						</div>

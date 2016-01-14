@@ -2,18 +2,15 @@ package controller;
 
 import java.io.Serializable;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import remote.FlightEJBRemote;
-import entity.Drone;
 import entity.Flight;
+import remote.FlightEJBRemote;
 
 @Named
 @RequestScoped
@@ -50,8 +47,6 @@ public class FlightController implements Serializable{
 	public void setFlightsId(List<Flight> flightsId) {
 		this.flightsId = flightsId;
 	}
-
-
 
 	public Date getDate() {
 		return date;

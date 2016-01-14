@@ -5757,3 +5757,10 @@ ul.messagesList li span.date {
 	border-radius: 0 0 2px 2px
 }
 
+.right a{
+	float: right !important;
+}
+
+.right{
+	float: right !important;
+}

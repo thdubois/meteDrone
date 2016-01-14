@@ -1,6 +1,7 @@
 package ejb;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -24,8 +25,10 @@ import entity.Company;
 import entity.User;
 
 @Stateless
-public class UserEJB implements UserEJBLocal, UserEJBRemote{
+public class UserEJB implements UserEJBLocal, UserEJBRemote, Serializable{
 	
+	private static final long serialVersionUID = 5880562677330473861L;
+
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 	
@@ -39,7 +42,7 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote{
 	private CompanyEJBRemote companyEJB;
 	
 	@Override
-	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password){
+	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password) throws Exception{
 		
 		User userEntity = new User(user.getEmail());
 		Company company = companyEJB.findCompanyByName(companyName);

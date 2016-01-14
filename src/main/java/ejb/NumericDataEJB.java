@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,14 +10,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import remote.NumericDataEJBRemote;
-import entity.AnalogicData;
 import entity.Numeric;
 import entity.NumericData;
 import local.NumericDataEJBLocal;
 
 @Stateless
-public class NumericDataEJB implements NumericDataEJBRemote, NumericDataEJBLocal{
+public class NumericDataEJB implements NumericDataEJBRemote, NumericDataEJBLocal, Serializable{
 
+	private static final long serialVersionUID = 7022202768763318817L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

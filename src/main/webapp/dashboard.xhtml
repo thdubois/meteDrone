@@ -4,21 +4,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
-	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
 	<title>Dashboard</title>
 </h:head>
 
+
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
+
 
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />
@@ -33,11 +34,33 @@
 						<div class="box">
 							<div class="box-header">
 								<h2>
-									<i class="fa fa-area-chart"></i>Sensors Summary
+									<i class="fa fa-area-chart"></i>Available Sensors
 								</h2>
 							</div>
 							<div class="box-content">
-								
+								<h:dataTable styleClass="table table-striped table-hover"
+									value="#{sensorController.sensors}" var="item">
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{item.name}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Model</f:facet>
+										<h:outputText value="#{item.model}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Price</f:facet>
+										<h:outputText value="#{item.price}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Associated Drone</f:facet>
+										<h:outputText value="#{item.drone.name}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Location</f:facet>
+										<h:outputText value="#{item.drone.city}" />
+									</h:column>
+								</h:dataTable>
 							</div>
 						</div>
 					</div>
@@ -83,8 +106,9 @@
 									<li><a href="widgets.html#"> <img class="avatar"
 											alt="Jérémy" src="img/maleuser.png" />
 									</a> <strong>Name:</strong> <a href="widgets.html#">Jérémy
-											Bancker</a> <strong>Mail:</strong>jeremy.bancker@etu.esisar.grenoble-inp.fr<br />
-										<strong>Role:</strong> Admin</li>
+											Bancker</a><br /> <strong>Mail:</strong>
+										jeremy.bancker@etu.esisar.grenoble-inp.fr<br /> <strong>Role:</strong>
+										Admin</li>
 									<li><a href="widgets.html#"> <img class="avatar"
 											alt="Thomas" src="img/maleuser.png" />
 									</a> <strong>Name:</strong> <a href="widgets.html#">Thomas

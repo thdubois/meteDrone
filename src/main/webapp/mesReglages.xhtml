@@ -12,20 +12,16 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-	
-	<!--<![endif]-->
-	<!--[if IE]>
-    <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery-1.11.0.min.js'>"+"<"+"/script>");
-    </script>
-  <![endif]-->
-  
 	<script src="js/bootstrap.min.js"></script>
 	<title>My Settings</title>
 </h:head>
+
+
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
+
+
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />
 	<div class="container">
@@ -42,7 +38,8 @@
 									<i class="fa fa-user"></i>My profile
 								</h2>
 							</div>
-							<div class="box-content">Avatar, Fist Name, Last Name, Login, Password</div>
+							<div class="box-content">Avatar, Fist Name, Last Name,
+								Login, Password</div>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -64,8 +61,8 @@
 									<i class="fa fa-flag"></i>Manage my alerts
 								</h2>
 							</div>
-							<div class="box-content">Newsletter, invoices, weather reports.
-								...</div>
+							<div class="box-content">Newsletter, invoices, weather
+								reports. ...</div>
 						</div>
 					</div>
 				</div>

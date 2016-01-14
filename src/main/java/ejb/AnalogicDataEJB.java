@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,9 @@ import entity.AnalogicData;
 import local.AnalogicDataEJBLocal;
 
 @Stateless
-public class AnalogicDataEJB implements AnalogicDataEJBRemote, AnalogicDataEJBLocal{
+public class AnalogicDataEJB implements AnalogicDataEJBRemote, AnalogicDataEJBLocal, Serializable{
 
+	private static final long serialVersionUID = 2857022034617087845L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

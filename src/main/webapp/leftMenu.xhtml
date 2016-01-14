@@ -5,7 +5,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -13,11 +12,11 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-
 	<title>Left Menu</title>
 </h:head>
-<h:body id="plateformBody">
 
+
+<h:body id="plateformBody">
 	<ui:composition>
 		<div
 			class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
@@ -34,8 +33,6 @@
 						class="hidden-sm"> My Settings</span></a></li>
 				<li><a href="serviceMeteo.jsf"><i class="fa fa-cloud"></i><span
 						class="hidden-sm"> Weather SOAP</span></a></li>
-
-				<!-- Frgament for Admin only -->
 				<ui:fragment
 					rendered="#{identity.loggedIn and  authorizationChecker.hasApplicationRole('administrateur')}">
 					<li><a class="dropmenu" href="charts-flot.html#"><i

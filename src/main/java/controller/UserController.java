@@ -33,7 +33,9 @@ public class UserController implements Serializable{
     private IdentityManager identityManager;
     
 	private Long idCompany;
+	private Boolean errorMessage = false;
 	private String companyName;
+	private String companyNameInput;
 	private String mail;
 	private String password;
 	org.picketlink.idm.model.basic.User userPicket;
@@ -45,8 +47,31 @@ public class UserController implements Serializable{
 	}
 	
 	public void addUser(){
+		try{
+			userEJB.createUser(getUserPicket(),companyName,role,password);
+		}
+		catch (Exception e){
+			setErrorMessage(true);
+		}
 		
-		userEJB.createUser(getUserPicket(),companyName,role,password);
+	}
+	
+
+	
+	public void createUser(){
+		try{
+			if(companyNameInput.equals("")){
+				userEJB.createUser(getUserPicket(),companyName,"meteorologue",password);
+			}
+			else{
+				userEJB.createUser(getUserPicket(),companyNameInput,"meteorologue",password);
+			}
+		}
+		catch (Exception e){
+			setErrorMessage(true);
+		}
+		
+		
 	}
 	
 	public List<org.picketlink.idm.model.basic.User> findUsers(){
@@ -113,4 +138,22 @@ public class UserController implements Serializable{
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public String getCompanyNameInput() {
+		return companyNameInput;
+	}
+
+	public void setCompanyNameInput(String companyNameInput) {
+		this.companyNameInput = companyNameInput;
+	}
+
+	public Boolean getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(Boolean errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+	
+	
 }
