@@ -20,15 +20,12 @@ import javax.inject.Named;
 import org.apache.log4j.Logger;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import entity.AnalogicData;
 
 
 @Named

@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,8 +13,11 @@ import entity.Analogic;
 
 
 @Stateless
-public class AnalogicEJB implements AnalogicEJBRemote {
+public class AnalogicEJB implements Serializable, AnalogicEJBRemote {
 	
+
+	private static final long serialVersionUID = 2699755807485877417L;
+
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

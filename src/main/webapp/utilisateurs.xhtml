@@ -7,37 +7,58 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-
-	<title>Add a User</title>
+	<title>Users</title>
 </h:head>
+
+
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
-<h:body id="plateformBody" rendered="#{identity.loggedIn }">
+
+
+<h:body id="plateformBody"
+	rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur')}">
 	<ui:include src="header.xhtml" />
 	<div class="container">
 		<div class="row">
-
-			<!-- start: Main Menu -->
 			<div id="sidebar-left" class="col-lg-2 col-sm-1">
-
-
 				<ui:include src="leftMenu.xhtml" />
 			</div>
-			<!-- end: Main Menu -->
-
-			<!-- start: Content -->
 			<div id="content" class="col-lg-10 col-sm-11">
 				<div class="row">
 					<div class="col-lg-12">
 						<p:messages id="messages" showDetail="true" autoUpdate="true" />
+						<h:outputLabel rendered="#{userController.errorMessage}">
+							<div id="messages1" class="ui-messages ui-widget"
+								aria-live="polite">
+								<div class="ui-messages-error ui-corner-all">
+									<span class="ui-messages-error-icon"></span>
+									<ul>
+										<li><span class="ui-messages-error-summary">User
+												already Exists.</span></li>
+									</ul>
+								</div>
+							</div>
+						</h:outputLabel>
+						<h:outputLabel rendered="#{companyController.errorMessage}">
+							<div id="messages1" class="ui-messages ui-widget"
+								aria-live="polite">
+								<div class="ui-messages-error ui-corner-all">
+									<span class="ui-messages-error-icon"></span>
+									<ul>
+										<li><span class="ui-messages-error-summary">Company
+												already exists.</span></li>
+									</ul>
+								</div>
+							</div>
+						</h:outputLabel>
+						<br></br>
 						<button type="button" class="btn btn-success btn-setting"
 							data-toggle="modal" data-target="#myModal1">New User</button>
 						<button type="button" class="btn btn-success btn-setting"
@@ -46,7 +67,6 @@
 						<br /> <br />
 					</div>
 				</div>
-
 				<div class="row">
 					<div class="col-md-12">
 						<div class="box">
@@ -111,7 +131,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div id="myModal1" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 
@@ -122,10 +141,8 @@
 						<h4 class="modal-title">New User</h4>
 					</div>
 					<div class="modal-body">
-
 						<h:form styleClass="form-horizontal" id="newUserForm">
 							<fieldset>
-
 								<h:outputLabel for="nom">Name <span
 										class="requis">*</span>
 								</h:outputLabel>
@@ -134,7 +151,6 @@
 									size="20" maxlength="20" />
 								<h:message id="nomMessage" for="nom" errorClass="erreur" />
 								<br />
-
 								<h:outputLabel for="prenom">Surname <span
 										class="requis">*</span>
 								</h:outputLabel>
@@ -143,56 +159,42 @@
 									size="20" maxlength="20" />
 								<h:message id="prenomMessage" for="nom" errorClass="erreur" />
 								<br />
-
-
-
 								<h:outputLabel for="email">Mail <span
 										class="requis">*</span>
-								</h:outputLabel><br></br>
-								<p:inputText id="email" required="true" label="email" size="40" styleClass="form-control input-md"
+								</h:outputLabel>
+								<p:inputText id="email" required="true" label="email" size="40"
+									styleClass="form-control input-md"
 									requiredMessage="Please enter your email address."
 									validatorMessage="Invalid email format"
 									value="#{userController.userPicket.email}">
-
 									<f:validateRegex
 										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-
 								</p:inputText>
-							
 								<h:message id="emailMessage" for="email" errorClass="erreur" />
 								<br />
-
-
 								<h:panelGrid columns="1" id="matchGrid" cellpadding="5">
 									<h:outputLabel for="pwd1" value="Password 1: *" />
 									<p:password styleClass="form-control input-md" id="pwd1"
 										value="#{userController.password}" match="pwd2"
 										label="Password 1" required="true" />
 									<br></br>
-
 									<h:outputLabel for="pwd2" value="Password 2: *" />
 									<br></br>
 									<p:password styleClass="form-control input-md" id="pwd2"
 										value="#{userController.password}" label="Password 2"
 										required="true" />
 								</h:panelGrid>
-
-
-
 								<h:outputLabel for="entreprise">Company Name <span
 										class="requis">*</span>
 								</h:outputLabel>
 								<br></br>
-
 								<h:selectOneMenu id="company"
 									value="#{userController.companyName}">
 									<f:selectItems value="#{companyController.companies}"
 										var="companies" itemValue="#{companies.name}"
 										itemLabel="#{companies.name}" />
-
 								</h:selectOneMenu>
 								<br />
-
 								<h:outputLabel for="entreprise">Select the role <span
 										class="requis">*</span>
 								</h:outputLabel>
@@ -205,29 +207,20 @@
 									<f:selectItem id="item3" itemLabel="Météorologue"
 										itemValue="meteorologue" />
 								</h:selectOneMenu>
-
-
-
 								<h:messages globalOnly="true" infoClass="info" />
 								<br></br> <br></br>
-
 								<h:commandButton styleClass="btn btn-primary"
 									value="Inscription" action="#{userController.addUser()}" />
-
 								<br />
 							</fieldset>
 						</h:form>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div id="myModal2" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-
-			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -237,48 +230,34 @@
 					<h:form styleClass="form-horizontal">
 						<fieldset>
 							<legend>New Subscription</legend>
-
 							<h:outputLabel for="inServiceDate">Select User <span
 									class="requis">*</span>
 							</h:outputLabel>
-
 							<h:selectOneMenu id="userList"
 								value="#{suscriptionController.email}">
 								<f:selectItems value="#{userController.findUsers()}" var="user"
 									itemValue="#{user.email}"
 									itemLabel="#{user.firstName} #{user.lastName} - #{user.email}" />
-
-
 							</h:selectOneMenu>
 							<br></br>
-
 							<h:outputLabel for="inServiceDate">Beginning Date <span
 									class="requis">*</span>
 							</h:outputLabel>
 							<br></br>
-
 							<p:calendar id="inline" pattern="dd/MM/yyyy"
 								value="#{suscriptionController.dateBegin}" mode="inline" />
-
 							<h:outputLabel for="inServiceDate">Select Sensor <span
 									class="requis">*</span>
 							</h:outputLabel>
-
 							<h:selectOneMenu id="subscriptions"
 								value="#{suscriptionController.idSensor}">
 								<f:selectItems
 									value="#{suscriptionController.findDroneSensors()}"
 									var="sensor" itemValue="#{sensor.id}"
 									itemLabel="#{sensor.drone.city} - #{sensor.name} - #{sensor.price} €/mois" />
-
 							</h:selectOneMenu>
 							<br></br>
-
-
-
 							<h:messages globalOnly="true" infoClass="info" />
-
-
 							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
 								action="#{suscriptionController.addSuscription(suscriptionController.email)}" />
 							<br />
@@ -290,8 +269,6 @@
 	</div>
 	<div id="myModal3" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-
-			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -300,16 +277,14 @@
 				<div class="modal-body">
 					<h:form styleClass="form-horizontal">
 						<fieldset>
-
 							<h:outputLabel for="companyName">Company Name <span
 									class="requis">*</span>
 							</h:outputLabel>
-
 							<h:inputText styleClass="form-control input-md" id="companyName"
 								value="#{companyController.name}" required="true" size="20"
 								maxlength="20" />
-
-							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
+							<br></br>
+							<h:commandButton styleClass="btn btn-primary" value="Create"
 								action="#{companyController.addCompany()}" />
 							<br />
 						</fieldset>
@@ -319,9 +294,6 @@
 		</div>
 	</div>
 	<div class="clearfix"></div>
-
 	<ui:include src="footer.xhtml" />
-
 </h:body>
-
 </html>

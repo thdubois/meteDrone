@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,9 @@ import javax.persistence.OneToMany;
 	@NamedQuery(name="findRemovedSensors",
 				query="SELECT s FROM Sensor s WHERE s.drone IS NULL")
 })
-public class Sensor {
+public class Sensor implements Serializable{
+
+	private static final long serialVersionUID = -825980794107438922L;
 
 	@Id
 	@GeneratedValue

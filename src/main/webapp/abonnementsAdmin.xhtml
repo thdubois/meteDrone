@@ -6,9 +6,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-
-
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -16,29 +13,23 @@
 	<link href="css/style.css" rel="stylesheet" />
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-
-
-	<title>Add a User</title>
+	<title>Subscription for Admin</title>
 </h:head>
-<ui:fragment rendered="#{not identity.loggedIn}">
+
+
+<ui:fragment rendered="#{not identity.loggedIn }">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
-<h:body id="plateformBody" rendered="#{identity.loggedIn}">
-	<ui:include src="header.xhtml" />
-	<!-- end: Header -->
 
+
+<h:body id="plateformBody" rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur')}">
+	<ui:include src="header.xhtml" />
 	<div class="container">
 		<div class="row">
-
-			<!-- start: Main Menu -->
 			<div id="sidebar-left" class="col-lg-2 col-sm-1">
-
-
 				<ui:include src="leftMenu.xhtml" />
 			</div>
-
 			<div id="content" class="col-lg-10 col-sm-11">
-				<!-- Main container : c'est ici que les widgets et graphs seront affichés-->
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="box">
@@ -48,7 +39,6 @@
 								</h2>
 							</div>
 							<div class="box-content">
-
 								<h:dataTable styleClass="table table-striped table-hover"
 									value="#{suscriptionController.suscriptions}" var="item">
 									<h:column>
@@ -63,7 +53,6 @@
 										<f:facet name="header">Associated Sensor Price</f:facet>
 										<h:outputText value="#{item.sensor.price}€/mois" />
 									</h:column>
-
 									<h:column>
 										<f:facet name="header">City</f:facet>
 										<h:outputText value="#{item.sensor.drone.city}" />
@@ -94,24 +83,11 @@
 							</div>
 						</div>
 					</div>
-					<!--/col-->
-
 				</div>
 			</div>
-			<!-- end: Content -->
-
 		</div>
-		<!--/row-->
-
 	</div>
-
-
-
-
 	<div class="clearfix"></div>
 	<ui:include src="footer.xhtml" />
-
 </h:body>
-
-
 </html>

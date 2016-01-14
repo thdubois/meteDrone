@@ -8,12 +8,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import entity.Drone;
+
 import remote.DroneEJBRemote;
 
 @Named
 @RequestScoped
 public class DroneController implements Serializable{
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -24,19 +25,19 @@ public class DroneController implements Serializable{
 	private String model;
 	private String name;
 	private String city;
-	
+
 	public void addDrone(){
 		droneEJB.createDrone(name, model, city);
 	}
-	
+
 	public void deleteDrone(Long droneId){
 		droneEJB.deleteDrone(droneId);
 	}
-	
+
 	public List<Drone> getDrones() {
 		return droneEJB.findDrones();
 	}
-	
+
 	public void setDrones(List<Drone> drones) {
 		this.drones = drones;
 	}

@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -14,8 +15,9 @@ import entity.Company;
 
 
 @Stateless
-public class CompanyEJB implements CompanyEJBRemote, CompanyEJBLocal {
-	
+public class CompanyEJB implements CompanyEJBRemote, CompanyEJBLocal, Serializable {
+
+	private static final long serialVersionUID = -8425285573954583409L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 
@@ -25,7 +27,7 @@ public class CompanyEJB implements CompanyEJBRemote, CompanyEJBLocal {
 		return query.getResultList();
 	}
 	
-	public Company createCompany(String name){
+	public Company createCompany(String name) throws Exception{
 		Company companyEntity = new Company();
 		companyEntity.setName(name);
 		em.persist(companyEntity);

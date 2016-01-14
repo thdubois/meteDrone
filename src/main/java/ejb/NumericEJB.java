@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,8 +13,9 @@ import entity.Numeric;
 
 
 @Stateless
-public class NumericEJB implements NumericEJBRemote {
+public class NumericEJB implements NumericEJBRemote, Serializable {
 	
+	private static final long serialVersionUID = 5565633571739798364L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

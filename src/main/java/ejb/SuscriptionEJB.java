@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,8 +18,10 @@ import entity.User;
 import local.SuscriptionEJBLocal;
 
 @Stateless
-public class SuscriptionEJB implements SuscriptionEJBRemote, SuscriptionEJBLocal {
+public class SuscriptionEJB implements SuscriptionEJBRemote, SuscriptionEJBLocal, Serializable {
 	
+	private static final long serialVersionUID = -2153124906231008033L;
+
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 	

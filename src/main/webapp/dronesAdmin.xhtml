@@ -21,7 +21,7 @@
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
 
-<h:body id="plateformBody" rendered="#{identity.loggedIn}">
+<h:body id="plateformBody" rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur')}">
 	<ui:include src="header.xhtml" />
 	<div class="container">
 		<div class="row">
@@ -125,7 +125,7 @@
 							<h:message id="villeMessage" for="ville" errorClass="erreur" />
 							<br />
 
-							<h:messages globalOnly="true" infoClass="info" />
+							<h:messages globalOnly="true" infoClass="info" /><br></br>
 
 							<h:commandButton styleClass="btn btn-primary" value="Ajouter"
 								action="#{droneController.addDrone()}" />

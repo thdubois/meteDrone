@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -14,8 +15,9 @@ import entity.Flight;
 import entity.Sensor;
 
 @Stateless
-public class DroneEJB implements DroneEJBRemote, DroneEJBLocal {
+public class DroneEJB implements DroneEJBRemote, DroneEJBLocal, Serializable {
 	
+	private static final long serialVersionUID = 239469422958380572L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

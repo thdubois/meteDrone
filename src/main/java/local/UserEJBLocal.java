@@ -10,7 +10,7 @@ import entity.Company;
 @Local
 public interface UserEJBLocal {
 	public void	initializeUsers();
-	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password);
+	public void createUser(org.picketlink.idm.model.basic.User user, String companyName, String role, String password) throws Exception;
 	public void deleteUser(User user);
 	public void deleteCompany(User user);
 	public Company findCompany(String email);

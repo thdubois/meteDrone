@@ -1,5 +1,6 @@
 package ejb;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,9 @@ import entity.Drone;
 import entity.Flight;
 
 @Stateless
-public class FlightEJB implements FlightEJBRemote, FlightEJBLocal {
+public class FlightEJB implements FlightEJBRemote, FlightEJBLocal, Serializable {
 	
+	private static final long serialVersionUID = 3870775155729082123L;
 	@PersistenceContext(unitName="primary")
 	private EntityManager em;
 

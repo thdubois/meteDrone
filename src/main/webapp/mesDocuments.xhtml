@@ -5,7 +5,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
 <h:head>
 	<meta name="viewport" content="width=device-width" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -13,20 +12,14 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/core.min.js"></script>
-	<!--<![endif]-->
-	<!--[if IE]>
-    <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery-1.11.0.min.js'>"+"<"+"/script>");
-    </script>
-    
-  <![endif]-->
-
 	<title>Docs</title>
 </h:head>
+
 
 <ui:fragment rendered="#{not identity.loggedIn}">
 	<ui:include src="connexion.xhtml" />
 </ui:fragment>
+
 
 <h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />

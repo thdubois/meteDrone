@@ -1,7 +1,5 @@
 package ejb;
 
-import java.io.IOException;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
