@@ -21,7 +21,7 @@
 </ui:fragment>
 
 
-<h:body id="plateformBody">
+<h:body id="plateformBody" rendered="#{identity.loggedIn}">
 	<ui:include src="header.xhtml" />
 	<div class="container">
 		<div class="row">
