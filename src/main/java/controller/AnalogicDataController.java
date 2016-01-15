@@ -109,8 +109,10 @@ public class AnalogicDataController implements Serializable{
 	public Number getLastValue(Long sensorId){
 		List<AnalogicData> data = findAnalogicData(sensorId);
 		Integer size = data.size();
-		
-		return data.get(size-1).getValue()*6;
-		
+		if (size != 0){
+			return data.get(size-1).getValue()*6;
+		}else{
+			return 0;
+		}
 	}
 }
