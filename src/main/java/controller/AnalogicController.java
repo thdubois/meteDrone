@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import entity.Analogic;
+
 import remote.AnalogicEJBRemote;
 
 @Named
@@ -18,7 +19,7 @@ public class AnalogicController implements Serializable{
 
 	@EJB
 	AnalogicEJBRemote analogicEJB;
-	
+
 	List<Analogic> analogics;
 
 	public List<Analogic> getAnalogics() {

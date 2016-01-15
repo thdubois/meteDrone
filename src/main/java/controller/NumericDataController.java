@@ -73,10 +73,23 @@ public class NumericDataController implements Serializable{
 		LineChartSeries series1 = new LineChartSeries();
 		List<NumericData> data = findNumericData(sensorId);
 		series1.setLabel("Data");
-		for(int i=0; i < data.size(); i++) {
-			int myInt = data.get(i).getValue() ? 1 : 0;
-			series1.set(i, myInt );
+		
+		Integer size = data.size();
+		
+		if(size > 30){
+			for(int i=size-30; i < size; i++) {
+				int myInt = data.get(i).getValue() ? 1 : 0;
+				series1.set(i, myInt );
+			}
 		}
+		else{
+			for(int i=0; i < size; i++) {
+				int myInt = data.get(i).getValue() ? 1 : 0;
+				series1.set(i, myInt );
+			}
+		}
+		
+	
 
 
 		model.addSeries(series1);
