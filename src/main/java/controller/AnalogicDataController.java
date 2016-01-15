@@ -105,4 +105,12 @@ public class AnalogicDataController implements Serializable{
 
 		return model;
 	}
+	
+	public Number getLastValue(Long sensorId){
+		List<AnalogicData> data = findAnalogicData(sensorId);
+		Integer size = data.size();
+		
+		return data.get(size-1).getValue()*6;
+		
+	}
 }

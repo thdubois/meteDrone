@@ -61,7 +61,9 @@
 								</h2>
 							</div>
 							<div class="box-content">
-								<h:dataTable styleClass="table table-striped table-hover"
+							<h:form>
+								<p:poll interval="1" update="dataTableSensor1" />
+								<h:dataTable id="dataTableSensor1" styleClass="table table-striped table-hover"
 									value="#{numericDataController.findNumericData(singleSensorController.sensor.id)}"
 									var="item">
 									<h:column>
@@ -73,6 +75,7 @@
 										<h:outputText value="#{item.value}" />
 									</h:column>
 								</h:dataTable>
+							</h:form>
 							</div>
 						</div>
 					</div>

@@ -34,7 +34,7 @@
 			</div>
 			<div id="content" class="col-lg-10 col-sm-11">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-10">
 						<div class="box">
 							<div class="box-header">
 								<h2>
@@ -51,6 +51,21 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-md-2">
+						<div class="box">
+							<div class="box-header">
+								<h2>
+									<i class="fa fa-area-chart"></i>Chart
+								</h2>
+							</div>
+							<div class="box-content" style="height:320px;">
+								<h:form>
+									<p:poll interval="1" update="ImageData" />
+									<center><h:graphicImage id="ImageData" value="img/drone.png" style="margin-top: 0px; text-align:center; -webkit-transition: margin-top 1s; margin-top:calc( 270px - #{analogicDataController.getLastValue(singleSensorController.sensor.id)}px);"/></center>
+								</h:form>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -61,18 +76,22 @@
 								</h2>
 							</div>
 							<div class="box-content">
-								<h:dataTable styleClass="table table-striped table-hover"
-									value="#{analogicDataController.findAnalogicData(singleSensorController.sensor.id)}"
-									var="item">
-									<h:column>
-										<f:facet name="header">Date</f:facet>
-										<h:outputText value="#{item.date}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">Value</f:facet>
-										<h:outputText value="#{item.value}" />
-									</h:column>
-								</h:dataTable>
+								<h:form>
+									<p:poll interval="1" update="dataTableSensor" />
+									<h:dataTable id="dataTableSensor"
+										styleClass="table table-striped table-hover"
+										value="#{analogicDataController.findAnalogicData(singleSensorController.sensor.id)}"
+										var="item">
+										<h:column>
+											<f:facet name="header">Date</f:facet>
+											<h:outputText value="#{item.date}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">Value</f:facet>
+											<h:outputText value="#{item.value}" />
+										</h:column>
+									</h:dataTable>
+								</h:form>
 							</div>
 						</div>
 					</div>
