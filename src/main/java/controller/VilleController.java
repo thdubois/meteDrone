@@ -175,22 +175,28 @@ public class VilleController {
 	private LineChartModel lineModel1;
 	final static Logger logger = Logger.getLogger(VilleController.class);
 
-	public void previsionMeteo() throws JsonProcessingException, IOException{
+	public void previsionMeteo() {
 		listMeteo = new ArrayList<>();
 		Meteo meteo = new Meteo();
 		ObjectMapper mapper = new ObjectMapper();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(
 				DateFormat.MEDIUM,DateFormat.SHORT);
 		String url = "http://api.openweathermap.org/data/2.5/forecast?q="+ville+",FR&units=metric&appid=a0750586e2446ca389182e5b95941c14";
-		JsonNode root = mapper.readTree(new URL(url));
-		JsonNode list = root.path("list");
-		for (JsonNode node: list){
-			meteo = new Meteo();
-			Date date = new Date(node.path("dt").asLong()*1000);
-			meteo.setDate(dateFormat.format(date));
-			meteo.setTemperature(node.path("main").path("temp").asDouble());
-			listMeteo.add(meteo);
+		JsonNode root;
+		try {
+			root = mapper.readTree(new URL(url));
+			JsonNode list = root.path("list");
+			for (JsonNode node: list){
+				meteo = new Meteo();
+				Date date = new Date(node.path("dt").asLong()*1000);
+				meteo.setDate(dateFormat.format(date));
+				meteo.setTemperature(node.path("main").path("temp").asDouble());
+				listMeteo.add(meteo);
+			}
+		} catch (IOException e) {
+			logger.info(e);
 		}
+		
 	}
 
 	public String getVille() {
