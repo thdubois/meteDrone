@@ -15,10 +15,16 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import ejb.PDFGeneratorEJB;
+
 
 @Named
 @RequestScoped
 public class DownloadInvoice implements Serializable {
+
+	final static Logger logger = Logger.getLogger(DownloadInvoice.class);
 
 	private static final long serialVersionUID = -479435522006213706L;
 
@@ -59,10 +65,10 @@ public class DownloadInvoice implements Serializable {
 	            output.flush();
 	        } catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+                logger.info(e);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+                logger.info(e);
 			} finally {
 	            // close streams.
 	            close(output);
@@ -76,7 +82,7 @@ public class DownloadInvoice implements Serializable {
 	            try {
 	                resource.close();
 	            } catch (IOException e) {
-	                e.printStackTrace();
+	                logger.info(e);
 	            }
 	        }
 	    }

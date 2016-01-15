@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
@@ -29,6 +30,8 @@ import remote.UserEJBRemote;
 
 @Stateless
 public class PDFGeneratorEJB {
+
+	final static Logger logger = Logger.getLogger(PDFGeneratorEJB.class);
 
 	@EJB
 	private SuscriptionEJBRemote suscription;
@@ -57,7 +60,7 @@ public class PDFGeneratorEJB {
 			contentStream.endText();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+            logger.info(e);
 		}
 	}
 
@@ -119,8 +122,8 @@ public class PDFGeneratorEJB {
 				document.save("../standalone/data/" + name);
 				document.close();
 			} catch (Exception e ) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.info(e);
+				
 			}
 		}
 	}
