@@ -57,7 +57,7 @@
 										<f:facet name="header">City</f:facet>
 										<h:outputText value="#{item.city}" />
 									</h:column>
-									<h:column>
+									<h:column rendered="#{authorizationChecker.hasApplicationRole('administrateur') or authorizationChecker.hasApplicationRole('pilote')}">
 										<f:facet name="header">About</f:facet>
 										<h:form>
 											<h:commandLink class="label label-default" action="#{singleDroneController.initializeDrone(item.id)}" value="See Drone" />

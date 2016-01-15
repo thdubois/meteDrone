@@ -77,10 +77,21 @@ public class AnalogicDataController implements Serializable{
 		List<AnalogicData> data = findAnalogicData(sensorId);
 
 		series1.setLabel("Data");
-
-		for(int i=0; i < data.size(); i++) {
-			series1.set(i, data.get(i).getValue() );
+		
+		Integer size = data.size();
+		
+		if(size > 30){
+			for(int i=size-30; i < size; i++) {
+				series1.set(i, data.get(i).getValue() );
+			}
 		}
+		else{
+			for(int i=0; i < size; i++) {
+				series1.set(i, data.get(i).getValue() );
+			}
+		}
+
+		
 
 
 		model.addSeries(series1);

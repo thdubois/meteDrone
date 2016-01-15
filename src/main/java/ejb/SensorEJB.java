@@ -31,7 +31,7 @@ public class SensorEJB implements SensorEJBRemote, SensorEJBLocal, Serializable 
 
 	@Override
 	public List<Sensor> findSensors() {
-		TypedQuery<Sensor> query=em.createNamedQuery("findSensors",Sensor.class);
+		TypedQuery<Sensor> query=em.createNamedQuery("findDroneSensors",Sensor.class);
 		return query.getResultList();
 	}
 	
