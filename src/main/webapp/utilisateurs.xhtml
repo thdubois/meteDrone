@@ -79,7 +79,7 @@
 								<h:dataTable styleClass="table table-striped table-hover"
 									value="#{userController.findUsers()}" var="user">
 									<h:column>
-										<f:facet name="header">Name</f:facet>
+										<f:facet name="header">First Name</f:facet>
 										<h:outputText value="#{user.firstName}" />
 									</h:column>
 									<h:column>
@@ -96,7 +96,6 @@
 											value="#{userController.findCompanyName(user.email)}" />
 									</h:column>
 								</h:dataTable>
-								<h:outputText value="#{suscriptionController.email}" />
 							</div>
 						</div>
 					</div>

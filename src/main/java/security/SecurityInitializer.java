@@ -32,19 +32,19 @@ public class SecurityInitializer{
 		identityManager.add(user);
 		identityManager.updateCredential(user, new Password("admin"));
 		
-		User user2= new User("toto");
-		user2.setFirstName("Thomas");
-		user2.setLastName("Dubois");
-		user2.setEmail("toto");
+		User user2= new User("olivier.kastel@gmail.com");
+		user2.setFirstName("Olivier");
+		user2.setLastName("Kastel");
+		user2.setEmail("olivier.kastel@gmail.com");
 		identityManager.add(user2);
-		identityManager.updateCredential(user2, new Password("toto"));
+		identityManager.updateCredential(user2, new Password("azerty"));
 		
-		User user3= new User("jeje");
-		user3.setFirstName("Jeremy");
-		user3.setLastName("Bancker");
-		user3.setEmail("jeje");
+		User user3= new User("benjamin.bost@gmail.com");
+		user3.setFirstName("Benjamin");
+		user3.setLastName("Bost");
+		user3.setEmail("benjamin.bost@gmail.com");
 		identityManager.add(user3);
-		identityManager.updateCredential(user3, new Password("jeje"));
+		identityManager.updateCredential(user3, new Password("azerty"));
 
 		Role admin = new Role("administrateur");
 		identityManager.add(admin);

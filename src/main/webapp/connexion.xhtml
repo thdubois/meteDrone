@@ -53,7 +53,7 @@
 							</div>
 						</h:outputLabel>
 						<br></br>
-						<h:outputLabel for="login">login <span
+						<h:outputLabel for="login">Login (email) <span
 								class="requis">*</span>
 						</h:outputLabel>
 						<h:inputText styleClass="form-control input-md" id="login"
@@ -91,11 +91,11 @@
 					<h:form styleClass="form-horizontal" id="createUserForm">
 						<fieldset>
 							<h:outputLabel for="welcome">Welcome to metedrone. Follow drones and get sensor information right now ! Fill out the form bellow : </h:outputLabel>
-							<h:outputLabel for="nom">Name <span
+							<h:outputLabel for="nom">First Name <span
 									class="requis">*</span>
 							</h:outputLabel>
 							<h:inputText styleClass="form-control input-md" id="nom"
-								value="#{userController.userPicket.lastName}" required="true"
+								value="#{userController.userPicket.firstName}" required="true"
 								size="20" maxlength="20" />
 							<h:message id="nomMessage" for="nom" errorClass="erreur" />
 							<br />
@@ -103,7 +103,7 @@
 									class="requis">*</span>
 							</h:outputLabel>
 							<h:inputText styleClass="form-control input-md" id="prenom"
-								value="#{userController.userPicket.firstName}" required="true"
+								value="#{userController.userPicket.lastName}" required="true"
 								size="20" maxlength="20" />
 							<h:message id="prenomMessage" for="nom" errorClass="erreur" />
 							<br />

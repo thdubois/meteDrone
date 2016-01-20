@@ -112,12 +112,12 @@ public class UserEJB implements UserEJBLocal, UserEJBRemote, Serializable{
 		em.persist(user);
 		
 		User user2=new User();
-		user2.setEmail("toto");
+		user2.setEmail("olivier.kastel@gmail.com");
 		user2.setCompany(company);
 		em.persist(user2);
 		
 		User user3=new User();
-		user3.setEmail("jeje");
+		user3.setEmail("benjamin.bost@gmail.com");
 		user3.setCompany(company);
 		em.persist(user3);
 	}
